@@ -1,0 +1,254 @@
+/* ---------------------------------------------------------------------------
+   Design tokens (spec §7) — fixed. One accent only: amber --signal.
+   Concept: dossier vs instrument. Calm editorial column, dark trace panel.
+   --------------------------------------------------------------------------- */
+
+:root {
+  --ink: #14161c;
+  --paper: #f3f4f6;
+  --paper-2: #fbfbfc;
+  --panel: #171a22;
+  --panel-2: #1f232e;
+  --line: #dbdee4;
+  --line-dk: #2b303c;
+  --muted: #5c6270;
+  --muted-dk: #8a93a6;
+  --signal: #e0972b;
+  --signal-soft: #f6e2bd;
+  --ok: #4fb286;
+  --radius: 5px;
+  --container: 1180px;
+
+  /* Text on the dark panel. Verified ≥ AA against --panel (#171A22):
+     #cfd6e4 ≈ 11.0:1, #e6eaf1 ≈ 13.9:1, --muted-dk #8A93A6 ≈ 5.6:1. */
+  --panel-text: #e6eaf1;
+  --panel-text-dim: #cfd6e4;
+
+  --pad-x: 16px;
+  --header-h: 52px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --pad-x: 24px;
+    --header-h: 56px;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Any author-level `display` (e.g. the trace panel's `display: flex`) outranks
+   the UA stylesheet's `[hidden] { display: none }`, which would leave a hidden
+   tab panel on screen. Restore the intent once, globally. */
+[hidden] {
+  display: none !important;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Anchor links should not slide under the sticky header. */
+  scroll-padding-top: calc(var(--header-h) + 12px);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Nothing should ever cause a horizontal scrollbar (spec §6). */
+  overflow-x: hidden;
+}
+
+/* Utility type roles ------------------------------------------------------- */
+
+.mono {
+  font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Consolas,
+    monospace;
+}
+
+.disp {
+  font-family: var(--font-display), system-ui, -apple-system, "Segoe UI", Roboto,
+    sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: var(--signal-soft);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* Never remove focus rings; only suppress the mouse-click ring where the
+   element already shows an active state. */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+/* 16px minimum on inputs prevents iOS zoom-on-focus (spec §6.2). */
+input,
+textarea,
+select {
+  font-size: 16px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display), system-ui, -apple-system, "Segoe UI", Roboto,
+    sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Layout primitives -------------------------------------------------------- */
+
+.wrap {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding-left: max(var(--pad-x), env(safe-area-inset-left));
+  padding-right: max(var(--pad-x), env(safe-area-inset-right));
+}
+
+/* Screen-reader-only, but focusable (used by the skip link). */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skipLink {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 12px 18px;
+  border-radius: var(--radius);
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.skipLink:focus {
+  left: 12px;
+  top: 12px;
+}
+
+/* Shared section frame ----------------------------------------------------- */
+
+.blk {
+  padding: 44px 0;
+  border-top: 1px solid var(--line);
+}
+
+@media (min-width: 768px) {
+  .blk {
+    padding: 56px 0;
+  }
+}
+
+.secEyebrow {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--signal);
+  margin-bottom: 12px;
+}
+
+.sectionTitle {
+  font-size: clamp(24px, 3vw, 32px);
+  margin: 0 0 14px;
+}
+
+.lead {
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 62ch;
+  margin: 0 0 26px;
+}
+
+@media (min-width: 768px) {
+  .lead {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+}
+
+/* Animations ---------------------------------------------------------------
+   The keyframes themselves live in the CSS Module that uses them. CSS Modules
+   scopes both @keyframes names and animation-name references, so a keyframe
+   declared here would be rewritten to a scoped name in the module and silently
+   never match — which previously left the trace steps stuck at opacity 0.
+   Anything animated must also be readable at rest.
+   --------------------------------------------------------------------------- */
+
+/* Reduced motion: disable typewriter caret, step-rise, header slide, pulse.
+   Everything stays fully usable (spec §8). */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,112 @@
+data: {"type":"start"}
+
+data: {"type":"start-step"}
+
+data: {"type":"tool-input-available","toolCallId":"call_1","toolName":"searchExperience","input":{"query":"production RAG and retrieval"}}
+
+data: {"type":"tool-output-available","toolCallId":"call_1","output":{"hits":[{"id":"project-retrieval","title":"Hybrid retrieval","category":"project","url":"https://github.com/avunculargroup/business-mono","text":"The knowledge base uses hybrid search rather than a single vector lookup: pgvector (HNSW) similarity, graph traversal across knowledge connections, and Postgres full-text search, so each query uses the method that fits it. Embeddings are generated with OpenAI text-embedding-3-small at 1536 dimensions.","score":1},{"id":"skills-llm","title":"LLM engineering skills","category":"skills","url":"https://github.com/avunculargroup/business-mono","text":"On the LLM side he builds agent orchestration, retrieval-augmented generation, hybrid search, tool use and human-in-the-loop control flow, and treats evals as first-class, gated in CI. His production agent work is built on Mastra; he has also prototyped pipelines with Flowise and LangChain.","score":0.6922},{"id":"faq-production","title":"Has he shipped to production?","category":"faq","url":"https://github.com/avunculargroup/business-mono","text":"Yes. business-mono is a live, deployed multi-agent system running real operations, not a demo — built and shipped solo, with agents on Railway, the web app on Vercel and a CI-gated test suite.","score":0.4415}]}}
+
+data: {"type":"finish-step"}
+
+data: {"type":"start-step"}
+
+data: {"type":"text-start","id":"t1"}
+
+data: {"type":"text-delta","id":"t1","delta":"Yes"}
+
+data: {"type":"text-delta","id":"t1","delta":" —"}
+
+data: {"type":"text-delta","id":"t1","delta":" retrieval"}
+
+data: {"type":"text-delta","id":"t1","delta":" is"}
+
+data: {"type":"text-delta","id":"t1","delta":" central"}
+
+data: {"type":"text-delta","id":"t1","delta":" to"}
+
+data: {"type":"text-delta","id":"t1","delta":" business-mono,"}
+
+data: {"type":"text-delta","id":"t1","delta":" and"}
+
+data: {"type":"text-delta","id":"t1","delta":" it"}
+
+data: {"type":"text-delta","id":"t1","delta":" goes"}
+
+data: {"type":"text-delta","id":"t1","delta":" past"}
+
+data: {"type":"text-delta","id":"t1","delta":" a"}
+
+data: {"type":"text-delta","id":"t1","delta":" single"}
+
+data: {"type":"text-delta","id":"t1","delta":" vector"}
+
+data: {"type":"text-delta","id":"t1","delta":" lookup."}
+
+data: {"type":"text-delta","id":"t1","delta":" The"}
+
+data: {"type":"text-delta","id":"t1","delta":" knowledge"}
+
+data: {"type":"text-delta","id":"t1","delta":" base"}
+
+data: {"type":"text-delta","id":"t1","delta":" runs"}
+
+data: {"type":"text-delta","id":"t1","delta":" hybrid"}
+
+data: {"type":"text-delta","id":"t1","delta":" search:"}
+
+data: {"type":"text-delta","id":"t1","delta":" pgvector"}
+
+data: {"type":"text-delta","id":"t1","delta":" HNSW"}
+
+data: {"type":"text-delta","id":"t1","delta":" similarity,"}
+
+data: {"type":"text-delta","id":"t1","delta":" graph"}
+
+data: {"type":"text-delta","id":"t1","delta":" traversal"}
+
+data: {"type":"text-delta","id":"t1","delta":" across"}
+
+data: {"type":"text-delta","id":"t1","delta":" knowledge"}
+
+data: {"type":"text-delta","id":"t1","delta":" connections,"}
+
+data: {"type":"text-delta","id":"t1","delta":" and"}
+
+data: {"type":"text-delta","id":"t1","delta":" Postgres"}
+
+data: {"type":"text-delta","id":"t1","delta":" full-text.[1]"}
+
+data: {"type":"text-delta","id":"t1","delta":" It's"}
+
+data: {"type":"text-delta","id":"t1","delta":" wired"}
+
+data: {"type":"text-delta","id":"t1","delta":" into"}
+
+data: {"type":"text-delta","id":"t1","delta":" a"}
+
+data: {"type":"text-delta","id":"t1","delta":" live"}
+
+data: {"type":"text-delta","id":"t1","delta":" production"}
+
+data: {"type":"text-delta","id":"t1","delta":" system"}
+
+data: {"type":"text-delta","id":"t1","delta":" that"}
+
+data: {"type":"text-delta","id":"t1","delta":" Chris"}
+
+data: {"type":"text-delta","id":"t1","delta":" built"}
+
+data: {"type":"text-delta","id":"t1","delta":" and"}
+
+data: {"type":"text-delta","id":"t1","delta":" ships"}
+
+data: {"type":"text-delta","id":"t1","delta":" solo.[2]"}
+
+data: {"type":"text-end","id":"t1"}
+
+data: {"type":"finish-step"}
+
+data: {"type":"finish","finishReason":"stop"}
+
+data: [DONE]
+

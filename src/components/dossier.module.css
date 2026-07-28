@@ -1,0 +1,191 @@
+.answer {
+  margin-top: 22px;
+}
+
+.question {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--ink);
+  margin: 0 0 10px;
+  display: flex;
+  gap: 9px;
+  align-items: baseline;
+}
+
+.qKey {
+  color: #8a5a10;
+  font-size: 12px;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  flex: none;
+}
+
+.body {
+  font-size: 17.5px;
+  line-height: 1.62;
+  margin: 0;
+  /* Reserve a line so the first token doesn't shift the page (spec §8, CLS). */
+  min-height: 1.62em;
+}
+
+.caret {
+  display: inline-block;
+  width: 8px;
+  height: 1.1em;
+  background: var(--signal);
+  vertical-align: -2px;
+  margin-left: 1px;
+  animation: blink 1s steps(2) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .caret {
+    animation: none;
+  }
+}
+
+.thinking {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.sources {
+  margin-top: 16px;
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+
+.sourcesTitle {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 8px;
+  font-weight: 500;
+}
+
+.sourceList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.source {
+  font-size: 13.5px;
+  color: var(--muted);
+  margin: 0 0 7px;
+  padding-left: 22px;
+  position: relative;
+  scroll-margin-top: calc(var(--header-h) + 16px);
+}
+
+.source:target .sourceTitle {
+  background: var(--signal-soft);
+}
+
+.sourceIndex {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  color: #8a5a10;
+  font-weight: 600;
+}
+
+.sourceTitle {
+  color: var(--ink);
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.source a {
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  word-break: break-word;
+}
+
+/* Structured pitch ---------------------------------------------------------- */
+
+.pitch {
+  margin: 0 0 4px;
+}
+
+.pitchHeadline {
+  font-size: 17.5px;
+  line-height: 1.5;
+  margin: 0 0 14px;
+}
+
+.pitchGroup {
+  margin-bottom: 12px;
+}
+
+.pitchLabel {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 6px;
+  font-weight: 500;
+}
+
+.pitchList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pitchList li {
+  font-size: 15.5px;
+  line-height: 1.5;
+  color: var(--ink);
+  padding-left: 16px;
+  position: relative;
+  margin-bottom: 5px;
+}
+
+.pitchList li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 5px;
+  height: 1.5px;
+  background: var(--signal);
+}
+
+.caveats li {
+  color: var(--muted);
+  font-size: 14.5px;
+}
+
+.caveats li::before {
+  background: var(--muted);
+}
+
+.notice {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12.5px;
+  line-height: 1.65;
+  color: var(--muted);
+  background: var(--paper-2);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  margin: 0;
+}
+
+/* Declared locally: CSS Modules scopes @keyframes names. */
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}

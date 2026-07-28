@@ -1,0 +1,209 @@
+.form {
+  display: flex;
+  gap: 8px;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--paper-2);
+  padding: 6px 6px 6px 14px;
+  align-items: center;
+}
+
+.form:focus-within {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 16px; /* prevents iOS zoom-on-focus */
+  color: var(--ink);
+  padding: 8px 0;
+  min-height: 44px;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--muted);
+}
+
+.send {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  background: var(--ink);
+  color: var(--paper);
+  border: 0;
+  border-radius: 4px;
+  padding: 10px 14px;
+  cursor: pointer;
+  min-height: 44px;
+  min-width: 44px;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.send:hover:not(:disabled) {
+  background: #000;
+}
+
+.send:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Below sm the button collapses to an icon (spec §6.2). */
+.sendLabel {
+  display: none;
+}
+
+.sendIcon {
+  display: block;
+}
+
+@media (min-width: 640px) {
+  .sendLabel {
+    display: inline;
+  }
+  .sendIcon {
+    display: none;
+  }
+  .send {
+    padding: 10px 16px;
+  }
+}
+
+/* Example chips: one scrollable row, no clipping, hidden scrollbar. */
+.chips {
+  display: flex;
+  gap: 7px;
+  margin-top: 14px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  /* Let chips bleed to the container edge while scrolling. */
+  padding-bottom: 2px;
+}
+
+.chips::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .chips {
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+}
+
+.chip {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  padding: 6px 11px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  white-space: nowrap;
+  flex: none;
+  /* ≥36px tall with a ≥44px effective tap area (spec §6.2). */
+  min-height: 36px;
+  position: relative;
+}
+
+.chip::after {
+  content: "";
+  position: absolute;
+  inset: -4px 0;
+}
+
+.chip:hover:not(:disabled) {
+  border-color: var(--ink);
+  background: #fff;
+}
+
+.chip:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Pitch form --------------------------------------------------------------- */
+
+.pitchForm {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--paper-2);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  padding: 12px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pitchLabel {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.pitchInput {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 16px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 10px;
+  min-height: 44px;
+  background: #fff;
+  width: 100%;
+}
+
+.pitchGo {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  background: var(--signal);
+  color: var(--ink);
+  border: 0;
+  border-radius: 4px;
+  padding: 10px 14px;
+  cursor: pointer;
+  min-height: 44px;
+  align-self: flex-start;
+}
+
+.pitchGo:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Stack vertically below sm; go inline from sm up (spec §6.2). */
+@media (min-width: 640px) {
+  .pitchForm {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-end;
+  }
+
+  .field {
+    flex: 1;
+    min-width: 150px;
+  }
+}
