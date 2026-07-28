@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chris Pollard — AI Delivery Lead</title>
+<style>
+  :root{
+    --ink:#14161C;          /* near-black, warm-cool neutral */
+    --paper:#F3F4F6;        /* cool near-white page */
+    --paper-2:#FBFBFC;      /* card surface */
+    --panel:#171A22;        /* dark instrument surface */
+    --panel-2:#1F232E;      /* raised trace row */
+    --line:#DBDEE4;         /* hairline on light */
+    --line-dk:#2B303C;      /* hairline on dark */
+    --muted:#5C6270;        /* secondary text */
+    --muted-dk:#8A93A6;     /* secondary on dark */
+    --signal:#E0972B;       /* warm amber — the one accent */
+    --signal-soft:#f6e2bd;
+    --ok:#4FB286;
+    --r:5px;
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Source Serif 4",Georgia,serif;
+    font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;
+  }
+  .mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+  .disp{font-family:"Space Grotesk",system-ui,sans-serif}
+  a{color:inherit}
+  ::selection{background:var(--signal-soft)}
+  :focus-visible{outline:2px solid var(--signal);outline-offset:2px;border-radius:3px}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* ---------- top bar ---------- */
+  header.bar{
+    position:sticky;top:0;z-index:50;background:rgba(243,244,246,.82);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
+  }
+  .bar-in{display:flex;align-items:center;gap:16px;height:58px}
+  .mark{
+    font-family:"Space Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-weight:700;letter-spacing:.02em;
+    border:1.5px solid var(--ink);border-radius:4px;padding:2px 7px;font-size:14px;
+  }
+  .who{font-family:"Space Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-weight:500;font-size:15px}
+  .who small{display:block;font-weight:400;color:var(--muted);font-size:11.5px;letter-spacing:.04em;text-transform:uppercase}
+  .bar-sp{flex:1}
+  .tag{
+    font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--signal);border:1px solid var(--signal);border-radius:100px;padding:3px 9px;
+  }
+  .bar a.cta{font-family:"Space Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:14px;font-weight:500;text-decoration:none;border-bottom:1.5px solid var(--signal);padding-bottom:1px}
+
+  /* ---------- hero ---------- */
+  .hero{padding:52px 0 40px}
+  .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:start}
+  .eyebrow{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:9px;margin-bottom:18px}
+  .pulse{width:8px;height:8px;border-radius:50%;background:var(--signal);box-shadow:0 0 0 0 rgba(224,151,43,.6);animation:pulse 2.4s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(224,151,43,.55)}70%{box-shadow:0 0 0 9px rgba(224,151,43,0)}100%{box-shadow:0 0 0 0 rgba(224,151,43,0)}}
+  h1.thesis{font-family:"Space Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-weight:600;font-size:clamp(30px,4.4vw,46px);line-height:1.06;letter-spacing:-.02em;margin:0 0 16px}
+  h1.thesis em{font-style:normal;color:var(--signal)}
+  .sub{font-size:18px;color:var(--muted);max-width:46ch;margin:0 0 24px}
+
+  /* ---------- ask box ---------- */
+  .ask{display:flex;gap:8px;border:1.5px solid var(--ink);border-radius:var(--r);background:var(--paper-2);padding:6px 6px 6px 14px;align-items:center}
+  .ask input{flex:1;border:0;background:transparent;font-family:"Space Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:16px;color:var(--ink);padding:8px 0}
+  .ask input:focus{outline:none}
+  .ask button{font-family:"Space Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-weight:600;font-size:14px;background:var(--ink);color:var(--paper);border:0;border-radius:4px;padding:10px 16px;cursor:pointer}
+  .ask button:hover{background:#000}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+  .chip{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:100px;padding:6px 11px;cursor:pointer;transition:border-color .15s,background .15s}
+  .chip:hover{border-color:var(--ink);background:#fff}
+
+  /* ---------- answer ---------- */
+  .answer{margin-top:26px;min-height:20px}
+  .answer .q{font-family:"Space Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-weight:600;font-size:15px;color:var(--ink);margin:0 0 10px;display:flex;gap:9px;align-items:baseline}
+  .answer .q .qk{color:var(--signal);font-size:12px;font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  .answer .a{font-size:17.5px;line-height:1.62}
+  .answer .a sup{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;color:var(--signal);font-weight:600;cursor:pointer;padding:0 1px}
+  .caret{display:inline-block;width:8px;height:1.1em;background:var(--signal);vertical-align:-2px;margin-left:1px;animation:blink 1s steps(2) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .sources{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
+  .sources h4{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 8px;font-weight:500}
+  .src{font-size:13.5px;color:var(--muted);margin:0 0 7px;padding-left:22px;position:relative}
+  .src b{color:var(--ink);font-family:"Space Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-weight:600;font-size:13px}
+  .src .n{position:absolute;left:0;top:0;font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;color:var(--signal);font-weight:600}
+  .src a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
+
+  /* ---------- pitch form ---------- */
+  .pitch-form{margin-top:14px;display:none;gap:8px;flex-wrap:wrap;align-items:center;background:var(--paper-2);border:1px dashed var(--line);border-radius:var(--r);padding:12px}
+  .pitch-form.show{display:flex}
+  .pitch-form label{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+  .pitch-form input{font-family:"Space Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:14px;border:1px solid var(--line);border-radius:4px;padding:8px 10px;min-width:150px}
+  .pitch-form button{font-family:"Space Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-weight:600;font-size:13px;background:var(--signal);color:var(--ink);border:0;border-radius:4px;padding:9px 14px;cursor:pointer}
+
+  /* ---------- trace panel ---------- */
+  .trace{background:var(--panel);border-radius:8px;color:var(--muted-dk);overflow:hidden;position:relative;box-shadow:0 24px 48px -30px rgba(20,22,28,.5)}
+  .trace::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line-dk) 1px,transparent 1px);background-size:100% 28px;opacity:.25;pointer-events:none}
+  .trace-hd{display:flex;align-items:center;gap:9px;padding:13px 16px;border-bottom:1px solid var(--line-dk);position:relative}
+  .trace-hd .dot{width:7px;height:7px;border-radius:50%;background:var(--signal);animation:pulse 2.4s infinite}
+  .trace-hd .ttl{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#cfd6e4}
+  .trace-hd .st{margin-left:auto;font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;color:var(--muted-dk)}
+  .trace-body{padding:14px 16px;min-height:280px;position:relative;font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px}
+  .trace-empty{color:var(--muted-dk);opacity:.7;line-height:1.7}
+  .trace-empty b{color:#aeb7c8;font-weight:500}
+  .step{opacity:0;transform:translateY(4px);animation:rise .28s forwards;margin-bottom:11px;border-left:2px solid var(--line-dk);padding-left:12px}
+  @keyframes rise{to{opacity:1;transform:none}}
+  .step .top{display:flex;align-items:center;gap:8px;color:#e6eaf1}
+  .step .sd{width:6px;height:6px;border-radius:50%;background:var(--signal);flex:none}
+  .step .name{font-weight:600;letter-spacing:.02em}
+  .step .dur{margin-left:auto;color:var(--muted-dk);font-size:11px}
+  .step .meta{color:var(--muted-dk);margin-top:4px;line-height:1.5;font-size:11.5px}
+  .step .hit{color:#b9c2d3}
+  .step.done{border-left-color:var(--signal)}
+  .trace-ft{border-top:1px solid var(--line-dk);padding:10px 16px;display:flex;gap:18px;font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;color:var(--muted-dk)}
+  .trace-ft b{color:#cfd6e4;font-weight:600}
+
+  /* ---------- section frame ---------- */
+  section.blk{padding:56px 0;border-top:1px solid var(--line)}
+  .sec-eyebrow{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--signal);margin-bottom:12px}
+  h2{font-family:"Space Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-weight:600;font-size:clamp(24px,3vw,32px);letter-spacing:-.015em;margin:0 0 14px;line-height:1.1}
+  .lead{font-size:18px;color:var(--muted);max-width:62ch;margin:0 0 30px}
+
+  /* case study */
+  .arch{background:var(--panel);border-radius:8px;padding:24px;color:var(--muted-dk);font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px;line-height:1.9;overflow-x:auto;margin-bottom:28px}
+  .arch .lvl{color:#e6eaf1}
+  .arch .amber{color:var(--signal)}
+  .arch .mut{color:var(--muted-dk)}
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .card{border:1px solid var(--line);border-radius:var(--r);background:var(--paper-2);padding:18px}
+  .card .k{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;color:var(--signal);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+  .card h3{font-family:"Space Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-weight:600;font-size:16px;margin:0 0 6px}
+  .card p{font-size:14.5px;color:var(--muted);margin:0;line-height:1.5}
+
+  /* skills */
+  .skgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .skgrid .g h4{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;font-weight:500}
+  .sktag{display:inline-block;font-family:"Space Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-weight:500;font-size:13.5px;border-bottom:1.5px solid var(--signal);padding-bottom:1px;margin:0 12px 10px 0}
+
+  /* experience timeline */
+  .tl{list-style:none;margin:0;padding:0;border-left:1.5px solid var(--line)}
+  .tl-i{position:relative;padding:0 0 26px 24px}
+  .tl-i:last-child{padding-bottom:0}
+  .tl-i::before{content:"";position:absolute;left:-5px;top:6px;width:8px;height:8px;border-radius:50%;background:var(--paper);border:1.5px solid var(--signal)}
+  .tl-i:first-child::before{background:var(--signal)}
+  .tl-y{display:block;font-size:11.5px;color:var(--muted);letter-spacing:.06em;margin-bottom:3px}
+  .tl-b h3{font-family:"Space Grotesk";font-weight:600;font-size:16px;margin:0}
+  .tl-c{font-family:"Space Grotesk";font-size:13.5px;color:var(--signal);font-weight:500}
+  .tl-b p{font-size:14.5px;color:var(--muted);margin:5px 0 0;max-width:60ch;line-height:1.5}
+
+  /* contact */
+  .contact{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+  .contact .big{font-family:"Space Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-weight:600;font-size:clamp(22px,3vw,30px);letter-spacing:-.01em}
+  .contact a.mail{font-family:"Space Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-weight:600;font-size:18px;text-decoration:none;border-bottom:2px solid var(--signal);padding-bottom:2px}
+  .contact .links{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;color:var(--muted);display:flex;gap:16px}
+  .contact .links a{color:var(--muted)}
+
+  footer{padding:26px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+  .note{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11.5px;line-height:1.7;color:var(--muted);background:var(--paper-2);border:1px dashed var(--line);border-radius:var(--r);padding:12px 14px;margin-bottom:18px}
+  .note b{color:var(--ink)}
+
+  @media (max-width:900px){
+    .grid{grid-template-columns:1fr;gap:26px}
+    .trace{order:2}
+    .cards{grid-template-columns:1fr}
+    .skgrid{grid-template-columns:1fr;gap:18px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .pulse,.trace-hd .dot{animation:none}
+    .step{animation:none;opacity:1;transform:none}
+    .caret{animation:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap bar-in">
+    <span class="mark disp">CP</span>
+    <span class="who">Chris Pollard<small>AI Delivery Lead</small></span>
+    <span class="bar-sp"></span>
+    <span class="tag mono">Live agent</span>
+    <a class="cta" href="#contact">Get in touch</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="grid">
+      <!-- dossier -->
+      <div class="dossier">
+        <div class="eyebrow mono"><span class="pulse"></span> Ask the agent about my work</div>
+        <h1 class="thesis">I lead AI delivery — and <em>build the systems</em> myself.</h1>
+        <p class="sub">A decade turning roadmaps into shipped software, now pointed at agentic AI. Ask the agent below about my work — it's one I built.</p>
+
+        <div class="ask">
+          <input id="q" type="text" placeholder="e.g. Has Chris shipped production RAG?" aria-label="Ask the portfolio agent a question" autocomplete="off" />
+          <button id="send">Ask</button>
+        </div>
+
+        <div class="chips" id="chips">
+          <button class="chip" data-q="Has Chris shipped production RAG?">Production RAG?</button>
+          <button class="chip" data-q="How does his agent system stay safe?">How does it stay safe?</button>
+          <button class="chip" data-q="Where has Chris worked?">Where has he worked?</button>
+          <button class="chip" data-q="__pitch">Pitch him for a role ↴</button>
+        </div>
+
+        <div class="pitch-form" id="pitchForm">
+          <label for="role">Role</label>
+          <input id="role" type="text" placeholder="Senior AI Engineer" />
+          <label for="company">Company</label>
+          <input id="company" type="text" placeholder="(optional)" />
+          <button id="pitchGo">Generate pitch</button>
+        </div>
+
+        <div class="answer" id="answer" aria-live="polite"></div>
+      </div>
+
+      <!-- trace instrument -->
+      <aside class="trace" aria-label="Agent trace">
+        <div class="trace-hd">
+          <span class="dot"></span>
+          <span class="ttl mono">agent trace</span>
+          <span class="st mono" id="traceStatus">idle</span>
+        </div>
+        <div class="trace-body" id="traceBody">
+          <div class="trace-empty" id="traceEmpty">
+            <b>portfolio-agent</b> · claude-haiku-4.5<br>
+            tools: search_experience · get_project_detail · draft_pitch<br><br>
+            Ask a question to see the tool loop run —<br>route → embed → retrieve → cite → draft.
+          </div>
+        </div>
+        <div class="trace-ft mono">
+          <span>steps <b id="mStep">0</b></span>
+          <span>tokens <b id="mTok">0</b></span>
+          <span>cost <b id="mCost">$0.0000</b></span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- CASE STUDY -->
+  <section class="blk" id="work">
+    <div class="sec-eyebrow mono">The system on show</div>
+    <h2>business-mono — a solo-built multi-agent operations platform</h2>
+    <p class="lead">A hub-and-spoke architecture: a coordinator agent (Simon) routes work to a roster of specialists, all sharing one Supabase database. A Mastra server runs the agents and workflows; a Next.js app handles dashboards and approvals. Below is the shape, then the decisions worth talking about.</p>
+
+    <div class="arch mono" aria-hidden="true">
+<span class="mut">Directors</span> (Signal · Web)
+     &#8597;
+  <span class="amber">Simon</span> <span class="mut">— coordinator (only agent that talks to humans)</span>
+     &#8597;
+<span class="lvl">Recorder · Archivist · PM · BA · Content · Researcher · RM · Marketer · Compliance</span>
+     &#8597;
+  <span class="mut">Supabase — Postgres + pgvector (shared)</span>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="k mono">Retrieval</div>
+        <h3>Hybrid search, not just vectors</h3>
+        <p>The knowledge base combines pgvector (HNSW) similarity, graph traversal over knowledge connections, and Postgres full-text — so lookups use the right method for the question.</p>
+      </div>
+      <div class="card">
+        <div class="k mono">Control flow</div>
+        <h3>Suspend / resume elicitation</h3>
+        <p>The requirements agent runs multi-round clarification loops, pausing mid-workflow for human input and resuming — structured elicitation, not a single prompt.</p>
+      </div>
+      <div class="card">
+        <div class="k mono">Safety</div>
+        <h3>Approval graduation</h3>
+        <p>Actions move human-confirmed → batch → autonomous as they earn trust. Emails, published content, and CRM writes stay human-approved regardless of track record.</p>
+      </div>
+      <div class="card">
+        <div class="k mono">Governance</div>
+        <h3>A compliance gate in the loop</h3>
+        <p>A dedicated compliance agent reviews advice-framed drafts against AFSL rules, logs verdicts, and never auto-approves — re-running when copy changes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="blk">
+    <div class="sec-eyebrow mono">Stack</div>
+    <h2>What I build with</h2>
+    <div class="skgrid" style="margin-top:22px">
+      <div class="g">
+        <h4>Language &amp; frameworks</h4>
+        <span class="sktag">TypeScript</span><span class="sktag">Next.js 15</span><span class="sktag">React</span><span class="sktag">React Native</span><span class="sktag">Node.js</span><span class="sktag">Mastra</span>
+      </div>
+      <div class="g">
+        <h4>LLM &amp; data</h4>
+        <span class="sktag">Agent orchestration</span><span class="sktag">RAG</span><span class="sktag">pgvector</span><span class="sktag">Supabase</span><span class="sktag">Evals</span>
+      </div>
+      <div class="g">
+        <h4>Systems &amp; delivery</h4>
+        <span class="sktag">Railway</span><span class="sktag">Vercel</span><span class="sktag">Webhooks</span><span class="sktag">Ingestion pipelines</span><span class="sktag">Docs-first</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="blk" id="experience">
+    <div class="sec-eyebrow mono">Track record</div>
+    <h2>Experience</h2>
+    <p class="lead">A move from product and project management into engineering, and now into agentic systems — the product instinct came first, the code followed.</p>
+    <ol class="tl">
+      <li class="tl-i">
+        <span class="tl-y mono">2025 — now</span>
+        <div class="tl-b"><h3>Director</h3><span class="tl-c">Bitcoin Treasury Solutions</span><p>Structured bitcoin training for professionals, SMEs and individuals — and the venture behind <em>business-mono</em>.</p></div>
+      </li>
+      <li class="tl-i">
+        <span class="tl-y mono">2023 — now</span>
+        <div class="tl-b"><h3>Technical Implementation Analyst</h3><span class="tl-c">Juvare</span><p>Front-end features and responsive client interfaces; led a code-review system and mentors junior developers.</p></div>
+      </li>
+      <li class="tl-i">
+        <span class="tl-y mono">2021 — 2023</span>
+        <div class="tl-b"><h3>Software Engineer</h3><span class="tl-c">Beyond Essential Systems</span><p>Full-stack in a monorepo — microservices and a React Native app. Contributed to Tupaia (health-data platform) and Tamanu (Pacific EMR).</p></div>
+      </li>
+      <li class="tl-i">
+        <span class="tl-y mono">2021</span>
+        <div class="tl-b"><h3>Software Engineering Immersive</h3><span class="tl-c">General Assembly</span><p>A 12-week full-time transition into engineering — JavaScript, Node, React, REST, PostgreSQL.</p></div>
+      </li>
+      <li class="tl-i">
+        <span class="tl-y mono">2015 — 2020</span>
+        <div class="tl-b"><h3>Project Manager</h3><span class="tl-c">VTAC</span><p>Led the build and launch of the FlexiDirect SaaS platform as product manager — pricing model, roadmap, cross-functional delivery.</p></div>
+      </li>
+      <li class="tl-i">
+        <span class="tl-y mono">2007 — 2015</span>
+        <div class="tl-b"><h3>Project &amp; operations roles</h3><span class="tl-c">RMIT · La Trobe · Monash · Melbourne · Swinburne</span><p>A decade in project coordination, student administration and operations — the grounding behind the product sense.</p></div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="blk" id="contact">
+    <div class="contact">
+      <div>
+        <div class="sec-eyebrow mono">Get in touch</div>
+        <div class="big">Hiring someone to own AI delivery?<br>Let's talk.</div>
+        <div class="mono" style="font-size:12.5px;color:var(--muted);margin-top:10px">Melbourne, Australia</div>
+      </div>
+      <div style="text-align:right">
+        <a class="mail" href="mailto:cpollard@protonmail.com">cpollard@protonmail.com</a>
+        <div class="links mono" style="margin-top:12px;justify-content:flex-end">
+          <a href="https://www.linkedin.com/in/chris-pollard-au">LinkedIn</a>
+          <a href="https://github.com/avunculargroup/business-mono">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="note mono">
+      <b>Prototype note.</b> This is a front-end demo. The agent is <b>mocked</b> — scripted retrieval + streaming over a small embedded corpus — so it runs with no API key or cost.
+      In production it's a Vercel AI SDK <b>ToolLoopAgent</b> streaming typed tool-parts into this same trace panel. Experience and education are from Chris's CV; project facts are from the public business-mono repo. Positioning: <b>AI delivery lead</b> — hands-on engineer plus a decade of delivery. Still to set: remote and availability preferences.
+    </div>
+    © 2026 Chris Pollard · Built as a live demonstration of agent engineering.
+  </footer>
+</main>
+
+<script>
+(function(){
+  "use strict";
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // ---- embedded corpus (public-safe, repo-grounded) ----
+  const CORPUS = {
+    mono:   {title:"business-mono — overview", url:"github.com/avunculargroup/business-mono", cat:"project",
+             text:"Solo-built multi-agent operations platform. Hub-and-spoke: Simon coordinates specialist agents over a shared Supabase database. Mastra runs agents + workflows; Next.js 15 handles dashboards and approvals."},
+    rag:    {title:"Retrieval engineering", url:"business-mono/docs", cat:"skills",
+             text:"Hybrid search over the knowledge base: pgvector HNSW similarity, graph traversal over knowledge connections, and Postgres full-text. Embeddings via text-embedding-3-small (1536 dims)."},
+    agents: {title:"Agent & workflow patterns", url:"business-mono/docs/agents", cat:"project",
+             text:"Simon routes to specialists; deterministic workflows sit alongside open-ended agents. The requirements agent uses Mastra suspend/resume for multi-round clarification loops."},
+    safety: {title:"Safety & approvals", url:"business-mono/CLAUDE.md", cat:"project",
+             text:"Approval graduation: operations move human-confirmed → batch → autonomous. Emails, published content and CRM writes are always human-approved. A compliance agent reviews advice-framed drafts against AFSL rules."},
+    scale:  {title:"Scale & ownership", url:"github.com/avunculargroup/business-mono", cat:"scale",
+             text:"Single-handedly built and shipped: a Turborepo monorepo with ~950 commits, deployed across Railway (agents) and Vercel (web), with a Vitest suite gated in CI."},
+    stack:  {title:"Stack & skills", url:"business-mono", cat:"skills",
+             text:"TypeScript, Next.js 15 App Router, React/React Native, Mastra, Supabase/pgvector, RAG, agent orchestration, evals and ingestion pipelines."},
+    bts:    {title:"Bitcoin Treasury Solutions — Director", url:"linkedin.com/in/chris-pollard-au", cat:"experience",
+             text:"Director since March 2025. Structured bitcoin training for professionals, SMEs and individuals — the venture behind business-mono."},
+    juvare: {title:"Juvare — Technical Implementation Analyst", url:"linkedin.com/in/chris-pollard-au", cat:"experience",
+             text:"Since Dec 2023. Front-end features (HTML/CSS/JS/XML/XSL, web components) and responsive client interfaces; led a code-review system and mentors junior developers."},
+    beyond: {title:"Beyond Essential Systems — Software Engineer", url:"linkedin.com/in/chris-pollard-au", cat:"experience",
+             text:"2021–2023. Full-stack in a monorepo — microservices and a React Native app. Contributed to Tupaia (health-data platform) and Tamanu (Pacific EMR)."},
+    career: {title:"Career arc", url:"linkedin.com/in/chris-pollard-au", cat:"experience",
+             text:"Moved into engineering in 2021 (General Assembly immersive) after years in project and product management, including launching the FlexiDirect SaaS platform at VTAC."}
+  };
+
+  // ---- scripted answers (intent -> {sources[], text}) ----
+  const ANSWERS = {
+    rag: { srcs:["rag","mono","scale"], text:
+      "Yes — retrieval is central to business-mono, and it goes past a single vector lookup. The knowledge base runs hybrid search: pgvector HNSW similarity, graph traversal across knowledge connections, and Postgres full-text, with embeddings from text-embedding-3-small.[1] It's wired into a live production system that Chris built and ships solo.[2][3]" },
+    safety: { srcs:["safety","agents"], text:
+      "Safety is designed in, not bolted on. Operations graduate human-confirmed → batch → autonomous as they earn trust, and the high-risk actions — emails, published content, CRM writes — stay human-approved no matter what.[1] There's also a dedicated compliance agent that reviews advice-framed drafts against AFSL rules and never auto-approves.[1] The control flow leans on Mastra suspend/resume, so agents can pause for human input mid-workflow.[2]" },
+    decision: { srcs:["agents","rag","safety"], text:
+      "The one worth pointing at is the hub-and-spoke design: a single coordinator (Simon) is the only agent that talks to humans, and it routes to specialists behind an audit trail.[1] Paired with that, the requirements agent's suspend/resume elicitation stands out — structured multi-round clarification instead of one hopeful prompt.[1] Both sit on hybrid retrieval[2] and human-approval gates,[3] which is what makes it production-grade rather than a demo." },
+    scale: { srcs:["scale","mono"], text:
+      "It's a genuinely solo build: a Turborepo monorepo with ~950 commits, deployed across Railway and Vercel, with a CI-gated test suite.[1] That's the whole platform — coordinator, specialists, workflows, ingestion, and web app — architected and shipped by one person.[2]" },
+    stack: { srcs:["stack","mono"], text:
+      "Chris works in TypeScript and Next.js 15, with Mastra for agents, Supabase/pgvector for data and retrieval, plus evals and ingestion pipelines.[1] It all comes together in business-mono, a production multi-agent platform.[2]" },
+    experience: { srcs:["career","beyond","juvare"], text:
+      "Chris pairs a decade of project and product delivery with hands-on engineering.[1] After leading SaaS delivery as a product manager, he moved into software in 2021 — full-stack at Beyond Essential Systems, contributing to the Tupaia health-data platform and Tamanu Pacific EMR,[2] and now Technical Implementation Analyst at Juvare, where he led a code-review system and mentors junior developers.[3] Alongside that he directs Bitcoin Treasury Solutions, the venture behind business-mono — so he can both make the technical calls and land the delivery." },
+    fallback: { srcs:["mono","stack"], text:
+      "Here's what's in the dossier on that: Chris built business-mono, a solo multi-agent operations platform on Mastra, Next.js 15 and Supabase.[1] His toolkit spans TypeScript, RAG, agent orchestration and evals.[2] Ask about his experience, retrieval, safety, or the architecture for specifics." }
+  };
+
+  function classify(q){
+    q = q.toLowerCase();
+    if(/rag|retriev|vector|embed|search|pgvector/.test(q)) return "rag";
+    if(/safe|guardrail|approv|compl|risk|hallucin|govern/.test(q)) return "safety";
+    if(/decision|interesting|architect|design|hardest|proud|clever/.test(q)) return "decision";
+    if(/experience|work|worked|job|role|career|employ|company|companies|years|juvare|beyond|history|background/.test(q)) return "experience";
+    if(/scale|commit|solo|alone|big|size|how much|ship/.test(q)) return "scale";
+    if(/stack|tool|skill|tech|language|framework|use/.test(q)) return "stack";
+    return "fallback";
+  }
+
+  // ---- DOM ----
+  const answerEl = document.getElementById("answer");
+  const traceBody = document.getElementById("traceBody");
+  const traceEmpty = document.getElementById("traceEmpty");
+  const traceStatus = document.getElementById("traceStatus");
+  const mStep = document.getElementById("mStep"), mTok = document.getElementById("mTok"), mCost = document.getElementById("mCost");
+  let busy = false;
+
+  const wait = ms => new Promise(r=>setTimeout(r, reduce?0:ms));
+
+  function resetTrace(){
+    traceBody.innerHTML = "";
+    mStep.textContent="0"; mTok.textContent="0"; mCost.textContent="$0.0000";
+  }
+  function addStep(name, meta, dur){
+    const el = document.createElement("div");
+    el.className="step";
+    el.innerHTML = `<div class="top"><span class="sd"></span><span class="name">${name}</span><span class="dur">${dur}</span></div>${meta?`<div class="meta">${meta}</div>`:""}`;
+    traceBody.appendChild(el);
+    traceBody.scrollTop = traceBody.scrollHeight;
+    mStep.textContent = String(traceBody.querySelectorAll(".step").length);
+    return el;
+  }
+  function bumpMeter(tokens){
+    const t = parseInt(mTok.textContent)+tokens; mTok.textContent=String(t);
+    mCost.textContent = "$"+(t*0.0000012).toFixed(4); // haiku-ish input+output blend, illustrative
+  }
+
+  async function run(question, srcKeys, text){
+    if(busy) return; busy=true;
+    traceEmpty.style.display="none";
+    resetTrace();
+    traceStatus.textContent="running";
+    answerEl.innerHTML = `<div class="q"><span class="qk mono">Q</span><span>${escapeHtml(question)}</span></div><div class="a" id="stream"></div>`;
+    const stream = document.getElementById("stream");
+    stream.innerHTML = '<span class="caret"></span>';
+
+    // trace: route
+    let s = addStep("route", "portfolio-agent · classify → in-scope", "0.21s"); await wait(260);
+    s.classList.add("done"); bumpMeter(38);
+    // trace: embed
+    s = addStep("embed", "query → text-embedding-3-small · 1536d", "0.30s"); await wait(320);
+    s.classList.add("done"); bumpMeter(12);
+    // trace: search_experience
+    const hits = srcKeys.map((k,i)=>`<span class="hit">#${i+1}</span> ${CORPUS[k].title} <span style="opacity:.6">· ${CORPUS[k].cat}</span>`).join("<br>");
+    s = addStep("search_experience", `cosine over corpus(26) → k=${srcKeys.length}<br>${hits}`, "0.41s"); await wait(440);
+    s.classList.add("done"); bumpMeter(150);
+    // trace: rerank (only if >2 hits)
+    if(srcKeys.length>2){ s = addStep("rerank", `${srcKeys.length} → ${srcKeys.length} · relevance-ordered`, "0.12s"); await wait(160); s.classList.add("done"); }
+    // trace: draft
+    s = addStep("draft", "streaming answer · claude-haiku-4.5", "…"); traceStatus.textContent="drafting";
+
+    // stream the answer
+    await streamText(stream, text, srcKeys);
+    s.querySelector(".dur").textContent="0.9s"; s.classList.add("done");
+    bumpMeter(estimateTokens(text));
+    traceStatus.textContent="done";
+
+    // sources
+    renderSources(srcKeys);
+    busy=false;
+  }
+
+  function renderSources(keys){
+    const wrap = document.createElement("div");
+    wrap.className="sources";
+    wrap.innerHTML = "<h4>Sources</h4>" + keys.map((k,i)=>{
+      const c = CORPUS[k];
+      return `<p class="src"><span class="n mono">[${i+1}]</span><b>${c.title}</b> — ${c.text} <a href="https://${c.url}" target="_blank" rel="noopener">${c.url}</a></p>`;
+    }).join("");
+    answerEl.appendChild(wrap);
+  }
+
+  // stream text char-by-char, converting [n] into sup chips
+  async function streamText(node, text, keys){
+    if(reduce){ node.innerHTML = markup(text); return; }
+    node.textContent="";
+    let out="";
+    for(let i=0;i<text.length;i++){
+      out += text[i];
+      node.innerHTML = markup(out) + '<span class="caret"></span>';
+      if(text[i]!=="]"&&text[i]!=="[") await wait(text[i]===" "?9:16);
+    }
+    node.innerHTML = markup(out);
+  }
+  function markup(t){
+    return escapeHtml(t).replace(/\[(\d+)\]/g,'<sup title="see source">[$1]</sup>');
+  }
+  function escapeHtml(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+  function estimateTokens(t){return Math.round(t.length/4);}
+
+  function ask(question){
+    const intent = classify(question);
+    const a = ANSWERS[intent];
+    run(question, a.srcs, a.text);
+  }
+
+  // ---- pitch flow ----
+  function runPitch(role, company){
+    role = role || "AI Engineer";
+    const co = company ? ` at ${company}` : "";
+    const text =
+      `For a ${role} role${co}, here's the case for Chris: he's shipped a production multi-agent LLM platform solo — architecture, agents, workflows and web app — so he operates end-to-end, not just at the prompt layer.[1] He's fluent in the exact stack the role needs: TypeScript, Next.js 15, agent orchestration on Mastra, and RAG over pgvector.[2] And he builds with judgement — human-approval gates, a compliance reviewer, and evals wired into CI[3] — which is what separates a demo from something you can put in front of customers. Worth a conversation.`;
+    run(`Pitch Chris for: ${role}${co}`, ["scale","stack","safety"], text);
+  }
+
+  // ---- wire up ----
+  document.getElementById("send").addEventListener("click",()=>{
+    const v=document.getElementById("q").value.trim(); if(v) ask(v);
+  });
+  document.getElementById("q").addEventListener("keydown",e=>{
+    if(e.key==="Enter"){const v=e.target.value.trim(); if(v) ask(v);}
+  });
+  document.getElementById("chips").addEventListener("click",e=>{
+    const b=e.target.closest(".chip"); if(!b) return;
+    const q=b.dataset.q;
+    if(q==="__pitch"){ document.getElementById("pitchForm").classList.toggle("show"); document.getElementById("role").focus(); return; }
+    document.getElementById("q").value=q; ask(q);
+  });
+  document.getElementById("pitchGo").addEventListener("click",()=>{
+    runPitch(document.getElementById("role").value.trim(), document.getElementById("company").value.trim());
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,433 @@
+{
+  "_meta": {
+    "purpose": "Source corpus for the portfolio agent. Run scripts/embed-corpus.ts to produce embeddings.json, which the retriever reads.",
+    "recordShape": "{ id, title, category, url, text, tags? } — text is what gets embedded; title is prepended for context.",
+    "chunkGuidance": "One idea per chunk, ~2-4 sentences. Written so each chunk stands alone and answers a real recruiter question.",
+    "categories": [
+      "profile",
+      "experience",
+      "education",
+      "project",
+      "skills",
+      "scale",
+      "ways-of-working",
+      "faq"
+    ],
+    "todo": [
+      "Confirm business-mono is the platform behind Bitcoin Treasury Solutions — stated as fact in project-overview and exp-bts; loosen if that link isn't public.",
+      "Verify the commit count in scale-ownership against the live repo.",
+      "Decide whether to keep Flowise/LangChain in skills-llm alongside Mastra."
+    ]
+  },
+  "chunks": [
+    {
+      "id": "profile-summary",
+      "title": "Who Chris is",
+      "category": "profile",
+      "url": "https://www.linkedin.com/in/chris-pollard-au",
+      "text": "Chris Pollard is a Melbourne-based AI delivery lead — a hands-on engineer who also brings a decade of project and product management. He builds production LLM systems himself, with a solo-built multi-agent platform as his flagship, and can own delivery end to end: roadmap and stakeholders through to shipped, working software.",
+      "tags": [
+        "chris pollard",
+        "who",
+        "about",
+        "ai delivery lead",
+        "delivery",
+        "engineer",
+        "melbourne"
+      ]
+    },
+    {
+      "id": "profile-positioning",
+      "title": "What makes Chris's profile rare",
+      "category": "profile",
+      "url": "https://www.linkedin.com/in/chris-pollard-au",
+      "text": "What's rare is the pairing. Most AI hires are strong on the build or strong on delivery; Chris does both — writing the agents and the retrieval, and landing the project with the people around it. He keeps a human at the edge of every automated decision, and cares that what ships is trustworthy and actually used. He is based in Melbourne, Australia.",
+      "tags": [
+        "positioning",
+        "ai delivery lead",
+        "delivery",
+        "product",
+        "build",
+        "values",
+        "melbourne"
+      ]
+    },
+    {
+      "id": "exp-bts",
+      "title": "Bitcoin Treasury Solutions — Director",
+      "category": "experience",
+      "url": "https://www.linkedin.com/in/chris-pollard-au",
+      "text": "Bitcoin Treasury Solutions — Director (March 2025 to present, Melbourne). Delivers structured bitcoin training for professionals, SMEs and individuals. This is the venture behind business-mono, the multi-agent operations platform Chris built to run the business.",
+      "tags": [
+        "bitcoin treasury solutions",
+        "director",
+        "current",
+        "bitcoin",
+        "business-mono",
+        "experience"
+      ]
+    },
+    {
+      "id": "exp-juvare",
+      "title": "Juvare — Technical Implementation Analyst",
+      "category": "experience",
+      "url": "https://www.linkedin.com/in/chris-pollard-au",
+      "text": "Juvare — Technical Implementation Analyst (December 2023 to present, Melbourne). Builds front-end features with HTML, CSS, JavaScript, XML, XSL and custom web components, delivering responsive client-facing interfaces. Works across teams on business analysis and database table design; led implementation of a code-review system and mentors junior developers.",
+      "tags": [
+        "juvare",
+        "current",
+        "frontend",
+        "web components",
+        "mentoring",
+        "code review",
+        "experience"
+      ]
+    },
+    {
+      "id": "exp-beyond",
+      "title": "Beyond Essential Systems — Software Engineer",
+      "category": "experience",
+      "url": "https://www.linkedin.com/in/chris-pollard-au",
+      "text": "Beyond Essential Systems — Software Engineer (September 2021 to December 2023, Melbourne). Full-stack development across server- and client-side packages in a monorepo, including microservices and a React Native app. Contributed to Tupaia, an open-source health-data aggregation and visualisation platform for low-resource settings, and Tamanu, an electronic medical record system for the Pacific region.",
+      "tags": [
+        "beyond essential",
+        "software engineer",
+        "full-stack",
+        "react native",
+        "monorepo",
+        "tupaia",
+        "tamanu",
+        "experience"
+      ]
+    },
+    {
+      "id": "exp-ga",
+      "title": "General Assembly — Software Engineering Immersive",
+      "category": "experience",
+      "url": "https://www.linkedin.com/in/chris-pollard-au",
+      "text": "General Assembly — Software Engineering Immersive (2021, Melbourne). A 12-week full-time programme covering JavaScript, Node.js (Express), React, REST APIs, Ruby/Sinatra, PostgreSQL and Git — Chris's structured transition from product management into software engineering.",
+      "tags": [
+        "general assembly",
+        "bootcamp",
+        "transition",
+        "javascript",
+        "react",
+        "node",
+        "experience"
+      ]
+    },
+    {
+      "id": "exp-vtac",
+      "title": "VTAC — Project Manager (product)",
+      "category": "experience",
+      "url": "https://www.linkedin.com/in/chris-pollard-au",
+      "text": "Victorian Tertiary Admissions Centre — Project Manager (December 2015 to March 2020, Melbourne). Owned delivery of the FlexiDirect SaaS platform as product manager — from client discovery and pricing model to roadmap and release — coordinating developers, testers and UX designers to ship against strategic goals. The clearest early example of Chris leading technical delivery end to end.",
+      "tags": [
+        "vtac",
+        "project manager",
+        "product manager",
+        "delivery lead",
+        "saas",
+        "flexidirect",
+        "roadmap",
+        "experience"
+      ]
+    },
+    {
+      "id": "exp-earlier",
+      "title": "Earlier career (2007–2021)",
+      "category": "experience",
+      "url": "https://www.linkedin.com/in/chris-pollard-au",
+      "text": "Before software, Chris spent over a decade leading projects, coordinating teams and managing stakeholders — including pandemic-response project management at RMIT University, project coordination at La Trobe, and student-administration roles at Monash, the University of Melbourne and Swinburne. It's where the delivery-and-stakeholder half of his skill set was built.",
+      "tags": [
+        "earlier",
+        "project management",
+        "rmit",
+        "operations",
+        "coordination",
+        "history",
+        "experience"
+      ]
+    },
+    {
+      "id": "edu",
+      "title": "Education and certifications",
+      "category": "education",
+      "url": "https://www.linkedin.com/in/chris-pollard-au",
+      "text": "Bachelor of Performing Arts, Monash University (2004–2007); Graduate Diploma in Education, La Trobe University (2009–2010); Software Engineering Immersive, General Assembly (2021). Certifications include WebEOC Bootcamp, a Bitcoin Protocol Development seminar series, and freelance website development.",
+      "tags": [
+        "education",
+        "degree",
+        "monash",
+        "la trobe",
+        "general assembly",
+        "certifications"
+      ]
+    },
+    {
+      "id": "project-overview",
+      "title": "business-mono — overview",
+      "category": "project",
+      "url": "https://github.com/avunculargroup/business-mono",
+      "text": "business-mono is a production multi-agent operations platform Chris built single-handedly as the system behind Bitcoin Treasury Solutions, where he is Director. It uses a hub-and-spoke design: a coordinator agent (Simon) is the only agent that talks to humans and routes work to specialists, all sharing one Supabase database. A Mastra server runs the agents and workflows; a Next.js 15 app handles dashboards and human approvals.",
+      "tags": [
+        "business-mono",
+        "project",
+        "architecture",
+        "mastra",
+        "overview",
+        "multi-agent",
+        "bitcoin treasury solutions"
+      ]
+    },
+    {
+      "id": "project-coordination",
+      "title": "Hub-and-spoke coordination",
+      "category": "project",
+      "url": "https://github.com/avunculargroup/business-mono",
+      "text": "Rather than a flat swarm, a single coordinator routes each request to the right specialist agent — recorder, archivist, project manager, business analyst, content, research, relationship and compliance roles — behind a consistent audit trail. Centralising human contact in the coordinator keeps behaviour predictable and the whole system observable.",
+      "tags": [
+        "coordinator",
+        "simon",
+        "routing",
+        "orchestration",
+        "specialists",
+        "agents"
+      ]
+    },
+    {
+      "id": "project-retrieval",
+      "title": "Hybrid retrieval",
+      "category": "project",
+      "url": "https://github.com/avunculargroup/business-mono",
+      "text": "The knowledge base uses hybrid search rather than a single vector lookup: pgvector (HNSW) similarity, graph traversal across knowledge connections, and Postgres full-text search, so each query uses the method that fits it. Embeddings are generated with OpenAI text-embedding-3-small at 1536 dimensions.",
+      "tags": [
+        "rag",
+        "retrieval",
+        "hybrid search",
+        "pgvector",
+        "embeddings",
+        "vector",
+        "graph",
+        "full-text"
+      ]
+    },
+    {
+      "id": "project-elicitation",
+      "title": "Suspend / resume elicitation",
+      "category": "project",
+      "url": "https://github.com/avunculargroup/business-mono",
+      "text": "The requirements workflow runs multi-round clarification loops using Mastra's suspend and resume: it pauses mid-workflow to ask a human for input, then resumes with that answer folded in. This is structured elicitation with state carried across turns, not a single hopeful prompt.",
+      "tags": [
+        "suspend",
+        "resume",
+        "workflow",
+        "requirements",
+        "elicitation",
+        "human-in-the-loop",
+        "control flow"
+      ]
+    },
+    {
+      "id": "project-approvals",
+      "title": "Approval graduation model",
+      "category": "project",
+      "url": "https://github.com/avunculargroup/business-mono",
+      "text": "Operations earn autonomy in stages: an action moves from human-confirmed, to batch-approved, to autonomous as it proves reliable. High-risk actions — outbound emails, published content and CRM writes — stay human-approved regardless of track record. Trust is graduated, not granted.",
+      "tags": [
+        "safety",
+        "approval",
+        "guardrails",
+        "autonomy",
+        "human approval",
+        "risk"
+      ]
+    },
+    {
+      "id": "project-compliance",
+      "title": "Compliance gate in the loop",
+      "category": "project",
+      "url": "https://github.com/avunculargroup/business-mono",
+      "text": "A dedicated compliance agent reviews advice-framed drafts against Australian financial-services (AFSL) rules, records its verdict and never auto-approves. If the copy changes, the review re-runs — governance is wired into the workflow rather than left to a final human glance.",
+      "tags": [
+        "compliance",
+        "afsl",
+        "governance",
+        "safety",
+        "review",
+        "regulated"
+      ]
+    },
+    {
+      "id": "project-ingestion",
+      "title": "Ingestion and interfaces",
+      "category": "project",
+      "url": "https://github.com/avunculargroup/business-mono",
+      "text": "The platform ingests real-world inputs through several channels — a Signal messaging interface for directors, plus telephony and meeting sources — with speech transcription feeding the same knowledge base the agents retrieve from. Inputs become searchable context, closing the loop between what happens and what the agents know.",
+      "tags": [
+        "ingestion",
+        "signal",
+        "telephony",
+        "transcription",
+        "pipelines",
+        "interfaces"
+      ]
+    },
+    {
+      "id": "project-deployment",
+      "title": "Deployment and structure",
+      "category": "project",
+      "url": "https://github.com/avunculargroup/business-mono",
+      "text": "The codebase is a Turborepo monorepo. Agents and workflows run on Railway; the Next.js web app deploys to Vercel; Supabase provides Postgres and pgvector. A Vitest suite, including agent evals, is gated in CI.",
+      "tags": [
+        "deployment",
+        "railway",
+        "vercel",
+        "turborepo",
+        "monorepo",
+        "supabase",
+        "ci"
+      ]
+    },
+    {
+      "id": "skills-core",
+      "title": "Core stack",
+      "category": "skills",
+      "url": "https://github.com/avunculargroup/business-mono",
+      "text": "Chris works primarily in TypeScript and Node.js. On the web he uses Next.js 15 (App Router), React and React Native; for agents and workflows, Mastra; and Supabase with pgvector for data and retrieval, organised in a Turborepo monorepo. His full-stack background spans microservices and client apps.",
+      "tags": [
+        "skills",
+        "stack",
+        "typescript",
+        "nextjs",
+        "react",
+        "react native",
+        "node",
+        "mastra",
+        "supabase"
+      ]
+    },
+    {
+      "id": "skills-llm",
+      "title": "LLM engineering skills",
+      "category": "skills",
+      "url": "https://github.com/avunculargroup/business-mono",
+      "text": "On the LLM side he builds agent orchestration, retrieval-augmented generation, hybrid search, tool use and human-in-the-loop control flow, and treats evals as first-class, gated in CI. His production agent work is built on Mastra; he has also prototyped pipelines with Flowise and LangChain.",
+      "tags": [
+        "skills",
+        "llm",
+        "rag",
+        "agents",
+        "orchestration",
+        "evals",
+        "tools",
+        "mastra",
+        "langchain",
+        "flowise"
+      ]
+    },
+    {
+      "id": "scale-ownership",
+      "title": "Scale and ownership",
+      "category": "scale",
+      "url": "https://github.com/avunculargroup/business-mono",
+      "text": "business-mono is a genuinely solo build: the coordinator, the specialist agents, the workflows, the ingestion pipelines and the web app were all architected and shipped by one person, across a monorepo with over 950 commits. It is a working system, not a proof of concept.",
+      "tags": [
+        "scale",
+        "solo",
+        "ownership",
+        "commits",
+        "shipped",
+        "production"
+      ]
+    },
+    {
+      "id": "ways-of-working",
+      "title": "How Chris works",
+      "category": "ways-of-working",
+      "url": "https://github.com/avunculargroup/business-mono",
+      "text": "Chris works docs-first — per-agent specifications, a design brief and a defined brand voice sit alongside the code — and brings design thinking to systems, not just interfaces. Evals gate changes in CI, so behaviour is verified rather than assumed.",
+      "tags": [
+        "ways of working",
+        "process",
+        "docs",
+        "design thinking",
+        "evals",
+        "practice"
+      ]
+    },
+    {
+      "id": "faq-experience",
+      "title": "How much experience does he have?",
+      "category": "faq",
+      "url": "https://www.linkedin.com/in/chris-pollard-au",
+      "text": "Chris pairs a decade of project and product delivery with hands-on engineering. He moved into software in 2021 — full-stack roles at Beyond Essential Systems and Juvare — and now builds multi-agent LLM systems, so he can both make the technical calls and lead the delivery.",
+      "tags": [
+        "experience",
+        "years",
+        "seniority",
+        "delivery",
+        "background",
+        "how long",
+        "faq"
+      ]
+    },
+    {
+      "id": "faq-production",
+      "title": "Has he shipped to production?",
+      "category": "faq",
+      "url": "https://github.com/avunculargroup/business-mono",
+      "text": "Yes. business-mono is a live, deployed multi-agent system running real operations, not a demo — built and shipped solo, with agents on Railway, the web app on Vercel and a CI-gated test suite.",
+      "tags": [
+        "production",
+        "shipped",
+        "live",
+        "deployed",
+        "faq"
+      ]
+    },
+    {
+      "id": "faq-safety",
+      "title": "How does it stay safe?",
+      "category": "faq",
+      "url": "https://github.com/avunculargroup/business-mono",
+      "text": "Through layered controls: approval graduation (human-confirmed to autonomous as trust is earned), always-human gates on emails, published content and CRM writes, and a compliance agent that reviews regulated advice and never auto-approves.",
+      "tags": [
+        "safety",
+        "guardrails",
+        "compliance",
+        "approval",
+        "faq"
+      ]
+    },
+    {
+      "id": "faq-remote",
+      "title": "Where is he based / remote?",
+      "category": "faq",
+      "url": "https://www.linkedin.com/in/chris-pollard-au",
+      "text": "Chris is based in Melbourne, Australia. He's open to fully remote roles and to hybrid work within Melbourne, but isn't currently looking to relocate.",
+      "tags": [
+        "remote",
+        "location",
+        "melbourne",
+        "relocate",
+        "hybrid",
+        "faq"
+      ]
+    },
+    {
+      "id": "faq-availability",
+      "title": "Is he available?",
+      "category": "faq",
+      "url": "https://www.linkedin.com/in/chris-pollard-au",
+      "text": "Chris is selectively open to new opportunities, particularly AI delivery lead roles. He's currently at Juvare and directs Bitcoin Treasury Solutions, so he's choosy rather than urgent.",
+      "tags": [
+        "availability",
+        "open to work",
+        "start date",
+        "notice",
+        "faq"
+      ]
+    }
+  ]
+}
