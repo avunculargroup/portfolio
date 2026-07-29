@@ -22,7 +22,7 @@ export const EMBEDDING_DIMENSIONS = 1536;
 
 export const openrouter = createOpenRouter({
   // apiKey omitted on purpose — the provider reads OPENROUTER_API_KEY per request.
-  appName: "Chris Pollard — Portfolio Agent",
+  appName: "Chris Pollard - Portfolio Agent",
   appUrl: process.env.SITE_URL,
 });
 
