@@ -2,9 +2,9 @@
  * StaticEmbeddingRetriever — loads embeddings.json and ranks by cosine similarity.
  * Swap point: implement the same Retriever interface with pgvector later, no caller changes.
  */
-import { openai } from "@ai-sdk/openai";
 import { embed } from "ai";
 import embeddings from "@/data/embeddings.json";
+import { embeddingModel } from "./openrouter";
 
 export interface Chunk {
   id: string;
@@ -42,8 +42,9 @@ function tagBoost(query: string, c: Stored): number {
 
 export const staticRetriever: Retriever = {
   async search(query, k = 3) {
+    // Same model as scripts/embed-corpus.ts — see lib/openrouter.ts.
     const { embedding } = await embed({
-      model: openai.embedding("text-embedding-3-small"),
+      model: embeddingModel,
       value: query,
     });
 

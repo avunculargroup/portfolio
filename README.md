@@ -8,7 +8,8 @@ Built to demonstrate LLM engineering by being one: the same patterns (agent loop
 
 - **Next.js 15** (App Router) · TypeScript (strict) · React 19
 - **Vercel AI SDK v6** — `ToolLoopAgent`, `useChat` typed message parts
-- **Chat model:** Claude Haiku · **Embeddings:** OpenAI `text-embedding-3-small`
+- **Model gateway:** OpenRouter — one key for chat *and* embeddings
+- **Chat model:** `anthropic/claude-haiku-4.5` · **Embeddings:** `openai/text-embedding-3-small`
 - **Retrieval:** static `embeddings.json` + in-memory cosine, behind a swappable `Retriever` interface (pgvector-ready)
 - **Rate limiting:** Upstash Redis · **Deploy:** Vercel
 - **State:** stateless and anonymous — no database, no accounts, no cross-session memory
@@ -54,8 +55,15 @@ Before launch, fill the two placeholders in `corpus.json`:
 
 ## Deploy
 
-Deploy to Vercel. Set the four environment variables (below) in the project settings. `data/embeddings.json` is committed, so no build-time embedding call is needed.
+Deploy to Vercel. Set the environment variables (below) in the project settings. `data/embeddings.json` is committed, so no build-time embedding call is needed.
 
 ## Environment
 
-See [`.env.example`](./.env.example). Missing keys degrade gracefully — the static site still renders and the agent shows a calm "unavailable" notice rather than erroring.
+See [`.env.example`](./.env.example) — `OPENROUTER_API_KEY` plus the two Upstash values. Missing keys degrade gracefully: the static site still renders and the agent shows a calm "unavailable" notice rather than erroring.
+
+Both the chat model and the embedding model are reached through OpenRouter, configured in `src/lib/openrouter.ts`. Two things there are load-bearing:
+
+- The embedding model is **pinned to the OpenAI upstream with fallbacks disabled**. If OpenRouter routed an embedding call elsewhere, the returned vectors would live in a different space and retrieval against the committed `embeddings.json` would quietly degrade.
+- `scripts/embed-corpus.ts` and the query-time retriever both import the same `embeddingModel`, so the corpus and the query can't drift apart. If you change the model, re-run the embed script.
+
+Pin `@openrouter/ai-sdk-provider@^2.10.0` — the `3.x` line requires AI SDK v7, and this project is on v6.
