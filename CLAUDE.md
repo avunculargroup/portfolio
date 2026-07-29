@@ -35,12 +35,14 @@ A recruiter-facing portfolio for **Chris Pollard**, positioned as an **AI Delive
 
 ## Engineering conventions
 
-- TypeScript strict. Keep tunables (model id, token/step caps, rate limits) in `lib/config.ts`, not scattered.
-- **Model ids:** don't guess. The chat model is a Claude Haiku string in `config.ts`; verify against https://docs.claude.com/en/docs/about-claude/models before changing.
+- TypeScript strict. Keep tunables (token/step caps, rate limits) in `lib/config.ts`, not scattered.
+- **Providers:** everything goes through **OpenRouter** — chat *and* embeddings, one `OPENROUTER_API_KEY`. No direct Anthropic or OpenAI keys. All provider setup lives in `lib/openrouter.ts`; don't construct a provider anywhere else.
+- **Model ids:** don't guess. Both slugs are constants in `lib/openrouter.ts`; verify against https://openrouter.ai/models before changing.
+- **Never unpin the embedding provider.** `embeddingModel` is pinned to the OpenAI upstream with `allow_fallbacks: false`. Letting OpenRouter route it elsewhere returns vectors in a different space and silently breaks retrieval — a failure that looks like "the agent got worse", not like an error.
 - **Retrieval:** always go through the `Retriever` interface. The static implementation is provided; a pgvector implementation must be a drop-in with no caller changes.
 - **Corpus is the source of truth.** To change what the agent knows, edit `data/corpus.json` and re-run `scripts/embed-corpus.ts`. Never hand-edit `data/embeddings.json`. Ignore `_`-prefixed keys in the corpus.
 - Prefer small, composable components (spec §2). Server components by default; client components only where interactivity needs them (console, trace panel).
-- No secrets in client code. `OPENAI_API_KEY` is server-only (embeddings).
+- No secrets in client code. `OPENROUTER_API_KEY` is server-only; `lib/openrouter.ts` must never be imported from a client component.
 
 ## Definition of done
 

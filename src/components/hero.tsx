@@ -38,7 +38,14 @@ const noticeAwareFetch: typeof fetch = async (input, init) => {
   throw new Error(message);
 };
 
-export function Hero({ agentAvailable }: { agentAvailable: boolean }) {
+export function Hero({
+  agentAvailable,
+  chatModelLabel,
+}: {
+  agentAvailable: boolean;
+  /* Server-provided: see TracePanel's `modelLabel`. */
+  chatModelLabel: string;
+}) {
   const [pane, setPane] = useState<Pane>("answer");
   const [question, setQuestion] = useState<string | null>(null);
   const [offlineNotice, setOfflineNotice] = useState<string | null>(null);
@@ -239,6 +246,7 @@ export function Hero({ agentAvailable }: { agentAvailable: boolean }) {
             tokens={tokens}
             cost={estimateCost(tokens)}
             live={streaming}
+            modelLabel={chatModelLabel}
           />
         </div>
       </div>
@@ -265,6 +273,7 @@ function TracePanelResponsive({
   tokens: number;
   cost: string;
   live: boolean;
+  modelLabel: string;
 }) {
   const [isDesktop, setIsDesktop] = useState(false);
 

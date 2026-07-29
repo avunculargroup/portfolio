@@ -1,6 +1,6 @@
-import { anthropic } from "@ai-sdk/anthropic";
 import { InferAgentUIMessage, stepCountIs, ToolLoopAgent } from "ai";
-import { CHAT_MODEL, MAX_OUTPUT_TOKENS, MAX_STEPS } from "@/lib/config";
+import { MAX_OUTPUT_TOKENS, MAX_STEPS } from "@/lib/config";
+import { chatModel } from "@/lib/openrouter";
 import { portfolioTools } from "@/lib/tools";
 
 /**
@@ -40,7 +40,7 @@ Chris's positioning is: builds the system and leads the delivery — a hands-on 
 
 export const portfolioAgent = new ToolLoopAgent({
   id: "portfolio-agent",
-  model: anthropic(CHAT_MODEL),
+  model: chatModel,
   instructions: SYSTEM_PROMPT,
   tools: portfolioTools,
   // Cost cap (spec §5): cheap model, bounded output, bounded loop.

@@ -2,11 +2,11 @@
  * Groundedness / safety evals.
  * Run:  npx tsx scripts/eval.ts
  *
- * Two layers, so this is useful with or without an ANTHROPIC_API_KEY:
+ * Two layers, so this is useful with or without an OPENROUTER_API_KEY:
  *
  *   1. Retrieval evals — always run. Assert that a question surfaces the chunk
  *      that actually answers it. No API key needed.
- *   2. Agent evals — run only when ANTHROPIC_API_KEY is set. Assert that the
+ *   2. Agent evals — run only when OPENROUTER_API_KEY is set. Assert that the
  *      agent cites the right source, refuses off-topic questions, resists
  *      injection, and declines to invent facts the corpus doesn't cover.
  *
@@ -15,8 +15,8 @@
  */
 import "dotenv/config";
 import { generateText, stepCountIs } from "ai";
-import { anthropic } from "@ai-sdk/anthropic";
-import { CHAT_MODEL, MAX_OUTPUT_TOKENS, MAX_STEPS } from "../src/lib/config";
+import { MAX_OUTPUT_TOKENS, MAX_STEPS } from "../src/lib/config";
+import { chatModel } from "../src/lib/openrouter";
 import { SYSTEM_PROMPT } from "../src/lib/agent";
 import { portfolioTools } from "../src/lib/tools";
 import { retriever } from "../src/lib/retriever";
@@ -318,7 +318,7 @@ async function runAgentEvals(): Promise<Outcome[]> {
   for (const fixture of AGENT_FIXTURES) {
     try {
       const result = await generateText({
-        model: anthropic(CHAT_MODEL),
+        model: chatModel,
         system: SYSTEM_PROMPT,
         tools: portfolioTools,
         maxOutputTokens: MAX_OUTPUT_TOKENS,
@@ -357,12 +357,12 @@ async function main() {
   report("Retrieval groundedness", retrievalOutcomes);
 
   let agentOutcomes: Outcome[] = [];
-  if (process.env.ANTHROPIC_API_KEY) {
+  if (process.env.OPENROUTER_API_KEY) {
     agentOutcomes = await runAgentEvals();
     report("Agent behaviour (grounding, refusal, injection)", agentOutcomes);
   } else {
     console.log(
-      `\n${DIM}Agent behaviour evals skipped — ANTHROPIC_API_KEY not set.${RESET}`,
+      `\n${DIM}Agent behaviour evals skipped — OPENROUTER_API_KEY not set.${RESET}`,
     );
   }
 

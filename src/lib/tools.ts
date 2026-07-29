@@ -1,11 +1,7 @@
-import { anthropic } from "@ai-sdk/anthropic";
 import { generateText, Output, tool } from "ai";
 import { z } from "zod";
-import {
-  CHAT_MODEL,
-  RETRIEVAL_MIN_SCORE,
-  RETRIEVAL_TOP_K,
-} from "@/lib/config";
+import { RETRIEVAL_MIN_SCORE, RETRIEVAL_TOP_K } from "@/lib/config";
+import { chatModel } from "@/lib/openrouter";
 import { PROJECT_IDS, getProject, type ProjectId } from "@/lib/projects";
 import { retriever } from "@/lib/retriever";
 
@@ -199,7 +195,7 @@ export const draftPitch = tool({
       .join("\n\n");
 
     const { output } = await generateText({
-      model: anthropic(CHAT_MODEL),
+      model: chatModel,
       output: Output.object({
         schema: pitchSchema,
         name: "pitch",

@@ -1,4 +1,4 @@
-import { CHAT_MODEL, EMBEDDING_MODEL } from "@/lib/config";
+import { CHAT_MODEL, EMBEDDING_MODEL } from "@/lib/openrouter";
 import styles from "./site-footer.module.css";
 
 export function SiteFooter() {

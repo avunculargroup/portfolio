@@ -1,17 +1,8 @@
 /**
- * Single home for tunables. Nothing model- or limit-related should be
- * hard-coded elsewhere in the app (CLAUDE.md → engineering conventions).
+ * Single home for limits, caps and constants. Model slugs and provider setup
+ * live in `lib/openrouter.ts` — don't duplicate them here
+ * (CLAUDE.md → engineering conventions).
  */
-
-/**
- * Chat model. Claude Haiku — cheap, fast, public endpoint.
- * Verify against https://docs.claude.com/en/docs/about-claude/models before changing.
- */
-export const CHAT_MODEL = "claude-haiku-4-5-20251001" as const;
-
-/** Embedding model + dimensionality. Must match what `scripts/embed-corpus.ts` wrote. */
-export const EMBEDDING_MODEL = "text-embedding-3-small" as const;
-export const EMBEDDING_DIMENSIONS = 1536 as const;
 
 /** Cost cap: keep answers short and the loop bounded (spec §5). */
 export const MAX_OUTPUT_TOKENS = 500;
@@ -51,11 +42,15 @@ export const SITE = {
  */
 export const COST_PER_TOKEN_USD = 0.0000012;
 
-/** Which server-side capabilities are configured. Drives graceful degradation. */
+/**
+ * Which server-side capabilities are configured. Drives graceful degradation.
+ * One OpenRouter key now fronts both chat and embeddings.
+ */
 export function getCapabilities() {
+  const openrouter = Boolean(process.env.OPENROUTER_API_KEY);
   return {
-    chat: Boolean(process.env.ANTHROPIC_API_KEY),
-    embeddings: Boolean(process.env.OPENAI_API_KEY),
+    chat: openrouter,
+    embeddings: openrouter,
     rateLimit: Boolean(
       process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN,
     ),

@@ -36,6 +36,33 @@ interface IncomingMessage {
   parts?: Array<{ type?: string; text?: string }>;
 }
 
+/**
+ * OpenRouter's usage accounting, if present. Shape is provider-defined and not
+ * typed by the SDK, so read it defensively — a logging line must never be able
+ * to take the stream down.
+ */
+function readOpenRouterUsage(metadata: unknown) {
+  if (typeof metadata !== "object" || metadata === null) return undefined;
+  const openrouter = (metadata as Record<string, unknown>).openrouter;
+  if (typeof openrouter !== "object" || openrouter === null) return undefined;
+  const usage = (openrouter as Record<string, unknown>).usage;
+  if (typeof usage !== "object" || usage === null) return undefined;
+
+  const record = usage as Record<string, unknown>;
+  const promptDetails = record.promptTokensDetails;
+  const cachedTokens =
+    typeof promptDetails === "object" && promptDetails !== null
+      ? (promptDetails as Record<string, unknown>).cachedTokens
+      : undefined;
+
+  return {
+    promptTokens: record.promptTokens,
+    completionTokens: record.completionTokens,
+    cachedTokens,
+    costUsd: record.cost,
+  };
+}
+
 export async function POST(request: Request) {
   // ---- Guardrails run before anything streams (spec §5). ----
 
@@ -103,8 +130,10 @@ export async function POST(request: Request) {
     return await createAgentUIStreamResponse({
       agent: portfolioAgent,
       uiMessages: messages,
-      onStepFinish: ({ usage, toolCalls }) => {
-        // Usage logging incl. cache tokens (spec §5). No PII, no visitor id.
+      onStepFinish: ({ usage, toolCalls, providerMetadata }) => {
+        // Cost-cap logging (spec §5). The chat model sets `usage: { include: true }`,
+        // so OpenRouter returns cached-token detail and the real USD cost here.
+        // No PII, no visitor id.
         console.log(
           JSON.stringify({
             at: "chat.step",
@@ -112,7 +141,7 @@ export async function POST(request: Request) {
             inputTokens: usage.inputTokens,
             outputTokens: usage.outputTokens,
             totalTokens: usage.totalTokens,
-            cachedInputTokens: usage.cachedInputTokens,
+            openrouter: readOpenRouterUsage(providerMetadata),
           }),
         );
       },

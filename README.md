@@ -8,7 +8,8 @@ Built to demonstrate LLM engineering by being one: the same patterns (agent loop
 
 - **Next.js 15** (App Router) · TypeScript (strict) · React 19
 - **Vercel AI SDK v6** — `ToolLoopAgent`, `useChat` typed message parts
-- **Chat model:** Claude Haiku · **Embeddings:** OpenAI `text-embedding-3-small`
+- **Model gateway:** OpenRouter — one key for chat *and* embeddings
+- **Chat model:** `anthropic/claude-haiku-4.5` · **Embeddings:** `openai/text-embedding-3-small`
 - **Retrieval:** static `embeddings.json` + in-memory cosine, behind a swappable `Retriever` interface (pgvector-ready), with a dependency-free BM25 fallback
 - **Rate limiting:** Upstash Redis · **Deploy:** Vercel
 - **Styling:** CSS variables + CSS Modules (design tokens are fixed — see spec §7)
@@ -34,7 +35,7 @@ npm run dev
 
 Open http://localhost:3000.
 
-> **The site runs with no keys at all.** Every section renders, and the console shows a calm "agent is offline" notice instead of an error. Add `ANTHROPIC_API_KEY` to turn the agent on.
+> **The site runs with no keys at all.** Every section renders, and the console shows a calm "agent is offline" notice instead of an error. Add `OPENROUTER_API_KEY` to turn the agent on.
 
 ## Scripts
 
@@ -60,18 +61,18 @@ npm run ui:checks     # 320/390/768/1280 overflow, tap targets, menu, tabs
 npm run ui:replay     # dossier + citations + trace panel render from a real stream
 ```
 
-`ui:replay` needs the page to believe the agent is available, so start the server with any non-empty `ANTHROPIC_API_KEY` — the request is intercepted in the browser and never leaves it.
+`ui:replay` needs the page to believe the agent is available, so start the server with any non-empty `OPENROUTER_API_KEY` — the request is intercepted in the browser and never leaves it.
 
 ## Retrieval, and the embeddings caveat
 
 Retrieval always goes through the `Retriever` interface in [`src/lib/retriever.ts`](./src/lib/retriever.ts). Two implementations ship:
 
-1. **`staticRetriever`** — the intended path. Cosine similarity over `data/embeddings.json` plus a small tag boost. Requires `OPENAI_API_KEY` at query time (to embed the question).
+1. **`staticRetriever`** — the intended path. Cosine similarity over `data/embeddings.json` plus a small tag boost. Requires `OPENROUTER_API_KEY` at query time (to embed the question).
 2. **`lexicalRetriever`** — a dependency-free BM25 fallback over the corpus, with a small synonym map for recruiter phrasing.
 
-The exported `retriever` prefers embeddings and falls back to lexical when `embeddings.json` is unbuilt, `OPENAI_API_KEY` is missing, or an embedding call fails mid-request. This keeps answers grounded rather than failing hard.
+The exported `retriever` prefers embeddings and falls back to lexical when `embeddings.json` is unbuilt, `OPENROUTER_API_KEY` is missing, or an embedding call fails mid-request. This keeps answers grounded rather than failing hard.
 
-> ⚠️ **`data/embeddings.json` is currently an empty array.** It could not be generated in the build environment because no `OPENAI_API_KEY` was available. **Run `npm run embed` once before deploying** and commit the result — until then the agent is grounded by the lexical fallback, which passes the retrieval evals (12/12) but is weaker on paraphrased questions than real embeddings.
+> ⚠️ **`data/embeddings.json` is currently an empty array.** It could not be generated in the build environment because no `OPENROUTER_API_KEY` was available. **Run `npm run embed` once before deploying** and commit the result — until then the agent is grounded by the lexical fallback, which passes the retrieval evals (12/12) but is weaker on paraphrased questions than real embeddings.
 
 A pgvector implementation can replace either one with no caller changes.
 
@@ -87,16 +88,23 @@ Enforced in [`src/app/api/chat/route.ts`](./src/app/api/chat/route.ts) **before*
 
 - **Scope-lock + grounding** in the system prompt ([`src/lib/agent.ts`](./src/lib/agent.ts)) — no claim without a retrieved chunk, always cite, refuse off-topic and instruction-override attempts.
 - **Rate limit** — Upstash sliding window, 20 requests/hour per IP, plus a 12-message per-session cap. Fails open if Redis is unreachable.
-- **Cost cap** — cheap model, `maxOutputTokens` 500, max 6 steps, input length capped. Usage (including cache tokens) is logged per step.
+- **Cost cap** — cheap model, `maxOutputTokens` 500, max 6 steps, input length capped. Usage is logged per step from `providerMetadata.openrouter.usage`, which carries cached-token detail and the actual USD cost. Back it with a credit limit on the OpenRouter key.
 - **Injection handling** — corpus text and visitor text are treated as data, never instructions. Covered by evals.
 - **Graceful degradation** — missing keys or a tripped limit return a friendly JSON notice that the console renders as calm copy, never a raw error.
 
-All tunables live in [`src/lib/config.ts`](./src/lib/config.ts).
+Limits and caps live in [`src/lib/config.ts`](./src/lib/config.ts); model slugs and provider setup live in [`src/lib/openrouter.ts`](./src/lib/openrouter.ts).
 
 ## Deploy
 
-Deploy to Vercel. Set the four environment variables (below) in the project settings. `data/embeddings.json` is committed, so no build-time embedding call is needed.
+Deploy to Vercel. Set the environment variables (below) in the project settings. `data/embeddings.json` is committed, so no build-time embedding call is needed.
 
 ## Environment
 
-See [`.env.example`](./.env.example). Missing keys degrade gracefully — the static site still renders and the agent shows a calm "unavailable" notice rather than erroring.
+See [`.env.example`](./.env.example) — `OPENROUTER_API_KEY` plus the two Upstash values. Missing keys degrade gracefully: the static site still renders and the agent shows a calm "unavailable" notice rather than erroring.
+
+Both the chat model and the embedding model are reached through OpenRouter, configured in `src/lib/openrouter.ts`. Two things there are load-bearing:
+
+- The embedding model is **pinned to the OpenAI upstream with fallbacks disabled**. If OpenRouter routed an embedding call elsewhere, the returned vectors would live in a different space and retrieval against the committed `embeddings.json` would quietly degrade.
+- `scripts/embed-corpus.ts` and the query-time retriever both import the same `embeddingModel`, so the corpus and the query can't drift apart. If you change the model, re-run the embed script.
+
+Pin `@openrouter/ai-sdk-provider@^2.10.0` — the `3.x` line requires AI SDK v7, and this project is on v6.

@@ -6,6 +6,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { SkillsBand } from "@/components/skills-band";
 import { getCapabilities, SITE } from "@/lib/config";
+import { CHAT_MODEL } from "@/lib/openrouter";
 
 /*
  * Rendered per-request so the agent's availability reflects the deployment's
@@ -36,7 +37,7 @@ export default function Page() {
     <>
       <SiteHeader />
       <main id="main">
-        <Hero agentAvailable={chat} />
+        <Hero agentAvailable={chat} chatModelLabel={CHAT_MODEL} />
         <CaseStudy />
         <SkillsBand />
         <ExperienceTimeline />

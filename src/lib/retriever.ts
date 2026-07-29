@@ -4,15 +4,15 @@
  * `staticRetriever` is the provided implementation: loads `embeddings.json` and
  * ranks by cosine similarity plus a small tag boost. `lexicalRetriever` is a
  * dependency-free fallback used when embeddings haven't been generated yet or
- * `OPENAI_API_KEY` is absent — it keeps the agent grounded (and the site
+ * `OPENROUTER_API_KEY` is absent — it keeps the agent grounded (and the site
  * demonstrable) instead of failing hard (spec §5, graceful degradation).
  *
  * Swap point: implement the same `Retriever` interface with pgvector later,
  * with no caller changes.
  */
-import { openai } from "@ai-sdk/openai";
 import { embed } from "ai";
-import { EMBEDDING_MODEL, RETRIEVAL_TOP_K } from "@/lib/config";
+import { RETRIEVAL_TOP_K } from "@/lib/config";
+import { embeddingModel } from "@/lib/openrouter";
 import { CORPUS, type Chunk, type Hit } from "@/lib/corpus";
 import embeddingsJson from "@/data/embeddings.json";
 
@@ -58,8 +58,10 @@ function tagBoost(query: string, chunk: Chunk): number {
 
 export const staticRetriever: Retriever = {
   async search(query, k = RETRIEVAL_TOP_K) {
+    // Same model as scripts/embed-corpus.ts — see lib/openrouter.ts. The corpus
+    // and query embeddings must not drift apart.
     const { embedding } = await embed({
-      model: openai.embedding(EMBEDDING_MODEL),
+      model: embeddingModel,
       value: query,
     });
 
@@ -244,7 +246,7 @@ export const lexicalRetriever: Retriever = {
 
 /** True when semantic retrieval is actually available for this request. */
 export function hasSemanticRetrieval(): boolean {
-  return HAS_EMBEDDINGS && Boolean(process.env.OPENAI_API_KEY);
+  return HAS_EMBEDDINGS && Boolean(process.env.OPENROUTER_API_KEY);
 }
 
 /**
