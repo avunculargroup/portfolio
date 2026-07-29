@@ -1,0 +1,80 @@
+/* Architecture diagram: scrolls horizontally on mobile rather than shrinking
+   text (spec §6.3). */
+.arch {
+  background: var(--panel);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 24px;
+  color: var(--muted-dk);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12.5px;
+  line-height: 1.9;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.archInner {
+  min-width: 34em;
+  white-space: pre;
+  margin: 0;
+  font: inherit;
+}
+
+@media (min-width: 768px) {
+  .arch {
+    padding: 24px;
+    margin-bottom: 28px;
+  }
+}
+
+.lvl {
+  color: var(--panel-text);
+}
+
+.amber {
+  color: var(--signal);
+}
+
+.mut {
+  color: var(--muted-dk);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper-2);
+  padding: 18px;
+}
+
+.kicker {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  color: #8a5a10; /* darkened amber for AA on --paper-2 */
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.cardTitle {
+  font-size: 16px;
+  margin: 0 0 6px;
+}
+
+.cardBody {
+  font-size: 14.5px;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.5;
+}
