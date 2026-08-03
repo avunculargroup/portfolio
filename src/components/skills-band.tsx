@@ -30,9 +30,9 @@ const GROUPS = [
 
 export function SkillsBand() {
   return (
-    <section className="blk" aria-labelledby="stack-title">
+    <section className={`blk ${styles.section}`} aria-labelledby="stack-title">
       <div className="wrap">
-        <p className="secEyebrow mono">Stack</p>
+        <p className="secEyebrow">Stack</p>
         <h2 id="stack-title" className="sectionTitle">
           What I build with
         </h2>

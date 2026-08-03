@@ -15,13 +15,13 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#14161C",
-          color: "#F3F4F6",
+          background: "#6B8556",
+          color: "#FAF8F3",
           fontSize: 16,
           fontWeight: 700,
           letterSpacing: 0.5,
           fontFamily: "sans-serif",
-          borderRadius: 6,
+          borderRadius: "50%",
         }}
       >
         CP

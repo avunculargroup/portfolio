@@ -1,7 +1,9 @@
+import { AskSection } from "@/components/ask-section";
 import { CaseStudy } from "@/components/case-study";
 import { Contact } from "@/components/contact";
 import { ExperienceTimeline } from "@/components/experience-timeline";
 import { Hero } from "@/components/hero";
+import { PullQuote } from "@/components/pull-quote";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { SkillsBand } from "@/components/skills-band";
@@ -37,7 +39,9 @@ export default function Page() {
     <>
       <SiteHeader />
       <main id="main">
-        <Hero agentAvailable={chat} chatModelLabel={CHAT_MODEL} />
+        <Hero />
+        <PullQuote />
+        <AskSection agentAvailable={chat} chatModelLabel={CHAT_MODEL} />
         <CaseStudy />
         <SkillsBand />
         <ExperienceTimeline />

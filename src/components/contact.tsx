@@ -3,15 +3,14 @@ import styles from "./contact.module.css";
 
 export function Contact() {
   return (
-    <section className="blk" id="contact" aria-labelledby="contact-title">
+    <section className={styles.section} id="contact" aria-labelledby="contact-title">
       <div className="wrap">
         <div className={styles.contact}>
           <div>
-            <p className="secEyebrow mono">Get in touch</p>
+            <p className={styles.eyebrow}>Get in touch</p>
             <h2 id="contact-title" className={styles.headline}>
-              Hiring someone to own AI delivery?
-              <br />
-              Let&rsquo;s talk.
+              Building something that needs someone who can lead AI delivery,
+              not just code it? Let&rsquo;s talk.
             </h2>
             <p className={styles.place}>{SITE.location}</p>
           </div>

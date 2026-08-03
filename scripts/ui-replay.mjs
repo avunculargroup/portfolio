@@ -19,7 +19,7 @@ const browser = await chromium.launch({
   executablePath: "/opt/pw-browsers/chromium",
 });
 
-async function replay({ width, height, label, selectTraceTab }) {
+async function replay({ width, height, label }) {
   const ctx = await browser.newContext({
     viewport: { width, height },
     deviceScaleFactor: 2,
@@ -73,17 +73,17 @@ async function replay({ width, height, label, selectTraceTab }) {
     .catch(() => false);
   if (!sourcesVisible) problems.push(`[${label}] source list not shown`);
 
-  if (selectTraceTab) {
-    await page.locator('[role="tab"]').nth(1).click();
-    await page.waitForTimeout(300);
-  }
-
-  const traceText = await page.locator("aside").first().textContent();
+  // The trace now renders inline below the answer, inside the same card —
+  // no separate tab/panel to select.
+  const traceText = await page
+    .locator('[aria-label="How I got there"]')
+    .first()
+    .textContent();
   if (!traceText?.includes("search_experience")) {
-    problems.push(`[${label}] trace panel missing search_experience step`);
+    problems.push(`[${label}] trace section missing search_experience step`);
   }
-  if (!/steps\s*1/.test(traceText ?? "")) {
-    problems.push(`[${label}] trace footer step count wrong: ${traceText?.slice(-60)}`);
+  if (!/1 step\b/.test(traceText ?? "")) {
+    problems.push(`[${label}] trace step count wrong: ${traceText?.slice(-60)}`);
   }
 
   await page.screenshot({
@@ -96,15 +96,10 @@ async function replay({ width, height, label, selectTraceTab }) {
   return { chipCount, sourceCount };
 }
 
-const desktop = await replay({
-  width: 1280,
-  height: 1000,
-  label: "desktop",
-  selectTraceTab: false,
-});
+const desktop = await replay({ width: 1280, height: 1000, label: "desktop" });
 console.log("desktop chips:", desktop.chipCount);
 
-await replay({ width: 390, height: 900, label: "mobile", selectTraceTab: true });
+await replay({ width: 390, height: 900, label: "mobile" });
 
 await browser.close();
 

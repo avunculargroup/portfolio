@@ -4,7 +4,7 @@ Project conventions for building and maintaining this repo. Read alongside `port
 
 ## What this is
 
-A recruiter-facing portfolio for **Chris Pollard**, positioned as an **AI Delivery Lead** — a hands-on engineer with a decade of delivery. Its centrepiece is a live agent that answers questions about Chris, grounded in `data/corpus.json` and cited, with a live trace panel showing the tool loop. Stateless and anonymous.
+A recruiter-facing portfolio for **Chris Pollard**, positioned as **Director, AI Delivery** — a hands-on engineer with a decade of delivery. Its centrepiece is a live agent that answers questions about Chris, grounded in `data/corpus.json` and cited, with the trace of its tool loop shown inline under the answer. Stateless and anonymous.
 
 ## Non-negotiables
 
@@ -16,20 +16,23 @@ A recruiter-facing portfolio for **Chris Pollard**, positioned as an **AI Delive
 
 ## Voice & copy
 
-- Plain-English, concise, confident, **no hype**. Mirror the demo copy.
+- Static site copy (hero, case study, timeline, footer) is **first-person** — Chris speaking for himself, warm and conversational, no hype.
+- The agent itself answers in **third person** ("Chris built…"), per its own system prompt in `lib/agent.ts` — don't make it speak as Chris.
 - Positioning through-line: builds the system *and* leads the delivery. "A human at the edge of every automated decision" is Chris's own phrase — fine to use, don't overuse.
-- Don't inflate: the AI-leadership claim rests on a solo build, not on leading a team. Keep copy defensible in an interview (see spec §4 / the delivery-lead framing).
+- Don't inflate: the AI-leadership claim rests on a solo build and being the accountable Director, not on managing a team of engineers. Keep copy defensible in an interview (see spec §4 / the delivery-lead framing).
 
-## Design
+## Design (redesigned 2026 — warm/nature palette)
 
-- Tokens in spec §7 are **fixed**. One accent only: amber `--signal (#E0972B)`. Do not introduce other accent colours or gradients.
-- Type roles: Space Grotesk (display), Source Serif 4 (body), JetBrains Mono (trace/labels). Load via `next/font` — **no runtime external font fetch** (this also avoids a class of blank-render bugs).
-- Concept is *dossier vs instrument*: calm editorial reading column, dark live trace panel. Spend visual boldness on the trace panel; keep everything else restrained.
+The original spec (§7) and `portfolio-demo.html` describe the first version of this site: a dark amber "dossier vs instrument" concept. It has been superseded by a warm, human redesign — paper neutrals + one eucalyptus/sage-olive accent, nature/Melbourne-bush inspired. The tokens below are now the fixed ones; treat spec §7's amber/dark-panel tokens as historical.
+
+- Tokens (`src/app/globals.css`): `--ink`, `--paper`, `--paper-2` (warm neutrals), `--tint` (light sage), `--moss` (dark section bg — contact/footer only), `--line`, `--muted`, `--signal` / `--signal-dk` (the one accent, sage-olive), `--signal-soft`. No dark "instrument" panel anywhere anymore — the agent trace is a plain warm card, not a terminal.
+- Type roles: **Newsreader** (serif — headings, italic pull-quotes) + **Manrope** (sans — everything else: body, UI, labels). No mono typeface; the old JetBrains Mono "trace/label" role is gone along with the terminal aesthetic. Load via `next/font` — **no runtime external font fetch** (this also avoids a class of blank-render bugs).
+- Concept: a calm, warm editorial page. The live agent Q&A reads as a real card, not an "instrument" — the "How I got there" trace sits inline below the answer, in the same card, not a separate dark panel.
 
 ## Mobile-first
 
 - The header was the known weak point — implement the disclosure-menu pattern in spec §6.1 exactly (collapse to brand + name + menu button below `md`; hide the role subtitle and "Live agent" tag; accessible open/close).
-- Hero is **answer-first** on mobile with an Answer/Trace segmented control (spec §6.2) — the trace panel must never bury the answer.
+- The agent trace renders inline below the answer inside the same card (no separate Answer/Trace tab control) — the answer is first in reading order on every breakpoint, so it can never be buried.
 - Min tap target 44×44px; inputs `font-size:16px`; honour safe-area insets; test from 320px up; nothing clips or overflows.
 - `prefers-reduced-motion`: disable typewriter streaming, step-rise, and header slide; keep everything usable.
 
@@ -50,4 +53,4 @@ Work against the checklist in spec §12. Key gates: grounded + cited streaming a
 
 ## When unsure
 
-If a requirement here conflicts with something else, the order of authority is: this file and `portfolio-build-spec.md` first, then the demo (`portfolio-demo.html`) for look/interaction. If a decision affects Chris's factual representation or the honesty of the positioning, stop and flag it rather than resolving it silently.
+If a requirement here conflicts with something else, the order of authority is: this file first (it documents the current warm/nature redesign), then `portfolio-build-spec.md` for everything unrelated to visual design (the agent, guardrails, structure). `design-reference/portfolio-demo.html` is the *original* dark "dossier" mock and is superseded for look/interaction — it's kept for historical context only. If a decision affects Chris's factual representation or the honesty of the positioning, stop and flag it rather than resolving it silently.

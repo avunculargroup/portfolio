@@ -7,44 +7,55 @@ const STATE_CLASS = {
   failed: styles.failed,
 } as const;
 
-export function TraceStep({ step }: { step: TraceStepData }) {
+export function TraceStep({
+  step,
+  index,
+}: {
+  step: TraceStepData;
+  index: number;
+}) {
   return (
     <div className={`${styles.step} ${STATE_CLASS[step.state]}`}>
-      <div className={styles.top}>
-        <span className={styles.dot} aria-hidden="true" />
-        <span className={styles.name}>{step.name}</span>
-        <span className={styles.dur}>
-          {step.state === "running"
-            ? "…"
-            : step.state === "failed"
-              ? "error"
-              : "done"}
-        </span>
-      </div>
+      <span className={styles.badge} aria-hidden="true">
+        {index + 1}
+      </span>
 
-      {(step.detail || step.hits || step.errorText) && (
-        <div className={styles.meta}>
-          {step.detail && <div>{step.detail}</div>}
-
-          {step.hits?.map((hit) => (
-            <div key={`${hit.index}-${hit.title}`} className={styles.hitRow}>
-              <span className={styles.hitIndex}>#{hit.index}</span>
-              <span className={styles.hitTitle}>
-                {hit.title}
-                <span className={styles.hitCat}> · {hit.category}</span>
-              </span>
-            </div>
-          ))}
-
-          {step.state === "done" && step.hits === undefined && (
-            <div>no matching chunks</div>
-          )}
-
-          {step.errorText && (
-            <div className={styles.errorText}>{step.errorText}</div>
-          )}
+      <div className={styles.content}>
+        <div className={styles.top}>
+          <span className={styles.name}>{step.name}</span>
+          <span className={styles.dur}>
+            {step.state === "running"
+              ? "…"
+              : step.state === "failed"
+                ? "error"
+                : "done"}
+          </span>
         </div>
-      )}
+
+        {(step.detail || step.hits || step.errorText) && (
+          <div className={styles.meta}>
+            {step.detail && <div>{step.detail}</div>}
+
+            {step.hits?.map((hit) => (
+              <div key={`${hit.index}-${hit.title}`} className={styles.hitRow}>
+                <span className={styles.hitIndex}>#{hit.index}</span>
+                <span className={styles.hitTitle}>
+                  {hit.title}
+                  <span className={styles.hitCat}> · {hit.category}</span>
+                </span>
+              </div>
+            ))}
+
+            {step.state === "done" && step.hits === undefined && (
+              <div>no matching chunks</div>
+            )}
+
+            {step.errorText && (
+              <div className={styles.errorText}>{step.errorText}</div>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

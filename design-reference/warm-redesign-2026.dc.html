@@ -1,0 +1,432 @@
+<!--
+  Reference only — exported from Claude Design (claude.ai/design). This is
+  the current look/interaction reference (warm paper + sage-olive accent,
+  Newsreader/Manrope, no dark trace panel), implemented for real in
+  src/components/. It is NOT runnable as-is: it depends on a Claude Design
+  runtime (./support.js, ./image-slot.js) that isn't part of this repo, and
+  its "Ask" interaction is a static mock, not the real agent. See CLAUDE.md
+  → Design for the current fixed tokens.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="./image-slot.js"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: inherit; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</helmet>
+
+<div style="background:oklch(0.985 0.01 78);color:oklch(0.27 0.025 45);font-family:'Manrope',sans-serif;line-height:1.5;min-height:100vh">
+
+  <header style="position:sticky;top:0;z-index:50;background:oklch(0.985 0.01 78 / 0.92);backdrop-filter:blur(8px);border-bottom:1px solid oklch(0.89 0.02 55)">
+    <div style="max-width:1160px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;gap:16px">
+      <span style="width:34px;height:34px;border-radius:50%;background:oklch(0.54 0.075 135);color:oklch(0.985 0.01 78);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0">CP</span>
+      <span style="display:flex;flex-direction:column;line-height:1.2">
+        <span style="font-weight:700;font-size:15px">Chris Pollard</span>
+        <span style="font-size:12px;color:oklch(0.48 0.02 45)">Director, AI Delivery · Melbourne</span>
+      </span>
+      <span style="flex:1"></span>
+      <nav style="display:flex;gap:24px;align-items:center" aria-label="Primary">
+        <a href="#ask" style="color:oklch(0.27 0.025 45);text-decoration:none;font-size:14px;font-weight:600">Ask</a>
+        <a href="#work" style="color:oklch(0.27 0.025 45);text-decoration:none;font-size:14px;font-weight:600">Work</a>
+        <a href="#experience" style="color:oklch(0.27 0.025 45);text-decoration:none;font-size:14px;font-weight:600">Experience</a>
+        <a href="#contact" style="background:oklch(0.54 0.075 135);color:oklch(0.985 0.01 78);text-decoration:none;font-size:14px;font-weight:700;padding:9px 18px;border-radius:99px">Say hi</a>
+      </nav>
+    </div>
+  </header>
+
+  <section style="max-width:1160px;margin:0 auto;padding:88px 32px 96px;display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:56px;align-items:center">
+    <div>
+      <p style="text-transform:uppercase;letter-spacing:0.12em;font-size:13px;font-weight:700;color:oklch(0.54 0.075 135);margin:0 0 16px">Hello, I'm</p>
+      <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(40px,5.5vw,64px);line-height:1.06;margin:0 0 24px">Chris Pollard.</h1>
+      <p style="font-size:19px;color:oklch(0.48 0.02 45);max-width:52ch;margin:0 0 32px">Ten years leading projects and people came before I ever wrote code. Now I run the AI practice at a bitcoin advisory — I set the technical direction, I'm the one clients and the board hold accountable, and yes, I still build the systems myself. This site is one of them. Ask it something real.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="#ask" style="background:oklch(0.54 0.075 135);color:oklch(0.985 0.01 78);text-decoration:none;font-weight:700;font-size:15px;padding:14px 26px;border-radius:12px">Ask me something ↓</a>
+        <a href="#work" style="border:1px solid oklch(0.89 0.02 55);color:oklch(0.27 0.025 45);text-decoration:none;font-weight:700;font-size:15px;padding:14px 26px;border-radius:12px">See what I've built</a>
+      </div>
+    </div>
+    <div style="position:relative;max-width:420px;justify-self:center">
+      <div style="position:absolute;inset:20px -20px -20px 20px;background:oklch(0.94 0.028 110);border-radius:28px"></div>
+      <image-slot id="portrait-chris" shape="rounded" radius="28" placeholder="Drop a photo of Chris" style="position:relative;width:100%;height:460px;box-shadow:0 20px 40px -20px oklch(0.27 0.025 45 / 0.35)"></image-slot>
+    </div>
+  </section>
+
+  <section style="padding:64px 0;background:oklch(0.94 0.028 110)">
+    <div style="max-width:840px;margin:0 auto;padding:0 32px;text-align:center">
+      <p style="font-family:'Newsreader',serif;font-style:italic;font-weight:500;font-size:clamp(22px,2.6vw,28px);line-height:1.5;color:oklch(0.27 0.025 45);margin:0">Ten years leading projects and people. Five years writing the code myself. I speak both languages fluently — technical enough to build it, senior enough to run it, and to stand in front of a client and explain why it's the right call.</p>
+    </div>
+  </section>
+
+  <section id="ask" style="background:oklch(0.965 0.018 70);padding:96px 0;border-top:1px solid oklch(0.89 0.02 55);border-bottom:1px solid oklch(0.89 0.02 55)">
+    <div style="max-width:1160px;margin:0 auto;padding:0 32px">
+      <p style="text-transform:uppercase;letter-spacing:0.12em;font-size:13px;font-weight:700;color:oklch(0.54 0.075 135);margin:0 0 12px">Try it</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(30px,3.6vw,42px);margin:0 0 16px">Ask me anything — really.</h2>
+      <p style="font-size:17px;color:oklch(0.48 0.02 45);max-width:64ch;margin:0 0 40px">This isn't a chatbot glued on top. It's the same kind of multi-agent system I design and put in front of clients — answering from what I've actually written about my work, grounded, cited, and honest when it doesn't know.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:32px;align-items:start">
+        <div style="background:oklch(0.985 0.01 78);border:1px solid oklch(0.89 0.02 55);border-radius:20px;padding:28px">
+          <form onSubmit="{{ onSubmitCustom }}" style="display:flex;gap:8px;margin:0 0 16px">
+            <label style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)" for="ask-input">Ask a question</label>
+            <input id="ask-input" type="text" value="{{ inputValue }}" onChange="{{ onInputChange }}" placeholder="e.g. Has Chris shipped production RAG?" style="flex:1;padding:14px 16px;border-radius:12px;border:1px solid oklch(0.89 0.02 55);font-family:'Manrope',sans-serif;font-size:15px;background:oklch(0.985 0.01 78);color:oklch(0.27 0.025 45)" />
+            <button type="submit" style="background:oklch(0.54 0.075 135);color:oklch(0.985 0.01 78);border:none;border-radius:12px;padding:0 20px;font-weight:700;font-size:15px;cursor:pointer">Ask</button>
+          </form>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <sc-for list="{{ examples }}" as="ex" hint-placeholder-count="3">
+              <button type="button" onClick="{{ ex.run }}" style="background:oklch(0.94 0.028 110);color:oklch(0.42 0.065 135);border:1px solid transparent;border-radius:99px;padding:8px 16px;font-size:13px;font-weight:600;cursor:pointer">{{ ex.label }}</button>
+            </sc-for>
+            <button type="button" onClick="{{ togglePitch }}" style="background:transparent;color:oklch(0.27 0.025 45);border:1px solid oklch(0.89 0.02 55);border-radius:99px;padding:8px 16px;font-size:13px;font-weight:600;cursor:pointer">{{ pitchToggleLabel }}</button>
+          </div>
+
+          <sc-if value="{{ showPitch }}" hint-placeholder-val="{{ false }}">
+            <form onSubmit="{{ onSubmitPitch }}" style="margin-top:20px;padding-top:20px;border-top:1px solid oklch(0.89 0.02 55);display:flex;flex-direction:column;gap:12px">
+              <div>
+                <label style="display:block;font-size:12px;font-weight:700;color:oklch(0.48 0.02 45);margin-bottom:6px">Role</label>
+                <input type="text" value="{{ pitchRole }}" onChange="{{ onPitchRole }}" placeholder="Senior AI Engineer" style="width:100%;padding:10px 12px;border-radius:10px;border:1px solid oklch(0.89 0.02 55);font-family:'Manrope',sans-serif;font-size:14px" />
+              </div>
+              <div>
+                <label style="display:block;font-size:12px;font-weight:700;color:oklch(0.48 0.02 45);margin-bottom:6px">Company (optional)</label>
+                <input type="text" value="{{ pitchCompany }}" onChange="{{ onPitchCompany }}" placeholder="Where you're hiring" style="width:100%;padding:10px 12px;border-radius:10px;border:1px solid oklch(0.89 0.02 55);font-family:'Manrope',sans-serif;font-size:14px" />
+              </div>
+              <button type="submit" style="align-self:flex-start;background:oklch(0.27 0.025 45);color:oklch(0.985 0.01 78);border:none;border-radius:10px;padding:10px 20px;font-weight:700;font-size:14px;cursor:pointer">Generate pitch</button>
+            </form>
+          </sc-if>
+        </div>
+
+        <div style="background:oklch(0.985 0.01 78);border:1px solid oklch(0.89 0.02 55);border-radius:20px;padding:32px;min-height:280px">
+          <sc-if value="{{ hasAsked }}" hint-placeholder-val="{{ false }}">
+            <p style="font-family:'Newsreader',serif;font-style:italic;font-size:19px;margin:0 0 20px;display:flex;gap:12px">
+              <span style="flex-shrink:0;width:26px;height:26px;border-radius:50%;background:oklch(0.94 0.028 110);color:oklch(0.42 0.065 135);display:flex;align-items:center;justify-content:center;font-style:normal;font-family:'Manrope',sans-serif;font-weight:800;font-size:13px">Q</span>
+              <span>{{ asked.query }}</span>
+            </p>
+            <sc-if value="{{ isThinking }}" hint-placeholder-val="{{ false }}">
+              <p style="color:oklch(0.48 0.02 45);font-style:italic;margin:0 0 20px">thinking…</p>
+            </sc-if>
+            <sc-if value="{{ isAnswered }}" hint-placeholder-val="{{ false }}">
+              <p style="font-size:16px;color:oklch(0.27 0.025 45);margin:0 0 24px;animation:fadeUp .4s ease">{{ asked.answer }}</p>
+            </sc-if>
+            <div style="display:flex;flex-direction:column;gap:8px;padding-top:16px;border-top:1px solid oklch(0.89 0.02 55)">
+              <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:oklch(0.48 0.02 45);margin:0 0 4px">How I got there</p>
+              <sc-for list="{{ stepsView }}" as="step" hint-placeholder-count="4">
+                <div style="display:flex;gap:10px;align-items:center;opacity:{{ step.opacity }};transition:opacity .3s ease">
+                  <span style="flex-shrink:0;width:20px;height:20px;border-radius:50%;background:oklch(0.94 0.028 110);color:oklch(0.42 0.065 135);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">{{ step.n }}</span>
+                  <span style="font-size:14px;color:oklch(0.48 0.02 45)">{{ step.text }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ noAsked }}" hint-placeholder-val="{{ true }}">
+            <p style="color:oklch(0.48 0.02 45);font-size:16px">Ask a question on the left, or try one of the examples above — I'll answer for real, using what I've actually written about my work.</p>
+          </sc-if>
+          <p style="font-size:13px;color:oklch(0.48 0.02 45);font-style:italic;margin:24px 0 0">Grounded in my actual notes — if something isn't covered, I'd rather say so than guess.</p>
+        </div>
+      </div>
+
+      <sc-if value="{{ hasPitch }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:32px;background:oklch(0.985 0.01 78);border:1px solid oklch(0.89 0.02 55);border-radius:20px;padding:32px;animation:fadeUp .4s ease">
+          <p style="font-family:'Newsreader',serif;font-size:22px;font-weight:500;margin:0 0 20px">{{ pitch.headline }}</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px">
+            <div>
+              <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:oklch(0.54 0.075 135);margin:0 0 10px">Why I fit</p>
+              <ul style="margin:0;padding-left:18px;display:flex;flex-direction:column;gap:8px;font-size:14px;color:oklch(0.27 0.025 45)">
+                <sc-for list="{{ pitch.whyFit }}" as="reason" hint-placeholder-count="3"><li>{{ reason }}</li></sc-for>
+              </ul>
+            </div>
+            <div>
+              <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:oklch(0.54 0.075 135);margin:0 0 10px">Relevant work</p>
+              <ul style="margin:0;padding-left:18px;display:flex;flex-direction:column;gap:8px;font-size:14px;color:oklch(0.27 0.025 45)">
+                <sc-for list="{{ pitch.relevantWork }}" as="work" hint-placeholder-count="2"><li>{{ work }}</li></sc-for>
+              </ul>
+            </div>
+            <sc-if value="{{ hasCaveats }}" hint-placeholder-val="{{ false }}">
+              <div>
+                <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:oklch(0.48 0.02 45);margin:0 0 10px">Worth knowing</p>
+                <ul style="margin:0;padding-left:18px;display:flex;flex-direction:column;gap:8px;font-size:14px;color:oklch(0.48 0.02 45)">
+                  <sc-for list="{{ pitch.caveats }}" as="c" hint-placeholder-count="1"><li>{{ c }}</li></sc-for>
+                </ul>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <section id="work" style="padding:96px 0">
+    <div style="max-width:1160px;margin:0 auto;padding:0 32px">
+      <p style="text-transform:uppercase;letter-spacing:0.12em;font-size:13px;font-weight:700;color:oklch(0.54 0.075 135);margin:0 0 12px">The system on show</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(30px,3.6vw,42px);margin:0 0 16px">business-mono — a multi-agent platform I designed and run</h2>
+      <p style="font-size:17px;color:oklch(0.48 0.02 45);max-width:68ch;margin:0 0 48px">Picture a hub-and-spoke team: one coordinator agent, Simon, routes work to a roster of specialists, all reading and writing to the same database. Running it is less like maintaining code and more like running a team — nine specialists, one point of accountability. I designed the architecture, I explain the trade-offs to clients, and I'm the one who answers for every decision below.</p>
+
+      <div role="img" aria-label="Architecture: directors reach the system through Signal and web; Simon, the coordinator, is the only agent that talks to humans; Simon routes to nine specialist agents; all agents share one Supabase Postgres database with pgvector." style="display:flex;flex-direction:column;align-items:center;gap:8px;margin:0 0 56px;padding:40px 24px;background:oklch(0.965 0.018 70);border-radius:20px">
+        <span style="font-size:13px;color:oklch(0.48 0.02 45);font-weight:600">Directors (Signal · Web)</span>
+        <span aria-hidden="true" style="color:oklch(0.48 0.02 45)">↕</span>
+        <span style="background:oklch(0.54 0.075 135);color:oklch(0.985 0.01 78);font-weight:700;font-size:15px;padding:10px 22px;border-radius:99px">Simon — coordinator</span>
+        <span aria-hidden="true" style="color:oklch(0.48 0.02 45)">↕</span>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:640px">
+          <span style="background:oklch(0.985 0.01 78);border:1px solid oklch(0.89 0.02 55);border-radius:99px;padding:6px 14px;font-size:13px">Recorder</span>
+          <span style="background:oklch(0.985 0.01 78);border:1px solid oklch(0.89 0.02 55);border-radius:99px;padding:6px 14px;font-size:13px">Archivist</span>
+          <span style="background:oklch(0.985 0.01 78);border:1px solid oklch(0.89 0.02 55);border-radius:99px;padding:6px 14px;font-size:13px">PM</span>
+          <span style="background:oklch(0.985 0.01 78);border:1px solid oklch(0.89 0.02 55);border-radius:99px;padding:6px 14px;font-size:13px">BA</span>
+          <span style="background:oklch(0.985 0.01 78);border:1px solid oklch(0.89 0.02 55);border-radius:99px;padding:6px 14px;font-size:13px">Content</span>
+          <span style="background:oklch(0.985 0.01 78);border:1px solid oklch(0.89 0.02 55);border-radius:99px;padding:6px 14px;font-size:13px">Researcher</span>
+          <span style="background:oklch(0.985 0.01 78);border:1px solid oklch(0.89 0.02 55);border-radius:99px;padding:6px 14px;font-size:13px">RM</span>
+          <span style="background:oklch(0.985 0.01 78);border:1px solid oklch(0.89 0.02 55);border-radius:99px;padding:6px 14px;font-size:13px">Marketer</span>
+          <span style="background:oklch(0.985 0.01 78);border:1px solid oklch(0.89 0.02 55);border-radius:99px;padding:6px 14px;font-size:13px">Compliance</span>
+        </div>
+        <span aria-hidden="true" style="color:oklch(0.48 0.02 45)">↕</span>
+        <span style="font-size:13px;color:oklch(0.48 0.02 45);font-weight:600">Supabase — Postgres + pgvector (shared)</span>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px">
+        <sc-for list="{{ decisions }}" as="d" hint-placeholder-count="4">
+          <div style="background:oklch(0.965 0.018 70);border-radius:16px;padding:26px">
+            <p style="text-transform:uppercase;letter-spacing:0.08em;font-size:12px;font-weight:700;color:oklch(0.54 0.075 135);margin:0 0 10px">{{ d.kicker }}</p>
+            <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;margin:0 0 10px">{{ d.title }}</h3>
+            <p style="font-size:15px;color:oklch(0.48 0.02 45);margin:0">{{ d.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:96px 0;background:oklch(0.965 0.018 70)">
+    <div style="max-width:1160px;margin:0 auto;padding:0 32px">
+      <p style="text-transform:uppercase;letter-spacing:0.12em;font-size:13px;font-weight:700;color:oklch(0.54 0.075 135);margin:0 0 12px">Stack</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(30px,3.6vw,42px);margin:0 0 40px">What I build with</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px">
+        <sc-for list="{{ skillGroups }}" as="group" hint-placeholder-count="3">
+          <div>
+            <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:18px;margin:0 0 14px">{{ group.title }}</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ group.tags }}" as="tag" hint-placeholder-count="5">
+                <span style="background:oklch(0.985 0.01 78);border:1px solid oklch(0.89 0.02 55);border-radius:99px;padding:6px 14px;font-size:13px">{{ tag }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" style="padding:96px 0">
+    <div style="max-width:1160px;margin:0 auto;padding:0 32px">
+      <p style="text-transform:uppercase;letter-spacing:0.12em;font-size:13px;font-weight:700;color:oklch(0.54 0.075 135);margin:0 0 12px">Track record</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(30px,3.6vw,42px);margin:0 0 16px">Experience</h2>
+      <p style="font-size:17px;color:oklch(0.48 0.02 45);max-width:64ch;margin:0 0 48px">A move from product and project management into engineering, and now into agentic systems — the product instinct came first, the code followed.</p>
+
+      <ol style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0;border-left:2px solid oklch(0.89 0.02 55);max-width:760px">
+        <sc-for list="{{ roles }}" as="r" hint-placeholder-count="6">
+          <li style="position:relative;padding:0 0 40px 32px;margin-left:-2px;border-left:2px solid oklch(0.89 0.02 55)">
+            <span style="position:absolute;left:-7px;top:4px;width:12px;height:12px;border-radius:50%;background:oklch(0.54 0.075 135)"></span>
+            <span style="font-size:13px;font-weight:700;color:oklch(0.48 0.02 45);text-transform:uppercase;letter-spacing:0.04em">{{ r.year }}</span>
+            <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;margin:4px 0 2px">{{ r.role }}</h3>
+            <span style="font-size:14px;font-weight:600;color:oklch(0.54 0.075 135)">{{ r.company }}</span>
+            <p style="font-size:15px;color:oklch(0.48 0.02 45);margin:8px 0 0;max-width:56ch">{{ r.blurb }}</p>
+          </li>
+        </sc-for>
+      </ol>
+    </div>
+  </section>
+
+  <section id="contact" style="background:oklch(0.30 0.05 130);color:oklch(0.965 0.018 70);padding:96px 0">
+    <div style="max-width:1160px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px;align-items:center">
+      <div>
+        <p style="text-transform:uppercase;letter-spacing:0.12em;font-size:13px;font-weight:700;color:oklch(0.94 0.028 110);margin:0 0 16px">Get in touch</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,3.4vw,38px);margin:0 0 16px;color:oklch(0.985 0.01 78)">Building something that needs someone who can lead AI delivery, not just code it? Let's talk.</h2>
+        <p style="font-size:15px;color:oklch(0.965 0.018 70 / 0.75);margin:0">Melbourne, Australia</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px;align-items:flex-start">
+        <a href="mailto:chris@business-mono.dev" style="color:oklch(0.985 0.01 78);font-size:22px;font-weight:700;text-decoration:underline;text-underline-offset:4px">chris@business-mono.dev</a>
+        <div style="display:flex;gap:20px">
+          <a href="https://linkedin.com/in/chrispollard" target="_blank" rel="noopener noreferrer" style="color:oklch(0.965 0.018 70);font-size:14px;font-weight:600">LinkedIn</a>
+          <a href="https://github.com/avunculargroup" target="_blank" rel="noopener noreferrer" style="color:oklch(0.965 0.018 70);font-size:14px;font-weight:600">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:oklch(0.30 0.05 130);color:oklch(0.965 0.018 70 / 0.75);padding:40px 0;border-top:1px solid oklch(0.985 0.01 78 / 0.15)">
+    <div style="max-width:1160px;margin:0 auto;padding:0 32px">
+      <p style="font-size:13px;line-height:1.7;margin:0 0 16px;max-width:80ch"><b style="color:oklch(0.985 0.01 78)">A quick note on how this works.</b> The Q&amp;A above is a real multi-agent loop, not a script — it reads only from a small, curated set of notes about my work, cites what it finds, and tells you plainly when something isn't covered rather than guessing. Nothing you type is stored: no accounts, no database, no memory between visits. Experience and education come from my CV; project facts from the public business-mono repo.</p>
+      <p style="font-size:12px;margin:0">© 2026 Chris Pollard · Built as a live demonstration of agent engineering.</p>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  EXAMPLES = [
+    {
+      id: "rag",
+      label: "Production RAG?",
+      query: "Has Chris shipped production RAG?",
+      answer: "Yes — business-mono's knowledge base runs hybrid retrieval in production: pgvector similarity search, graph traversal, and Postgres full-text, combined depending on the question. I built and ship it myself, including the ingestion pipeline that keeps it current.",
+      steps: ["Searched my notes for 'RAG'", "Found the business-mono case study", "Checked the retrieval architecture details", "Wrote you a grounded answer"],
+    },
+    {
+      id: "safety",
+      label: "How does it stay safe?",
+      query: "How does his agent system stay safe?",
+      answer: "Trust is earned in stages. Actions graduate from human-confirmed, to batch-approved, to autonomous as they prove reliable — but sensitive ones like emails, published content, or anything touching client money always stay human-approved. A dedicated compliance agent also reviews advice-framed writing before it goes out.",
+      steps: ["Looked up the safety model", "Pulled the approval-graduation details", "Cross-checked the compliance-agent design", "Wrote you a grounded answer"],
+    },
+    {
+      id: "work",
+      label: "Where has he worked?",
+      query: "Where has Chris worked?",
+      answer: "Most recently as Director at Bitcoin Treasury Solutions, building business-mono. Before that, a Technical Implementation Analyst at Juvare, a Software Engineer at Beyond Essential Systems, and a decade in project and operations roles before I taught myself to code.",
+      steps: ["Read through my CV", "Ordered the roles by recency", "Checked the dates against my notes", "Wrote you a grounded answer"],
+    },
+  ];
+
+  DECISIONS = [
+    { kicker: "Retrieval", title: "Hybrid search, not just vectors", body: "I didn't want the knowledge base guessing. It combines vector similarity, graph traversal, and full-text search, so each question gets the retrieval method suited to it, not a one-size-fits-all lookup." },
+    { kicker: "Control flow", title: "Pausing mid-thought, on purpose", body: "The requirements agent can stop mid-workflow to ask a clarifying question, then pick up right where it left off. Real work rarely happens in one uninterrupted pass, so I didn't build it that way." },
+    { kicker: "Safety", title: "Trust, earned in stages", body: "Actions graduate from human-confirmed, to batch-approved, to autonomous — but never all the way for the things that matter. Emails, published content, anything touching a client's money stays in a human's hands." },
+    { kicker: "Governance", title: "A compliance agent that can't be talked out of it", body: "Every piece of advice-framed writing gets reviewed against the actual regulations, logs its verdict, and re-checks itself the moment the copy changes. No shortcuts." },
+  ];
+
+  SKILL_GROUPS = [
+    { title: "Language & frameworks", tags: ["TypeScript", "Next.js 15", "React", "React Native", "Node.js", "Mastra"] },
+    { title: "LLM & data", tags: ["Agent orchestration", "RAG", "pgvector", "Supabase", "Evals"] },
+    { title: "Systems & delivery", tags: ["Railway", "Vercel", "Webhooks", "Ingestion pipelines", "Docs-first"] },
+  ];
+
+  ROLES = [
+    { year: "2025 — now", role: "Director", company: "Bitcoin Treasury Solutions", blurb: "Leading the AI practice and bitcoin education arm — directing the roadmap and client relationships, and building the technical system behind business-mono myself." },
+    { year: "2023 — now", role: "Technical Implementation Analyst", company: "Juvare", blurb: "Shipping front-end features for client-facing tools, and leading a code-review process I set up to mentor the junior developers on the team." },
+    { year: "2021 — 2023", role: "Software Engineer", company: "Beyond Essential Systems", blurb: "Full-stack work across a monorepo of microservices and a React Native app — I contributed to Tupaia, a health-data platform, and Tamanu, an EMR used across the Pacific." },
+    { year: "2021", role: "Software Engineering Immersive", company: "General Assembly", blurb: "Twelve weeks, full-time, learning to actually build things — JavaScript, Node, React, Postgres. The turning point." },
+    { year: "2015 — 2020", role: "Project Manager", company: "VTAC", blurb: "Led the build and launch of FlexiDirect, a SaaS platform — pricing, roadmap, and the whole cross-functional mess of shipping something real." },
+    { year: "2007 — 2015", role: "Project & operations roles", company: "RMIT · La Trobe · Monash · Melbourne · Swinburne", blurb: "A decade in project coordination and student admin. Not glamorous, but it's where I learned how organisations actually work." },
+  ];
+
+  state = {
+    asked: null,
+    phase: "idle",
+    revealedCount: 0,
+    inputValue: "",
+    showPitch: false,
+    pitchRole: "",
+    pitchCompany: "",
+    pitchResult: null,
+  };
+
+  ask = (example) => {
+    if (this._interval) clearInterval(this._interval);
+    if (this._timeout) clearTimeout(this._timeout);
+    this.setState({ asked: example, phase: "thinking", revealedCount: 0, inputValue: "" });
+    let count = 0;
+    this._interval = setInterval(() => {
+      count += 1;
+      this.setState({ revealedCount: count });
+      if (count >= example.steps.length) {
+        clearInterval(this._interval);
+        this._timeout = setTimeout(() => this.setState({ phase: "answered" }), 450);
+      }
+    }, 420);
+  };
+
+  submitCustom = (e) => {
+    e.preventDefault();
+    const v = (this.state.inputValue || "").trim();
+    if (!v) return;
+    const lower = v.toLowerCase();
+    let match = null;
+    if (/rag|retriev|vector/.test(lower)) match = this.EXAMPLES[0];
+    else if (/safe|safety|complian|trust/.test(lower)) match = this.EXAMPLES[1];
+    else if (/work|experience|where|career|job/.test(lower)) match = this.EXAMPLES[2];
+    if (match) {
+      this.ask(match);
+    } else {
+      this.ask({
+        query: v,
+        answer: "That's outside what I've written this demo to answer from — the real version would search my notes for it honestly, or tell you plainly it doesn't know. Try one of the examples above, or just email me.",
+        steps: ["Searched my notes for this", "Didn't find a solid match", "Being honest instead of guessing"],
+      });
+    }
+  };
+
+  setInput = (e) => this.setState({ inputValue: e.target.value });
+  togglePitch = () => this.setState((s) => ({ showPitch: !s.showPitch }));
+  setPitchRole = (e) => this.setState({ pitchRole: e.target.value });
+  setPitchCompany = (e) => this.setState({ pitchCompany: e.target.value });
+
+  submitPitch = (e) => {
+    e.preventDefault();
+    const role = this.state.pitchRole.trim() || "AI Engineer";
+    const company = this.state.pitchCompany.trim();
+    this.setState({
+      pitchResult: {
+        headline: `Why I'd be a strong ${role}${company ? " at " + company : ""}`,
+        whyFit: [
+          "A decade of project and product experience before I ever wrote code — I know how the business side thinks.",
+          "I've shipped a production multi-agent system solo, end to end, not just prototyped one.",
+          "I build with safety and governance in mind from day one, not bolted on after.",
+        ],
+        relevantWork: [
+          "business-mono — multi-agent operations platform (hub-and-spoke, 9+ specialist agents)",
+          "This portfolio's live agent — grounded Q&A with citations and a real tool loop",
+        ],
+        caveats: ["I'm newer to large engineering orgs — most of my recent work has been solo or small-team."],
+      },
+    });
+  };
+
+  componentWillUnmount() {
+    if (this._interval) clearInterval(this._interval);
+    if (this._timeout) clearTimeout(this._timeout);
+  }
+
+  renderVals() {
+    const asked = this.state.asked;
+    const stepsView = asked
+      ? asked.steps.map((text, i) => ({ text, n: i + 1, opacity: i < this.state.revealedCount ? 1 : 0.32 }))
+      : [];
+    const pitch = this.state.pitchResult;
+    return {
+      examples: this.EXAMPLES.map((ex) => ({ ...ex, run: () => this.ask(ex) })),
+      decisions: this.DECISIONS,
+      skillGroups: this.SKILL_GROUPS,
+      roles: this.ROLES,
+      inputValue: this.state.inputValue,
+      onInputChange: this.setInput,
+      onSubmitCustom: this.submitCustom,
+      asked,
+      hasAsked: !!asked,
+      noAsked: !asked,
+      isThinking: this.state.phase === "thinking",
+      isAnswered: this.state.phase === "answered",
+      stepsView,
+      showPitch: this.state.showPitch,
+      pitchToggleLabel: this.state.showPitch ? "Hide pitch form ↑" : "Get a tailored pitch ↴",
+      togglePitch: this.togglePitch,
+      pitchRole: this.state.pitchRole,
+      pitchCompany: this.state.pitchCompany,
+      onPitchRole: this.setPitchRole,
+      onPitchCompany: this.setPitchCompany,
+      onSubmitPitch: this.submitPitch,
+      pitch,
+      hasPitch: !!pitch,
+      hasCaveats: !!(pitch && pitch.caveats && pitch.caveats.length > 0),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

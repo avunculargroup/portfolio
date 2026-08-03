@@ -1,38 +1,27 @@
 .trace {
-  background: var(--panel);
-  border-radius: 8px;
-  color: var(--muted-dk);
-  overflow: hidden;
-  position: relative;
-  box-shadow: 0 24px 48px -30px rgba(20, 22, 28, 0.5);
   display: flex;
   flex-direction: column;
+  gap: 8px;
+  padding-top: 16px;
+  margin-top: 16px;
+  border-top: 1px solid var(--line);
 }
 
-/* Faint horizontal rule texture — the "instrument" surface. */
-.trace::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(var(--line-dk) 1px, transparent 1px);
-  background-size: 100% 28px;
-  opacity: 0.25;
-  pointer-events: none;
-}
-
-.head {
+.title {
   display: flex;
   align-items: center;
-  gap: 9px;
-  padding: 13px 16px;
-  border-bottom: 1px solid var(--line-dk);
-  position: relative;
-  flex: none;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 0 0 4px;
 }
 
 .dot {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: var(--signal);
   flex: none;
@@ -42,83 +31,34 @@
   animation: pulse 2.4s infinite;
 }
 
-.title {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--panel-text-dim);
-}
-
-.status {
-  margin-left: auto;
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 11px;
-  color: var(--muted-dk);
-}
-
-/* Internal scroll so a long trace can't blow out the page on mobile
-   (spec §6.2); the token/cost footer stays pinned below it. */
 .body {
-  padding: 14px 16px;
-  position: relative;
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 12.5px;
-  min-height: 220px;
-  max-height: 46vh;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;
-  flex: 1;
-}
-
-@media (min-width: 1024px) {
-  .body {
-    min-height: 280px;
-    max-height: 520px;
-  }
-}
-
-.empty {
-  color: var(--muted-dk);
-  opacity: 0.75;
-  line-height: 1.7;
-  margin: 0;
-}
-
-.empty b {
-  color: #aeb7c8;
-  font-weight: 500;
-}
-
-.foot {
-  border-top: 1px solid var(--line-dk);
-  padding: 10px 16px;
   display: flex;
-  gap: 18px;
-  flex-wrap: wrap;
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 11px;
-  color: var(--muted-dk);
-  flex: none;
-  position: relative;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.foot b {
-  color: var(--panel-text-dim);
-  font-weight: 600;
+.meta {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 8px 0 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dot.live {
+    animation: none;
+  }
 }
 
 /* Declared locally: CSS Modules scopes @keyframes names, so a definition in
    globals.css would not match this animation-name. */
 @keyframes pulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(224, 151, 43, 0.55);
+    box-shadow: 0 0 0 0 oklch(0.54 0.075 135 / 0.55);
   }
   70% {
-    box-shadow: 0 0 0 9px rgba(224, 151, 43, 0);
+    box-shadow: 0 0 0 6px oklch(0.54 0.075 135 / 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(224, 151, 43, 0);
+    box-shadow: 0 0 0 0 oklch(0.54 0.075 135 / 0);
   }
 }

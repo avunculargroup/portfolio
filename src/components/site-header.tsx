@@ -8,7 +8,6 @@ const NAV_LINKS = [
   { href: "#ask", label: "Ask" },
   { href: "#work", label: "Work" },
   { href: "#experience", label: "Experience" },
-  { href: "#contact", label: "Contact" },
 ] as const;
 
 export function SiteHeader() {
@@ -104,7 +103,7 @@ export function SiteHeader() {
 
         <span className={styles.who}>
           {SITE.name}
-          <span className={styles.role}>{SITE.role}</span>
+          <span className={styles.role}>{SITE.role} · Melbourne</span>
         </span>
 
         <span className={styles.spacer} />
@@ -112,15 +111,14 @@ export function SiteHeader() {
         <span className={styles.tag}>Live agent</span>
 
         <nav className={styles.nav} aria-label="Primary">
-          {NAV_LINKS.map((link, index) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={`${styles.navLink} ${index === 0 ? styles.cta : ""}`}
-            >
+          {NAV_LINKS.map((link) => (
+            <a key={link.href} href={link.href} className={styles.navLink}>
               {link.label}
             </a>
           ))}
+          <a href="#contact" className={styles.sayHi}>
+            Say hi
+          </a>
         </nav>
 
         <button
@@ -155,6 +153,15 @@ export function SiteHeader() {
                   </a>
                 </li>
               ))}
+              <li>
+                <a
+                  href="#contact"
+                  className={styles.panelLink}
+                  onClick={() => close(false)}
+                >
+                  Say hi
+                </a>
+              </li>
             </ul>
           </nav>
         </div>

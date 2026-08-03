@@ -70,7 +70,7 @@ export function AskConsole({
   }
 
   return (
-    <div id="ask">
+    <div>
       <form className={styles.form} onSubmit={submit}>
         <label className="srOnly" htmlFor="ask-input">
           Ask the portfolio agent a question
@@ -111,13 +111,13 @@ export function AskConsole({
         ))}
         <button
           type="button"
-          className={styles.chip}
+          className={styles.pitchToggle}
           onClick={togglePitch}
           aria-expanded={showPitch}
           aria-controls={pitchFormId}
           disabled={disabled}
         >
-          Pitch him for a role ↴
+          {showPitch ? "Hide pitch form ↑" : "Get a tailored pitch ↴"}
         </button>
       </div>
 
