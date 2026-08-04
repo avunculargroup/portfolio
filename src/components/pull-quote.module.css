@@ -23,3 +23,13 @@
   color: var(--ink);
   margin: 0;
 }
+
+/* Reads as the takeaway under the quote: sans, smaller, accent-coloured. */
+.coda {
+  margin: 20px 0 0;
+  font-size: clamp(15px, 1.5vw, 17px);
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  color: var(--signal-dk);
+}
