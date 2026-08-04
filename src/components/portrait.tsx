@@ -47,8 +47,8 @@ export function Portrait() {
           src="/portrait.webp"
           alt="Chris Pollard"
           className={styles.portrait}
-          width={640}
-          height={640}
+          width={1400}
+          height={1400}
           sizes="(min-width: 768px) 420px, 100vw"
           priority
           onError={() => setFailed(true)}
