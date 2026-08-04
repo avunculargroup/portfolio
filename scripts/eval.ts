@@ -99,7 +99,16 @@ const RETRIEVAL_FIXTURES: RetrievalFixture[] = [
   },
 ];
 
-type AgentAssertion = (answer: string, toolNames: string[]) => string | null;
+interface ToolRun {
+  name: string;
+  output: unknown;
+}
+
+type AgentAssertion = (
+  answer: string,
+  toolNames: string[],
+  toolRuns: ToolRun[],
+) => string | null;
 
 interface AgentFixture {
   name: string;
@@ -242,10 +251,34 @@ const AGENT_FIXTURES: AgentFixture[] = [
     },
   },
   {
+    // Asserts the tool *succeeded*, not just that it was called. The earlier
+    // version only checked the call, so a tool that threw on every invocation
+    // still passed.
     name: "draft_pitch returns a grounded structured pitch",
     question: "Pitch Chris for this role: Senior AI Engineer at Atlassian",
-    assert: (_answer, tools) =>
-      tools.includes("draftPitch") ? null : "did not call draft_pitch",
+    assert: (_answer, tools, runs) => {
+      if (!tools.includes("draftPitch")) return "did not call draft_pitch";
+
+      const run = runs.find((entry) => entry.name === "draftPitch");
+      const output = run?.output as
+        | { pitch?: { headline?: unknown; why_fit?: unknown }; note?: unknown }
+        | undefined;
+
+      if (!output) return "draft_pitch produced no output";
+      if (!output.pitch) {
+        return `draft_pitch returned no pitch: ${String(output.note ?? "unknown reason")}`;
+      }
+      if (typeof output.pitch.headline !== "string" || !output.pitch.headline) {
+        return "pitch has no headline";
+      }
+      if (
+        !Array.isArray(output.pitch.why_fit) ||
+        output.pitch.why_fit.length === 0
+      ) {
+        return "pitch has no why_fit points";
+      }
+      return null;
+    },
   },
   {
     name: "get_project_detail is used for architecture depth",
@@ -329,7 +362,13 @@ async function runAgentEvals(): Promise<Outcome[]> {
       const toolNames = result.steps.flatMap((step) =>
         step.toolCalls.map((call) => call.toolName as string),
       );
-      const failure = fixture.assert(result.text, toolNames);
+      const toolRuns: ToolRun[] = result.steps.flatMap((step) =>
+        step.toolResults.map((toolResult) => ({
+          name: toolResult.toolName as string,
+          output: (toolResult as { output?: unknown }).output,
+        })),
+      );
+      const failure = fixture.assert(result.text, toolNames, toolRuns);
 
       outcomes.push({
         name: fixture.name,

@@ -13,9 +13,14 @@ import type {
   LanguageModelV3Usage,
 } from "@ai-sdk/provider";
 import { MockLanguageModelV3, simulateReadableStream } from "ai/test";
-import { createAgentUIStreamResponse, stepCountIs, ToolLoopAgent } from "ai";
+import {
+  asSchema,
+  createAgentUIStreamResponse,
+  stepCountIs,
+  ToolLoopAgent,
+} from "ai";
 import { SYSTEM_PROMPT } from "../src/lib/agent";
-import { portfolioTools } from "../src/lib/tools";
+import { PITCH_SCHEMA, portfolioTools } from "../src/lib/tools";
 import { collectSources, collectTrace } from "../src/lib/trace";
 import { MAX_OUTPUT_TOKENS, MAX_STEPS } from "../src/lib/config";
 
@@ -120,6 +125,40 @@ function check(name: string, condition: boolean, detail?: string) {
   }
 }
 
+/**
+ * The pitch schema has to survive the strictest structured-output dialect it
+ * might meet: every property in `required`, no array bounds, no optional keys.
+ * A schema that violates this is rejected outright by strict json_schema modes,
+ * which is what broke draft_pitch — it failed on every call, not intermittently.
+ */
+async function checkPitchSchemaIsPortable() {
+  const schema = (await asSchema(PITCH_SCHEMA).jsonSchema) as {
+    properties?: Record<string, unknown>;
+    required?: string[];
+  };
+
+  const properties = Object.keys(schema.properties ?? {});
+  const required = schema.required ?? [];
+  const missing = properties.filter((key) => !required.includes(key));
+
+  check(
+    "pitch schema marks every property required",
+    missing.length === 0,
+    `optional in strict mode: ${missing.join(", ")}`,
+  );
+
+  const serialised = JSON.stringify(schema);
+  const bounds = ["minItems", "maxItems", "uniqueItems"].filter((keyword) =>
+    serialised.includes(`"${keyword}"`),
+  );
+
+  check(
+    "pitch schema carries no array-bound keywords",
+    bounds.length === 0,
+    `unsupported keywords: ${bounds.join(", ")}`,
+  );
+}
+
 async function main() {
   console.log("Agent streaming contract (mock model)\n");
 
@@ -222,6 +261,8 @@ async function main() {
     sources.length > 0 && typeof sources[0]?.title === "string",
     JSON.stringify(sources.map((s) => s.id)),
   );
+
+  await checkPitchSchemaIsPortable();
 
   console.log(
     failures.length === 0

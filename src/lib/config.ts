@@ -8,6 +8,15 @@
 export const MAX_OUTPUT_TOKENS = 500;
 export const MAX_STEPS = 6;
 
+/**
+ * draft_pitch composes its pitch in a nested model call. Bound it too, and cap
+ * how many bullets it may return — the schema no longer carries min/max item
+ * counts (they are not portable across structured-output implementations), so
+ * the ceiling is enforced here instead.
+ */
+export const PITCH_MAX_OUTPUT_TOKENS = 900;
+export const PITCH_MAX_ITEMS = 4;
+
 /** Retrieval defaults. */
 export const RETRIEVAL_TOP_K = 3;
 /** Chunks scoring below this are treated as "no useful match" rather than padding. */
