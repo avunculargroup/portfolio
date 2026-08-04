@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./hero.module.css";
 
 /**
- * Renders /public/portrait.jpg if present. Falls back to a monogram card
+ * Renders /public/portrait.webp if present. Falls back to a monogram card
  * rather than a broken-image icon — the site must stand alone even without a
  * photo asset in place (CLAUDE.md non-negotiable §5).
  *
@@ -44,11 +44,11 @@ export function Portrait() {
       ) : (
         <Image
           ref={imgRef}
-          src="/portrait.jpg"
+          src="/portrait.webp"
           alt="Chris Pollard"
           className={styles.portrait}
-          width={420}
-          height={460}
+          width={640}
+          height={640}
           sizes="(min-width: 768px) 420px, 100vw"
           priority
           onError={() => setFailed(true)}

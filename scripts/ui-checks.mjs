@@ -21,13 +21,12 @@ for (const vp of viewports) {
   const errors = [];
   page.on('pageerror', e => errors.push(String(e)));
   page.on('console', m => {
-    // A missing /public/portrait.jpg is expected until a real photo is
-    // added — the Portrait component degrades gracefully to a monogram
-    // card, but the browser still logs the failed request. It surfaces as
-    // a 400 from the next/image optimizer (not a plain 404) because the
-    // request goes to /_next/image rather than straight to the file.
-    const expectedMissingPortrait = /\b(404|400)\b/.test(m.text());
-    if (m.type() === 'error' && !expectedMissingPortrait) errors.push('console: ' + m.text());
+    // No console errors are tolerated. The portrait asset now ships in
+    // /public, so the failed-image exemption that used to live here is
+    // gone — if the photo goes missing the Portrait component still
+    // degrades to a monogram card, but these checks should fail loudly
+    // rather than wave the resulting 400 through.
+    if (m.type() === 'error') errors.push('console: ' + m.text());
   });
 
   await page.goto(BASE, { waitUntil: 'networkidle' });
