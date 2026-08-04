@@ -25,8 +25,8 @@ export const MAX_THREAD_MESSAGES = 40;
 /** Site metadata. */
 export const SITE = {
   name: "Chris Pollard",
-  role: "Director, AI Delivery",
-  title: "Chris Pollard — Director, AI Delivery",
+  role: "AI Delivery Lead",
+  title: "Chris Pollard — AI Delivery Lead",
   description:
     "Melbourne-based AI delivery lead — a hands-on engineer who also brings a decade of project and product management. Ask the live agent about his work.",
   url: "https://chrispollard.dev",

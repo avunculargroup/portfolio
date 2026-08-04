@@ -1,6 +1,6 @@
 # Chris Pollard — Portfolio + Live Agent
 
-A recruiter-facing portfolio site whose centrepiece is a **live agent** visitors can ask about Chris's work — grounded in a curated corpus, cited, with the agent's reasoning shown inline as "How I got there." Positioning: **Director, AI Delivery** (hands-on engineer with a decade of delivery).
+A recruiter-facing portfolio site whose centrepiece is a **live agent** visitors can ask about Chris's work — grounded in a curated corpus, cited, with the agent's reasoning shown inline as "How I got there." Positioning: **AI Delivery Lead** (hands-on engineer with a decade of delivery).
 
 Built to demonstrate LLM engineering by being one: the same patterns (agent loop, RAG, tool use, guardrails) that Chris ships in production, at a minimal, serverless footprint.
 

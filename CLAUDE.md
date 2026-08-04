@@ -4,7 +4,7 @@ Project conventions for building and maintaining this repo. Read alongside `port
 
 ## What this is
 
-A recruiter-facing portfolio for **Chris Pollard**, positioned as **Director, AI Delivery** — a hands-on engineer with a decade of delivery. Its centrepiece is a live agent that answers questions about Chris, grounded in `data/corpus.json` and cited, with the trace of its tool loop shown inline under the answer. Stateless and anonymous.
+A recruiter-facing portfolio for **Chris Pollard**, positioned as an **AI Delivery Lead** — a hands-on engineer with a decade of delivery. Its centrepiece is a live agent that answers questions about Chris, grounded in `data/corpus.json` and cited, with the trace of its tool loop shown inline under the answer. Stateless and anonymous.
 
 ## Non-negotiables
 
@@ -19,7 +19,7 @@ A recruiter-facing portfolio for **Chris Pollard**, positioned as **Director, AI
 - Static site copy (hero, case study, timeline, footer) is **first-person** — Chris speaking for himself, warm and conversational, no hype.
 - The agent itself answers in **third person** ("Chris built…"), per its own system prompt in `lib/agent.ts` — don't make it speak as Chris.
 - Positioning through-line: builds the system *and* leads the delivery. "A human at the edge of every automated decision" is Chris's own phrase — fine to use, don't overuse.
-- Don't inflate: the AI-leadership claim rests on a solo build and being the accountable Director, not on managing a team of engineers. Keep copy defensible in an interview (see spec §4 / the delivery-lead framing).
+- Don't inflate: the AI-leadership claim rests on a solo build, not on leading a team. Keep copy defensible in an interview (see spec §4 / the delivery-lead framing).
 
 ## Design (redesigned 2026 — warm/nature palette)
 
