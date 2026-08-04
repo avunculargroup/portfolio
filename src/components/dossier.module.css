@@ -1,31 +1,39 @@
 .answer {
-  margin-top: 22px;
+  margin-top: 0;
 }
 
 .question {
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-weight: 600;
-  font-size: 15px;
+  font-family: var(--font-serif), Georgia, serif;
+  font-style: italic;
+  font-size: 19px;
   color: var(--ink);
-  margin: 0 0 10px;
+  margin: 0 0 20px;
   display: flex;
-  gap: 9px;
-  align-items: baseline;
+  gap: 12px;
 }
 
 .qKey {
-  color: #8a5a10;
-  font-size: 12px;
-  font-family: var(--font-mono), ui-monospace, monospace;
-  flex: none;
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--tint);
+  color: var(--signal-dk);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-style: normal;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 13px;
 }
 
 .body {
-  font-size: 17.5px;
-  line-height: 1.62;
-  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0 0 24px;
   /* Reserve a line so the first token doesn't shift the page (spec §8, CLS). */
-  min-height: 1.62em;
+  min-height: 1.6em;
 }
 
 .caret {
@@ -45,10 +53,8 @@
 }
 
 .thinking {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-style: italic;
+  font-size: 15px;
   color: var(--muted);
 }
 
@@ -59,13 +65,13 @@
 }
 
 .sourcesTitle {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 11px;
-  letter-spacing: 0.1em;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
   margin: 0 0 8px;
-  font-weight: 500;
 }
 
 .sourceList {
@@ -91,16 +97,16 @@
   position: absolute;
   left: 0;
   top: 0;
-  font-family: var(--font-mono), ui-monospace, monospace;
+  font-family: var(--font-sans), system-ui, sans-serif;
   font-size: 11px;
-  color: #8a5a10;
-  font-weight: 600;
+  color: var(--signal-dk);
+  font-weight: 700;
 }
 
 .sourceTitle {
   color: var(--ink);
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-weight: 600;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-weight: 700;
   font-size: 13px;
 }
 
@@ -118,9 +124,11 @@
 }
 
 .pitchHeadline {
-  font-size: 17.5px;
-  line-height: 1.5;
-  margin: 0 0 14px;
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.4;
+  margin: 0 0 20px;
 }
 
 .pitchGroup {
@@ -128,13 +136,13 @@
 }
 
 .pitchLabel {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 11px;
-  letter-spacing: 0.1em;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--muted);
-  margin: 0 0 6px;
-  font-weight: 500;
+  color: var(--signal-dk);
+  margin: 0 0 10px;
 }
 
 .pitchList {
@@ -144,19 +152,19 @@
 }
 
 .pitchList li {
-  font-size: 15.5px;
+  font-size: 14px;
   line-height: 1.5;
   color: var(--ink);
   padding-left: 16px;
   position: relative;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 
 .pitchList li::before {
   content: "";
   position: absolute;
   left: 0;
-  top: 0.62em;
+  top: 0.6em;
   width: 5px;
   height: 1.5px;
   background: var(--signal);
@@ -164,7 +172,6 @@
 
 .caveats li {
   color: var(--muted);
-  font-size: 14.5px;
 }
 
 .caveats li::before {
@@ -172,14 +179,13 @@
 }
 
 .notice {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 12.5px;
-  line-height: 1.65;
+  font-size: 14px;
+  line-height: 1.6;
   color: var(--muted);
   background: var(--paper-2);
-  border: 1px dashed var(--line);
+  border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 12px 14px;
+  padding: 14px 16px;
   margin: 0;
 }
 

@@ -6,42 +6,42 @@ const ROLES = [
     role: "Director",
     company: "Bitcoin Treasury Solutions",
     blurb:
-      "Structured bitcoin training for professionals, SMEs and individuals — and the venture behind business-mono.",
+      "Leading the AI practice and bitcoin education arm — directing the roadmap and client relationships, and building the technical system behind business-mono myself.",
   },
   {
     year: "2023 — now",
     role: "Technical Implementation Analyst",
     company: "Juvare",
     blurb:
-      "Front-end features and responsive client interfaces; led a code-review system and mentors junior developers.",
+      "Shipping front-end features for client-facing tools, and leading a code-review process I set up to mentor the junior developers on the team.",
   },
   {
     year: "2021 — 2023",
     role: "Software Engineer",
     company: "Beyond Essential Systems",
     blurb:
-      "Full-stack in a monorepo — microservices and a React Native app. Contributed to Tupaia (health-data platform) and Tamanu (Pacific EMR).",
+      "Full-stack work across a monorepo of microservices and a React Native app — I contributed to Tupaia, a health-data platform, and Tamanu, an EMR used across the Pacific.",
   },
   {
     year: "2021",
     role: "Software Engineering Immersive",
     company: "General Assembly",
     blurb:
-      "A 12-week full-time transition into engineering — JavaScript, Node, React, REST, PostgreSQL.",
+      "Twelve weeks, full-time, learning to actually build things — JavaScript, Node, React, Postgres. The turning point.",
   },
   {
     year: "2015 — 2020",
     role: "Project Manager",
     company: "VTAC",
     blurb:
-      "Led the build and launch of the FlexiDirect SaaS platform as product manager — pricing model, roadmap, cross-functional delivery.",
+      "Led the build and launch of FlexiDirect, a SaaS platform — pricing, roadmap, and the whole cross-functional mess of shipping something real.",
   },
   {
     year: "2007 — 2015",
     role: "Project & operations roles",
     company: "RMIT · La Trobe · Monash · Melbourne · Swinburne",
     blurb:
-      "A decade in project coordination, student administration and operations — the grounding behind the product sense.",
+      "A decade in project coordination and student admin. Not glamorous, but it's where I learned how organisations actually work.",
   },
 ] as const;
 
@@ -49,7 +49,7 @@ export function ExperienceTimeline() {
   return (
     <section className="blk" id="experience" aria-labelledby="experience-title">
       <div className="wrap">
-        <p className="secEyebrow mono">Track record</p>
+        <p className="secEyebrow">Track record</p>
         <h2 id="experience-title" className="sectionTitle">
           Experience
         </h2>

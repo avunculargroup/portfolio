@@ -1,15 +1,15 @@
-/* Single column always. Reduced left padding on mobile; node markers and the
-   current-role amber dot are kept (spec §6.3). */
+/* Single column always. Reduced left padding on mobile (spec §6.3). */
 .timeline {
   list-style: none;
   margin: 0;
   padding: 0;
-  border-left: 1.5px solid var(--line);
+  border-left: 2px solid var(--line);
+  max-width: 760px;
 }
 
 .item {
   position: relative;
-  padding: 0 0 24px 16px;
+  padding: 0 0 32px 24px;
 }
 
 .item:last-child {
@@ -19,53 +19,48 @@
 .item::before {
   content: "";
   position: absolute;
-  left: -5px;
-  top: 6px;
-  width: 8px;
-  height: 8px;
+  left: -7px;
+  top: 4px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  background: var(--paper);
-  border: 1.5px solid var(--signal);
-}
-
-/* Current role gets the filled amber dot. */
-.item:first-child::before {
   background: var(--signal);
 }
 
 @media (min-width: 768px) {
   .item {
-    padding: 0 0 26px 24px;
+    padding: 0 0 40px 32px;
   }
 }
 
 /* Year label sits above the role. */
 .year {
   display: block;
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 11.5px;
+  font-size: 13px;
+  font-weight: 700;
   color: var(--muted);
-  letter-spacing: 0.06em;
-  margin-bottom: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
 }
 
 .role {
-  font-size: 16px;
+  font-size: 20px;
   margin: 0;
 }
 
 .company {
   display: block;
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-size: 13.5px;
-  color: #8a5a10; /* darkened amber for AA on --paper */
-  font-weight: 500;
+  font-size: 14px;
+  color: var(--signal-dk);
+  font-weight: 600;
+  margin-top: 2px;
 }
 
 .blurb {
-  font-size: 14.5px;
+  font-size: 15px;
   color: var(--muted);
-  margin: 5px 0 0;
-  max-width: 60ch;
+  margin: 8px 0 0;
+  max-width: 56ch;
   line-height: 1.5;
 }

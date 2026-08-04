@@ -1,0 +1,25 @@
+.band {
+  padding: 48px 0;
+  background: var(--tint);
+}
+
+@media (min-width: 768px) {
+  .band {
+    padding: 64px 0;
+  }
+}
+
+.inner {
+  max-width: 840px;
+  text-align: center;
+}
+
+.quote {
+  font-family: var(--font-serif), Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(20px, 2.6vw, 28px);
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 0;
+}

@@ -145,7 +145,7 @@ export function Dossier({
       <div aria-live="polite" aria-atomic="false">
         {question && (
           <p className={styles.question}>
-            <span className={`${styles.qKey} mono`} aria-hidden="true">
+            <span className={styles.qKey} aria-hidden="true">
               Q
             </span>
             <span>{question}</span>

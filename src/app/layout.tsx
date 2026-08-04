@@ -1,34 +1,27 @@
 import type { Metadata, Viewport } from "next";
-import { Space_Grotesk, Source_Serif_4, JetBrains_Mono } from "next/font/google";
+import { Newsreader, Manrope } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SITE } from "@/lib/config";
 import "./globals.css";
 
 /*
  * Fonts are self-hosted by next/font at build time — no runtime request to
- * fonts.googleapis.com. This is required by the spec (§1) and also removes a
- * class of blank-render bugs (CLAUDE.md → design).
+ * fonts.googleapis.com. This also removes a class of blank-render bugs
+ * (CLAUDE.md → design).
  */
-const display = Space_Grotesk({
+const serif = Newsreader({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  display: "swap",
-  variable: "--font-display",
-});
-
-const serif = Source_Serif_4({
-  subsets: ["latin"],
-  weight: ["400", "600"],
+  weight: ["400", "500", "600"],
   style: ["normal", "italic"],
   display: "swap",
   variable: "--font-serif",
 });
 
-const mono = JetBrains_Mono({
+const sans = Manrope({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
-  variable: "--font-mono",
+  variable: "--font-sans",
 });
 
 export const metadata: Metadata = {
@@ -82,7 +75,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#F3F4F6",
+  themeColor: "#FAF8F3",
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
@@ -94,7 +87,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${display.variable} ${serif.variable} ${mono.variable}`}
+      className={`${serif.variable} ${sans.variable}`}
     >
       <body>
         <a className="skipLink" href="#main">

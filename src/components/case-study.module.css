@@ -1,80 +1,92 @@
-/* Architecture diagram: scrolls horizontally on mobile rather than shrinking
-   text (spec §6.3). */
 .arch {
-  background: var(--panel);
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 24px;
-  color: var(--muted-dk);
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 12.5px;
-  line-height: 1.9;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.archInner {
-  min-width: 34em;
-  white-space: pre;
-  margin: 0;
-  font: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 40px;
+  padding: 32px 20px;
+  background: var(--paper-2);
+  border-radius: 20px;
+  text-align: center;
 }
 
 @media (min-width: 768px) {
   .arch {
-    padding: 24px;
-    margin-bottom: 28px;
+    padding: 40px 24px;
+    margin-bottom: 56px;
   }
 }
 
-.lvl {
-  color: var(--panel-text);
+.archTier {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 600;
 }
 
-.amber {
-  color: var(--signal);
+.archArrow {
+  color: var(--muted);
 }
 
-.mut {
-  color: var(--muted-dk);
+.archSimon {
+  background: var(--signal);
+  color: var(--paper);
+  font-weight: 700;
+  font-size: 15px;
+  padding: 10px 22px;
+  border-radius: 99px;
+}
+
+.archSpecialists {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  max-width: 640px;
+}
+
+.archPill {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  padding: 6px 14px;
+  font-size: 13px;
 }
 
 .cards {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
+  gap: 20px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .cards {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 .card {
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
   background: var(--paper-2);
-  padding: 18px;
+  border-radius: 16px;
+  padding: 26px;
 }
 
 .kicker {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 11px;
-  color: #8a5a10; /* darkened amber for AA on --paper-2 */
-  letter-spacing: 0.06em;
   text-transform: uppercase;
-  margin-bottom: 8px;
+  letter-spacing: 0.08em;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--signal-dk);
+  margin: 0 0 10px;
 }
 
 .cardTitle {
-  font-size: 16px;
-  margin: 0 0 6px;
+  font-size: 20px;
+  margin: 0 0 10px;
 }
 
 .cardBody {
-  font-size: 14.5px;
+  font-size: 15px;
   color: var(--muted);
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.55;
 }

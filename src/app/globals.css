@@ -1,28 +1,28 @@
 /* ---------------------------------------------------------------------------
-   Design tokens (spec §7) — fixed. One accent only: amber --signal.
-   Concept: dossier vs instrument. Calm editorial column, dark trace panel.
+   Design tokens — fixed. Warm paper neutrals + one eucalyptus/sage-olive
+   accent (nature/Melbourne-bush inspired). Concept: a warm, human editorial
+   page — no dark "instrument" surface; the agent trace reads as a calm card,
+   not a terminal.
    --------------------------------------------------------------------------- */
 
 :root {
-  --ink: #14161c;
-  --paper: #f3f4f6;
-  --paper-2: #fbfbfc;
-  --panel: #171a22;
-  --panel-2: #1f232e;
-  --line: #dbdee4;
-  --line-dk: #2b303c;
-  --muted: #5c6270;
-  --muted-dk: #8a93a6;
-  --signal: #e0972b;
-  --signal-soft: #f6e2bd;
+  --ink: oklch(0.27 0.025 45);
+  --paper: oklch(0.985 0.01 78);
+  --paper-2: oklch(0.965 0.018 70);
+  --tint: oklch(0.94 0.028 110);
+  --moss: oklch(0.3 0.05 130);
+  --line: oklch(0.89 0.02 55);
+  --muted: oklch(0.48 0.02 45);
+  --signal: oklch(0.54 0.075 135);
+  --signal-dk: oklch(0.42 0.065 135);
+  --signal-soft: oklch(0.94 0.028 110);
   --ok: #4fb286;
-  --radius: 5px;
-  --container: 1180px;
+  --radius: 12px;
+  --container: 1160px;
 
-  /* Text on the dark panel. Verified ≥ AA against --panel (#171A22):
-     #cfd6e4 ≈ 11.0:1, #e6eaf1 ≈ 13.9:1, --muted-dk #8A93A6 ≈ 5.6:1. */
-  --panel-text: #e6eaf1;
-  --panel-text-dim: #cfd6e4;
+  /* Text on the dark moss surface (contact/footer). */
+  --panel-text: oklch(0.985 0.01 78);
+  --panel-text-dim: oklch(0.965 0.018 70 / 0.75);
 
   --pad-x: 16px;
   --header-h: 52px;
@@ -59,9 +59,10 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+  font-family: var(--font-sans), system-ui, -apple-system, "Segoe UI", Roboto,
+    sans-serif;
   font-size: 17px;
-  line-height: 1.55;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* Nothing should ever cause a horizontal scrollbar (spec §6). */
@@ -70,13 +71,12 @@ body {
 
 /* Utility type roles ------------------------------------------------------- */
 
-.mono {
-  font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Consolas,
-    monospace;
+.serif {
+  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
 }
 
 .disp {
-  font-family: var(--font-display), system-ui, -apple-system, "Segoe UI", Roboto,
+  font-family: var(--font-sans), system-ui, -apple-system, "Segoe UI", Roboto,
     sans-serif;
 }
 
@@ -127,10 +127,9 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-display), system-ui, -apple-system, "Segoe UI", Roboto,
-    sans-serif;
-  font-weight: 600;
-  letter-spacing: -0.015em;
+  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+  font-weight: 500;
+  letter-spacing: -0.005em;
   line-height: 1.1;
   margin: 0;
 }
@@ -176,9 +175,9 @@ ul {
   color: var(--paper);
   padding: 12px 18px;
   border-radius: var(--radius);
-  font-family: var(--font-display), system-ui, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: none;
 }
 
@@ -190,28 +189,28 @@ ul {
 /* Shared section frame ----------------------------------------------------- */
 
 .blk {
-  padding: 44px 0;
-  border-top: 1px solid var(--line);
+  padding: 56px 0;
 }
 
 @media (min-width: 768px) {
   .blk {
-    padding: 56px 0;
+    padding: 96px 0;
   }
 }
 
 .secEyebrow {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 12px;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--signal);
+  color: var(--signal-dk);
   margin-bottom: 12px;
 }
 
 .sectionTitle {
-  font-size: clamp(24px, 3vw, 32px);
-  margin: 0 0 14px;
+  font-size: clamp(28px, 3.6vw, 42px);
+  margin: 0 0 16px;
 }
 
 .lead {
