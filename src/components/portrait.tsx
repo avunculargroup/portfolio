@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import styles from "./hero.module.css";
 
@@ -12,6 +13,13 @@ import styles from "./hero.module.css";
  * hydrating and attaching its onError listener, so the natural error event
  * can be missed. Checking `img.complete`/`naturalWidth` on mount catches
  * that race; onError remains as a backstop for failures that happen later.
+ * This holds for next/image too — it forwards ref/onError to the underlying
+ * <img>, and a missing file surfaces as a 400 from the optimizer.
+ *
+ * width/height are the intrinsic aspect hint only; hero.module.css drives the
+ * rendered box (100% wide, fixed height, object-fit: cover). `priority` is
+ * deliberate — this is the hero's LCP candidate, and next/image would
+ * otherwise lazy-load it and push LCP out past the Lighthouse budget.
  */
 export function Portrait() {
   const [failed, setFailed] = useState(false);
@@ -34,11 +42,15 @@ export function Portrait() {
           </span>
         </div>
       ) : (
-        <img
+        <Image
           ref={imgRef}
           src="/portrait.jpg"
           alt="Chris Pollard"
           className={styles.portrait}
+          width={420}
+          height={460}
+          sizes="(min-width: 768px) 420px, 100vw"
+          priority
           onError={() => setFailed(true)}
         />
       )}
