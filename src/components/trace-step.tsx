@@ -36,11 +36,24 @@ export function TraceStep({
           <div className={styles.meta}>
             {step.detail && <div>{step.detail}</div>}
 
+            {/* Citations resolve to the artefact itself — public commits, the
+                repo — so the trace demonstrates rather than asserts. */}
             {step.hits?.map((hit) => (
               <div key={`${hit.index}-${hit.title}`} className={styles.hitRow}>
                 <span className={styles.hitIndex}>#{hit.index}</span>
                 <span className={styles.hitTitle}>
-                  {hit.title}
+                  {hit.url ? (
+                    <a
+                      className={styles.hitLink}
+                      href={hit.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {hit.title}
+                    </a>
+                  ) : (
+                    hit.title
+                  )}
                   <span className={styles.hitCat}> · {hit.category}</span>
                 </span>
               </div>

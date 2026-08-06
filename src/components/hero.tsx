@@ -1,3 +1,4 @@
+import { AVAILABILITY } from "@/lib/config";
 import { Portrait } from "./portrait";
 import styles from "./hero.module.css";
 
@@ -8,12 +9,21 @@ export function Hero() {
         <div>
           <p className={styles.eyebrow}>Hello, I&rsquo;m</p>
           <h1 className={styles.name}>Chris Pollard.</h1>
+          {/* Availability sits ahead of the prose deliberately: it's the first
+              thing a recruiter needs in order to decide whether to keep
+              reading, and it must survive a 320px screen without scrolling. */}
+          <p className={styles.availability}>
+            <span className={styles.availabilityDot} aria-hidden="true" />
+            {AVAILABILITY.full}
+          </p>
           <p className={styles.intro}>
-            Ten years leading projects and people came before I ever wrote
-            code. Now I run the AI practice at a bitcoin advisory — I set the
-            technical direction, I&rsquo;m the one clients and the board hold
-            accountable, and yes, I still build the systems myself. This site
-            is one of them. Ask it something real.
+            I build production multi-agent LLM systems — the flagship is
+            solo-built, shipped, and running a real business every day. And I
+            spent two years embedded with state government agencies across
+            Australia and New Zealand, police through primary industries,
+            running the requirements and building what came out of them. A
+            hands-on engineer who ships, with the product mind to land it. This
+            site is one of the systems — ask it something real.
           </p>
           <div className={styles.ctas}>
             <a href="#ask" className={styles.ctaPrimary}>

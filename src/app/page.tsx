@@ -3,6 +3,7 @@ import { CaseStudy } from "@/components/case-study";
 import { Contact } from "@/components/contact";
 import { ExperienceTimeline } from "@/components/experience-timeline";
 import { Hero } from "@/components/hero";
+import { Principles } from "@/components/principles";
 import { PullQuote } from "@/components/pull-quote";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -43,6 +44,7 @@ export default function Page() {
         <PullQuote />
         <AskSection agentAvailable={chat} chatModelLabel={CHAT_MODEL} />
         <CaseStudy />
+        <Principles />
         <SkillsBand />
         <ExperienceTimeline />
         <Contact />

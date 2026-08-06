@@ -58,6 +58,33 @@ const RETRIEVAL_FIXTURES: RetrievalFixture[] = [
     question: "Is he open to new roles right now?",
     expectAnyOf: ["faq-availability"],
   },
+  /* The four starter prompts in the ask console. If one of these regresses,
+     the chip sends a visitor to a thin answer — keep them in step. */
+  {
+    name: "starter — see his code",
+    question: "Can I see code he's actually written?",
+    expectAnyOf: ["faq-see-code", "profile-github", "exp-beyond"],
+  },
+  {
+    name: "starter — led a team",
+    question: "Has Chris led a team?",
+    expectAnyOf: ["faq-leadership", "story-pmo-growth", "exp-vtac-pmo"],
+  },
+  {
+    name: "starter — with clients",
+    question: "What's he like with clients?",
+    expectAnyOf: [
+      "exp-juvare-clients",
+      "wow-translation",
+      "wow-stakeholders",
+      "faq-people",
+    ],
+  },
+  {
+    name: "starter — legacy code",
+    question: "How does he handle legacy code?",
+    expectAnyOf: ["exp-juvare-constraints"],
+  },
   {
     name: "remote / location",
     question: "Is he willing to work remotely or relocate?",

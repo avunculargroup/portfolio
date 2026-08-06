@@ -44,6 +44,13 @@ export function CaseStudy() {
           business-mono — a multi-agent platform I designed and run
         </h2>
         <p className="lead">
+          Plainly: it&rsquo;s the software that runs a small business&rsquo;s
+          operations — client records, research, content, compliance review,
+          project management — as a set of LLM agents with a human at the edge
+          of every decision that matters. The business it runs happens to be a
+          bitcoin one; nothing about the system depends on that.
+        </p>
+        <p className="lead">
           Picture a hub-and-spoke team: one coordinator agent, Simon, routes
           work to a roster of specialists, all reading and writing to the same
           database. Running it is less like maintaining code and more like
@@ -51,6 +58,17 @@ export function CaseStudy() {
           designed the architecture, I explain the trade-offs to clients, and
           I&rsquo;m the one who answers for every decision below.
         </p>
+        <p className={styles.repoLine}>
+          The repository is public, so none of this has to be taken on trust.
+        </p>
+        <a
+          className={styles.repoLink}
+          href="https://github.com/avunculargroup/business-mono"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          github.com/avunculargroup/business-mono ↗
+        </a>
 
         <div
           className={styles.arch}

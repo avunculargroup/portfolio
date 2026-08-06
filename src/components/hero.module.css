@@ -38,7 +38,7 @@
 .name {
   font-size: clamp(36px, 5.5vw, 64px);
   line-height: 1.06;
-  margin: 0 0 24px;
+  margin: 0 0 20px;
 }
 
 .intro {
@@ -52,6 +52,33 @@
   .intro {
     font-size: 19px;
   }
+}
+
+/* Availability sits above the fold on every breakpoint — it is the first
+   thing a recruiter needs in order to decide whether to keep reading. */
+.availability {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  max-width: 46ch;
+  margin: 0 0 24px;
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--tint);
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.availabilityDot {
+  flex: none;
+  width: 9px;
+  height: 9px;
+  margin-top: 7px;
+  border-radius: 50%;
+  background: var(--signal);
 }
 
 .ctas {

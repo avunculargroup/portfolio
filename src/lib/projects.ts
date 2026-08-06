@@ -82,7 +82,7 @@ export const PROJECTS = {
       "Vitest (incl. agent evals, CI-gated)",
     ],
     scale:
-      "A genuinely solo build: the coordinator, the specialist agents, the workflows, the ingestion pipelines and the web app were all architected and shipped by one person, across a monorepo with over 950 commits. It is a working system running real operations, not a proof of concept.",
+      "A genuinely solo build: the coordinator, the specialist agents, the workflows, the ingestion pipelines and the web app were all architected and shipped by one person, across a Turborepo monorepo with a CI-gated eval suite. It has been under sustained development rather than built in a burst, and it runs a real business daily. The repository is public, so the scope can be inspected rather than taken on trust.",
   },
 } as const satisfies Record<string, ProjectRecord>;
 

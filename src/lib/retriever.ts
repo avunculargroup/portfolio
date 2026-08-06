@@ -26,11 +26,35 @@ type Stored = Chunk & { embedding: number[] };
 
 const STORED = embeddingsJson as Stored[];
 
-/** Embeddings are usable only if they exist and every row actually has one. */
-const HAS_EMBEDDINGS =
-  Array.isArray(STORED) &&
-  STORED.length > 0 &&
-  STORED.every((c) => Array.isArray(c.embedding) && c.embedding.length > 0);
+/**
+ * Embeddings are usable only if they exist, every row actually has one, and
+ * they still match the corpus chunk for chunk.
+ *
+ * The second half matters: `staticRetriever` returns the text stored alongside
+ * each vector, so an embeddings file built before a corpus edit would feed the
+ * agent superseded facts and hide new chunks entirely — a failure that reads as
+ * "the agent got worse", not as an error. When they've drifted we fall back to
+ * lexical search over the live corpus instead, until `npm run embed` is re-run.
+ */
+const EMBEDDINGS_STALE = (() => {
+  if (!Array.isArray(STORED) || STORED.length === 0) return true;
+  if (!STORED.every((c) => Array.isArray(c.embedding) && c.embedding.length > 0))
+    return true;
+
+  const stored = new Map(STORED.map((chunk) => [chunk.id, chunk]));
+  if (stored.size !== CORPUS.length) return true;
+
+  return CORPUS.some((chunk) => stored.get(chunk.id)?.text !== chunk.text);
+})();
+
+const HAS_EMBEDDINGS = !EMBEDDINGS_STALE;
+
+if (EMBEDDINGS_STALE) {
+  console.warn(
+    "[retriever] data/embeddings.json is missing or out of date with data/corpus.json — " +
+      "serving lexical search. Run `npm run embed` and commit the result.",
+  );
+}
 
 function cosine(a: number[], b: number[]): number {
   let dot = 0;

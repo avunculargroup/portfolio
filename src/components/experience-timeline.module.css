@@ -44,6 +44,17 @@
   margin-bottom: 4px;
 }
 
+.now {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--signal-soft);
+  color: var(--signal-dk);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+
 .role {
   font-size: 20px;
   margin: 0;

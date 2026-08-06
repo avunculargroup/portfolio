@@ -11,13 +11,16 @@
       "skills",
       "scale",
       "ways-of-working",
+      "story",
       "faq"
     ],
     "todo": [
-      "Confirm business-mono is the platform behind Bitcoin Treasury Solutions — stated as fact in project-overview and exp-bts; loosen if that link isn't public.",
-      "Verify the commit count in scale-ownership against the live repo.",
-      "Decide whether to keep Flowise/LangChain in skills-llm alongside Mastra."
-    ]
+      "LinkedIn currently shows the VTAC start as December 2015; the corpus now says November 2014. Update LinkedIn so the two agree.",
+      "LinkedIn must also show the Juvare role ending May 2026 — the corpus and the site now do."
+    ],
+    "categoryNotes": {
+      "story": "Concrete, dated examples for behavioural questions ('tell me about a time'). Deliberately separated from experience so retrieval doesn't surface 2007 anecdotes when someone asks what Chris does now. Always keep the date in the text."
+    }
   },
   "chunks": [
     {
@@ -57,7 +60,7 @@
       "title": "Bitcoin Treasury Solutions — Director",
       "category": "experience",
       "url": "https://www.linkedin.com/in/chris-pollard-au",
-      "text": "Bitcoin Treasury Solutions — Director (March 2025 to present, Melbourne). Delivers structured bitcoin training for professionals, SMEs and individuals. This is the venture behind business-mono, the multi-agent operations platform Chris built to run the business.",
+      "text": "Bitcoin Treasury Solutions — Director (March 2025 to present, Melbourne). This is Chris's current role. The business delivers structured bitcoin training for professionals, SMEs and individuals, and it is also where his production AI work sits: business-mono, the multi-agent operations platform he architected and built solo in TypeScript on Mastra, Next.js 15 and Supabase with pgvector, runs the operation day to day.",
       "tags": [
         "bitcoin treasury solutions",
         "director",
@@ -72,22 +75,29 @@
       "title": "Juvare — Technical Implementation Analyst",
       "category": "experience",
       "url": "https://www.linkedin.com/in/chris-pollard-au",
-      "text": "Juvare — Technical Implementation Analyst (December 2023 to present, Melbourne). Builds front-end features with HTML, CSS, JavaScript, XML, XSL and custom web components, delivering responsive client-facing interfaces. Works across teams on business analysis and database table design; led implementation of a code-review system and mentors junior developers.",
+      "text": "Juvare — Technical Implementation Analyst (December 2023 to May 2026, Melbourne). The title understates the shape of it: roughly 70% front-end web development, 20% business analysis and 10% direct client work. The product is WebEOC, Juvare's emergency and incident management platform; the company is US-owned with core server-side development based in Lithuania, so the Australian team operated as the client-facing end of a distributed product organisation. Chris mentored newer developers both locally and remotely, helped supervise onboarding, and led the implementation of a code-review system.",
       "tags": [
         "juvare",
         "current",
         "frontend",
-        "web components",
+        "business analysis",
+        "client facing",
+        "distributed team",
         "mentoring",
+        "onboarding",
         "code review",
-        "experience"
+        "technical implementation analyst",
+        "experience",
+        "webeoc",
+        "emergency management",
+        "incident management"
       ]
     },
     {
       "id": "exp-beyond",
       "title": "Beyond Essential Systems — Software Engineer",
       "category": "experience",
-      "url": "https://www.linkedin.com/in/chris-pollard-au",
+      "url": "https://github.com/beyondessential/tupaia/commits?author=chris-pollard",
       "text": "Beyond Essential Systems — Software Engineer (September 2021 to December 2023, Melbourne). Full-stack development across server- and client-side packages in a monorepo, including microservices and a React Native app. Contributed to Tupaia, an open-source health-data aggregation and visualisation platform for low-resource settings, and Tamanu, an electronic medical record system for the Pacific region.",
       "tags": [
         "beyond essential",
@@ -97,7 +107,9 @@
         "monorepo",
         "tupaia",
         "tamanu",
-        "experience"
+        "experience",
+        "public repo",
+        "open source"
       ]
     },
     {
@@ -121,7 +133,7 @@
       "title": "VTAC — Project Manager (product)",
       "category": "experience",
       "url": "https://www.linkedin.com/in/chris-pollard-au",
-      "text": "Victorian Tertiary Admissions Centre — Project Manager (December 2015 to March 2020, Melbourne). Owned delivery of the FlexiDirect SaaS platform as product manager — from client discovery and pricing model to roadmap and release — coordinating developers, testers and UX designers to ship against strategic goals. The clearest early example of Chris leading technical delivery end to end.",
+      "text": "Victorian Tertiary Admissions Centre — Project Manager (November 2014 to March 2020, Melbourne). Owned delivery of the FlexiDirect SaaS platform — the direct application portal used by education providers — as product manager, from client discovery and pricing model to roadmap and release, coordinating developers, testers and UX designers to ship against strategic goals. The clearest early example of Chris leading technical delivery end to end.",
       "tags": [
         "vtac",
         "project manager",
@@ -129,6 +141,7 @@
         "delivery lead",
         "saas",
         "flexidirect",
+        "direct application portal",
         "roadmap",
         "experience"
       ]
@@ -294,7 +307,7 @@
       "title": "Core stack",
       "category": "skills",
       "url": "https://github.com/avunculargroup/business-mono",
-      "text": "Chris works primarily in TypeScript and Node.js. On the web he uses Next.js 15 (App Router), React and React Native; for agents and workflows, Mastra; and Supabase with pgvector for data and retrieval, organised in a Turborepo monorepo. His full-stack background spans microservices and client apps.",
+      "text": "Chris works primarily in TypeScript and Node.js. On the web he uses Next.js 15 (App Router), React and React Native; for agents and workflows, Mastra; and Supabase with pgvector for data and retrieval, organised in a Turborepo monorepo. His full-stack background spans microservices and client apps. He writes end-to-end and integration tests as part of the work, not after it.",
       "tags": [
         "skills",
         "stack",
@@ -304,7 +317,10 @@
         "react native",
         "node",
         "mastra",
-        "supabase"
+        "supabase",
+        "testing",
+        "end-to-end",
+        "e2e"
       ]
     },
     {
@@ -331,14 +347,17 @@
       "title": "Scale and ownership",
       "category": "scale",
       "url": "https://github.com/avunculargroup/business-mono",
-      "text": "business-mono is a genuinely solo build: the coordinator, the specialist agents, the workflows, the ingestion pipelines and the web app were all architected and shipped by one person, across a monorepo with over 950 commits. It is a working system, not a proof of concept.",
+      "text": "business-mono is a genuinely solo build: the coordinator, the specialist agents, the workflows, the ingestion pipelines and the web app were all architected and shipped by one person, across a Turborepo monorepo with a CI-gated eval suite. It has been under sustained development rather than built in a burst, and it runs a real business daily. The repository is public, so the scope can be inspected rather than taken on trust.",
       "tags": [
         "scale",
         "solo",
         "ownership",
-        "commits",
         "shipped",
-        "production"
+        "production",
+        "scope",
+        "sustained",
+        "public repo",
+        "verifiable"
       ]
     },
     {
@@ -420,13 +439,408 @@
       "title": "Is he available?",
       "category": "faq",
       "url": "https://www.linkedin.com/in/chris-pollard-au",
-      "text": "Chris is selectively open to new opportunities, particularly AI delivery lead roles. He's currently at Juvare and directs Bitcoin Treasury Solutions, so he's choosy rather than urgent.",
+      "text": "Chris is available now for part-time and fractional engagements, and has full contract capacity from mid-2027. He finished at Juvare in May 2026 and directs Bitcoin Treasury Solutions, so until then the shape of the engagement matters as much as the role. He's particularly interested in AI delivery lead work.",
       "tags": [
         "availability",
         "open to work",
         "start date",
         "notice",
+        "fractional",
+        "part-time",
+        "contract",
+        "capacity",
+        "engagement",
         "faq"
+      ]
+    },
+    {
+      "id": "exp-vtac-pmo",
+      "title": "VTAC — building and leading the project management office",
+      "category": "experience",
+      "url": "https://www.linkedin.com/in/chris-pollard-au",
+      "text": "Alongside managing product at VTAC, Chris ran the project management office, which he grew from one person to six full-time staff between 2018 and 2020. He set the practice up as well as staffing it: documentation standards, risk and change management, and coordination across developers, testers and UX. It is the clearest example of him leading people, not just delivery.",
+      "tags": [
+        "vtac",
+        "pmo",
+        "leadership",
+        "team",
+        "managed people",
+        "project management office",
+        "grew team",
+        "experience"
+      ]
+    },
+    {
+      "id": "wow-listening",
+      "title": "Chris on listening",
+      "category": "ways-of-working",
+      "url": "https://www.linkedin.com/in/chris-pollard-au",
+      "text": "A principle Chris has stated consistently across his career: he listens more than he talks, and pays as much attention to what people aren't saying as to what they are. His view is that most people already know the right decision — they need a safe enough room to articulate it. It's why elicitation and human-in-the-loop design keep showing up in the systems he builds.",
+      "tags": [
+        "listening",
+        "people skills",
+        "communication",
+        "facilitation",
+        "stakeholders",
+        "soft skills",
+        "elicitation",
+        "ways of working"
+      ]
+    },
+    {
+      "id": "wow-ownership",
+      "title": "Chris on owning decisions",
+      "category": "ways-of-working",
+      "url": "https://www.linkedin.com/in/chris-pollard-au",
+      "text": "The second principle he returns to: don't just make decisions, own them — including the wrong ones. His argument is that visible ownership of mistakes is a net positive for the individual, the team and the organisation, because it lets the team learn and sets a norm of honesty. Easy to say, he notes, and hard to actually do.",
+      "tags": [
+        "ownership",
+        "accountability",
+        "mistakes",
+        "culture",
+        "honesty",
+        "leadership",
+        "soft skills",
+        "ways of working"
+      ]
+    },
+    {
+      "id": "wow-translation",
+      "title": "Working between engineers and non-technical stakeholders",
+      "category": "ways-of-working",
+      "url": "https://www.linkedin.com/in/chris-pollard-au",
+      "text": "Chris has spent years as the person in the middle: at VTAC the development team worked in Agile while the university clients expected a waterfall shape, and his job was to find a working balance rather than force either side to convert. He writes user stories, runs discovery, and translates technical constraint into terms a client can make decisions with. Recruiters asking whether he can face a client as well as a codebase have a decade of evidence for it.",
+      "tags": [
+        "stakeholders",
+        "translation",
+        "agile",
+        "waterfall",
+        "client facing",
+        "communication",
+        "discovery",
+        "user stories",
+        "ways of working"
+      ]
+    },
+    {
+      "id": "wow-stakeholders",
+      "title": "Senior stakeholder relationships",
+      "category": "ways-of-working",
+      "url": "https://www.linkedin.com/in/chris-pollard-au",
+      "text": "Through the VTAC years Chris built and held relationships with senior executives across Victorian universities and education providers — a consortium environment where clients are also owners, and competing interests are the normal condition rather than an exception. He handled client discovery and pricing as well as delivery, so the commercial conversation and the technical one sat with the same person.",
+      "tags": [
+        "stakeholder management",
+        "executives",
+        "clients",
+        "consortium",
+        "governance",
+        "commercial",
+        "negotiation",
+        "ways of working"
+      ]
+    },
+    {
+      "id": "story-pmo-growth",
+      "title": "Example — growing a project office from one to six",
+      "category": "story",
+      "url": "https://www.linkedin.com/in/chris-pollard-au",
+      "text": "Example (VTAC, 2018–2020). Chris took a project management office that was one person — him — and grew it to six full-time staff over two years, defining how the practice worked as it scaled: documentation, risk and change management, and how project managers interfaced with an in-house full-stack team building both B2C and B2B applications. Useful answer to 'has he built anything beyond his own output?'",
+      "tags": [
+        "example",
+        "story",
+        "tell me about a time",
+        "leadership",
+        "team building",
+        "scaling",
+        "pmo",
+        "vtac",
+        "hiring"
+      ]
+    },
+    {
+      "id": "story-agile-waterfall",
+      "title": "Example — reconciling Agile delivery with waterfall clients",
+      "category": "story",
+      "url": "https://www.linkedin.com/in/chris-pollard-au",
+      "text": "Example (VTAC, FlexiDirect application portal). The internal development team ran Agile; the university and provider clients planned in waterfall, with fixed annual admissions deadlines they could not move. Rather than convert either side, Chris ran the project as a translation layer — iterative internally, milestone-shaped externally — so engineers kept their cadence and clients kept the commitments they needed. Good answer to questions about conflicting stakeholder expectations.",
+      "tags": [
+        "example",
+        "story",
+        "tell me about a time",
+        "conflict",
+        "stakeholders",
+        "agile",
+        "waterfall",
+        "delivery",
+        "vtac",
+        "flexidirect"
+      ]
+    },
+    {
+      "id": "story-autonomy",
+      "title": "Example — delivering to a hard external deadline alone",
+      "category": "story",
+      "url": "https://www.linkedin.com/in/chris-pollard-au",
+      "text": "Example (Global Vision Media, 2007). On a four-person team producing a community television pilot series, Chris shot, edited and compiled each episode for ingest by Channel 31 at the end of every week — mostly working solo in the edit suite with minimal direction. An early instance of the pattern that shows up again in business-mono: given a deadline and no supervision, the thing ships.",
+      "tags": [
+        "example",
+        "story",
+        "tell me about a time",
+        "autonomy",
+        "deadline",
+        "self-directed",
+        "minimal supervision",
+        "shipping"
+      ]
+    },
+    {
+      "id": "faq-people",
+      "title": "Is he good with people and stakeholders?",
+      "category": "faq",
+      "url": "https://www.linkedin.com/in/chris-pollard-au",
+      "text": "It's the half of the profile most AI engineers don't have. A decade of project and product roles — VTAC, La Trobe, RMIT, Monash, Melbourne, Swinburne — was spent facing clients, executives, academics and students, and the current work carries it forward: client discovery, requirements elicitation, and designing systems that keep a human in the decision. He'd rather run the awkward conversation early than discover the misalignment at delivery.",
+      "tags": [
+        "people",
+        "stakeholders",
+        "communication",
+        "soft skills",
+        "client facing",
+        "collaboration",
+        "faq"
+      ]
+    },
+    {
+      "id": "faq-leadership",
+      "title": "Has he led a team?",
+      "category": "faq",
+      "url": "https://www.linkedin.com/in/chris-pollard-au",
+      "text": "Yes, though it's worth being precise about which kind. He built and led VTAC's project management office growing it from one person to six between 2018 and 2020, and at Juvare he mentored newer developers locally and remotely, supervised onboarding, and led the rollout of a code-review system. business-mono, by contrast, is a solo build — the evidence there is architectural ownership and the ability to carry a whole system alone, not headcount.",
+      "tags": [
+        "leadership",
+        "management",
+        "team lead",
+        "mentoring",
+        "seniority",
+        "solo",
+        "faq"
+      ]
+    },
+    {
+      "id": "faq-transition",
+      "title": "Why did he move from project management into engineering?",
+      "category": "faq",
+      "url": "https://www.linkedin.com/in/chris-pollard-au",
+      "text": "Working alongside VTAC's in-house development team is what did it — managing a software product from the non-technical side made him want to build rather than only coordinate. He formalised the move deliberately through General Assembly's immersive in 2021 and went straight into full-stack engineering. He didn't leave delivery behind so much as add the other half to it.",
+      "tags": [
+        "transition",
+        "career change",
+        "why",
+        "background",
+        "product manager to engineer",
+        "general assembly",
+        "faq"
+      ]
+    },
+    {
+      "id": "faq-bitcoin",
+      "title": "Why bitcoin?",
+      "category": "faq",
+      "url": "https://www.linkedin.com/in/chris-pollard-au",
+      "text": "It's a long-running interest rather than a recent turn — he was following the protocol closely by 2019, running a bitcoin-core full node and experimenting with lightning by 2021, and completed a protocol development seminar series. Bitcoin Treasury Solutions grew out of that, and its main relevance here is that it gave him a real business with real compliance obligations to build production agents against. His personal bitcoin projects sit under the dragon-foobar GitHub account.",
+      "tags": [
+        "bitcoin",
+        "why",
+        "interest",
+        "bitcoin treasury solutions",
+        "background",
+        "faq",
+        "github",
+        "dragon-foobar",
+        "projects"
+      ]
+    },
+    {
+      "id": "exp-beyond-mapconfig",
+      "title": "Beyond Essential — developer education on Tupaia map configuration (first months)",
+      "category": "experience",
+      "url": "https://github.com/beyondessential/tupaia",
+      "text": "For his first few months at Beyond Essential Systems, Chris was assigned to developer education — an informal remit rather than a title — for a new visual tool in Tupaia that let non-engineers configure map overlays, working closely with the JSON configuration underneath it. He wrote most of the tool's documentation and onboarded the data analysts who became its primary users, raising issues and improvements as he taught it and then building them himself. He moved into full-stack engineering across the wider codebase from there.",
+      "tags": [
+        "beyond essential",
+        "tupaia",
+        "developer education",
+        "documentation",
+        "onboarding",
+        "enablement",
+        "map overlays",
+        "json",
+        "configuration",
+        "tooling",
+        "data analysts",
+        "global health",
+        "experience"
+      ]
+    },
+    {
+      "id": "wow-enablement",
+      "title": "Teaching the tool, then fixing what the teaching exposes",
+      "category": "ways-of-working",
+      "url": "https://www.linkedin.com/in/chris-pollard-au",
+      "text": "A pattern that recurs in Chris's work: get the users onto the tool, write the documentation, and treat the places they get stuck as the product backlog. At Beyond Essential he onboarded data analysts onto a new map configuration tool in Tupaia and wrote most of its docs, which meant he saw the friction first-hand and could turn it into issues and improvements he then implemented. It is the forward-deployed loop — sit with the users, find what is breaking, ship the fix — rather than collecting feedback and handing it to someone else.",
+      "tags": [
+        "enablement",
+        "documentation",
+        "user research",
+        "feedback loop",
+        "forward deployed",
+        "fde",
+        "training",
+        "adoption",
+        "product improvement",
+        "ways of working",
+        "tupaia"
+      ]
+    },
+    {
+      "id": "profile-github",
+      "title": "Where to find his code",
+      "category": "profile",
+      "url": "https://github.com/avunculargroup",
+      "text": "Chris's code sits across three GitHub accounts, and they do different jobs. avunculargroup is the current one and the one to look at — business-mono and his AI work live there. chris-pollard is the earlier professional account, covering his Beyond Essential Systems work from 2021 to 2023; Tupaia and Tamanu are both public repositories under the beyondessential organisation, so that work is open to inspection — his commits are filterable by author in the Tupaia repository rather than sitting as repos on his own profile. dragon-foobar holds personal projects.",
+      "tags": [
+        "github",
+        "code",
+        "repos",
+        "portfolio",
+        "open source",
+        "commit history",
+        "chris-pollard",
+        "dragon-foobar",
+        "avunculargroup",
+        "where to find",
+        "profile"
+      ]
+    },
+    {
+      "id": "faq-see-code",
+      "title": "Can I see code he has actually written?",
+      "category": "faq",
+      "url": "https://github.com/beyondessential/tupaia/commits?author=chris-pollard",
+      "text": "Yes, and without needing anyone's permission. His Beyond Essential commits are public in the Tupaia repository and filterable by author, covering 2021 to 2023 on an open-source platform used for health data in low-resource settings. business-mono, the multi-agent platform, sits under the avunculargroup account. Between them: two years of team engineering in a shared production codebase, and a complete system architected and shipped solo.",
+      "tags": [
+        "see code",
+        "show me code",
+        "proof",
+        "verify",
+        "github",
+        "commits",
+        "tupaia",
+        "business-mono",
+        "portfolio",
+        "evidence",
+        "faq"
+      ]
+    },
+    {
+      "id": "wow-visual-craft",
+      "title": "Visual craft and design taste",
+      "category": "ways-of-working",
+      "url": "https://www.linkedin.com/in/chris-pollard-au",
+      "text": "Chris came into software from a visual discipline: a performing arts degree, then six years running his own video production business through to 2011 — shooting, editing and delivering for paying clients — including a stint as camera operator and editor on a broadcast series. It left him with a trained eye rather than a decorative one, and it showed in the front-end work he did at Juvare and in how he approaches interface and information design. It is also why design thinking reads as a habit in his work rather than borrowed vocabulary. Running that business — quoting, budgeting, delivering — is the same shape as the fractional engagements he takes now.",
+      "tags": [
+        "design",
+        "visual",
+        "taste",
+        "aesthetics",
+        "ux",
+        "interface",
+        "information design",
+        "front-end",
+        "craft",
+        "video production",
+        "editing",
+        "performing arts",
+        "design thinking",
+        "freelance",
+        "contracting",
+        "ways of working"
+      ]
+    },
+    {
+      "id": "exp-beyond-engineering",
+      "title": "Beyond Essential — what he actually built",
+      "category": "experience",
+      "url": "https://github.com/beyondessential/tupaia",
+      "text": "On Tupaia, Chris built graph and map visualisation features — the charts and geographic overlays that turn aggregated health data into something a decision-maker can read — along with the admin panel UI used to configure them. He also worked on the underlying database structure, built REST APIs and server-side microservices to serve that data, and wrote end-to-end tests across the stack. This is ordinary product engineering in a shared codebase with other engineers, which is the one thing a solo project cannot evidence.",
+      "tags": [
+        "beyond essential",
+        "tupaia",
+        "data visualisation",
+        "charts",
+        "graphs",
+        "maps",
+        "geospatial",
+        "admin panel",
+        "ui",
+        "database",
+        "schema",
+        "microservices",
+        "end-to-end testing",
+        "e2e",
+        "testing",
+        "full-stack",
+        "experience",
+        "rest api",
+        "api",
+        "backend"
+      ]
+    },
+    {
+      "id": "exp-juvare-clients",
+      "title": "Juvare — government clients and requirements work",
+      "category": "experience",
+      "url": "https://www.linkedin.com/in/chris-pollard-au",
+      "text": "At Juvare (December 2023 to May 2026), Chris's clients were Australian and New Zealand government agencies at state level, ranging from police through to primary industries. The work was to sit with them, understand their requirements and business processes, and tailor WebEOC into applications that fit how they actually operate — the systems these agencies rely on during incidents. It was forward-deployed work in all but name — the same person ran the discovery conversation and built the result.",
+      "tags": [
+        "juvare",
+        "government",
+        "public sector",
+        "state government",
+        "police",
+        "primary industries",
+        "clients",
+        "requirements",
+        "business analysis",
+        "discovery",
+        "forward deployed",
+        "fde",
+        "solutions engineer",
+        "anz",
+        "experience",
+        "webeoc",
+        "emergency management",
+        "incident management",
+        "mission critical"
+      ]
+    },
+    {
+      "id": "exp-juvare-constraints",
+      "title": "Juvare — building inside legacy constraints",
+      "category": "experience",
+      "url": "https://www.linkedin.com/in/chris-pollard-au",
+      "text": "Parts of WebEOC run on older technology — jQuery and legacy JavaScript bundles — so building for a client meant working creatively within the limits of the platform rather than reaching for a rewrite. Chris also experimented with introducing web components as a way to modernise incrementally. Relevant to anyone hiring into an established codebase rather than a blank repository.",
+      "tags": [
+        "juvare",
+        "legacy",
+        "jquery",
+        "constraints",
+        "pragmatism",
+        "web components",
+        "modernisation",
+        "brownfield",
+        "existing codebase",
+        "experience",
+        "webeoc"
       ]
     }
   ]

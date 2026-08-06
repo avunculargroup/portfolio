@@ -1,3 +1,4 @@
+import { CORPUS_SIZE } from "@/lib/corpus";
 import { CHAT_MODEL, EMBEDDING_MODEL } from "@/lib/openrouter";
 import styles from "./site-footer.module.css";
 
@@ -9,7 +10,7 @@ export function SiteFooter() {
           <b>A quick note on how this works.</b> The Q&amp;A above is a real
           multi-agent loop, not a script — a Vercel AI SDK{" "}
           <b>ToolLoopAgent</b> on <b>{CHAT_MODEL}</b> that reads only from a
-          small, curated corpus ({26} chunks, retrieved by cosine similarity
+          small, curated corpus ({CORPUS_SIZE} chunks, retrieved by cosine similarity
           over {EMBEDDING_MODEL} embeddings), cites what it finds, and tells
           you plainly when something isn&rsquo;t covered rather than guessing.
           Nothing you type is stored: no accounts, no database, no memory
