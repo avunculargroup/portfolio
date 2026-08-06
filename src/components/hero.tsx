@@ -5,9 +5,14 @@ export function Hero() {
   return (
     <section className={styles.hero}>
       <div className={`wrap ${styles.grid}`}>
-        <div>
-          <p className={styles.eyebrow}>Hello, I&rsquo;m</p>
-          <h1 className={styles.name}>Chris Pollard.</h1>
+        {/* display:contents below md so the heading, intro and CTAs become
+            items of the hero grid and can be placed around the portrait;
+            a plain block column from md up (see hero.module.css). */}
+        <div className={styles.copy}>
+          <div className={styles.heading}>
+            <p className={styles.eyebrow}>Hello, I&rsquo;m</p>
+            <h1 className={styles.name}>Chris Pollard.</h1>
+          </div>
           <p className={styles.intro}>
             Ten years leading projects and people came before I ever wrote
             code. Now I run the AI practice at a bitcoin advisory — I set the
