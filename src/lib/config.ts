@@ -49,8 +49,8 @@ export const SITE = {
   title: "Chris Pollard — AI Delivery Lead",
   description:
     "Melbourne-based AI delivery lead — a hands-on engineer who also brings a decade of project and product management. Available for part-time and fractional engagements now. Ask the live agent about his work.",
-  url: "https://chrispollard.dev",
-  email: "cpollard@protonmail.com",
+  url: "https://chrispollard.com.au",
+  email: "hello@chrispollard.com.au",
   location: "Melbourne, Australia",
   linkedin: "https://www.linkedin.com/in/chris-pollard-au",
   github: "https://github.com/avunculargroup/business-mono",
