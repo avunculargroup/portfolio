@@ -50,7 +50,7 @@ export function Portrait() {
           className={styles.portrait}
           width={1400}
           height={1400}
-          sizes="(min-width: 768px) 420px, 25vw"
+          sizes="(min-width: 768px) 420px, 40vw"
           priority
           onError={() => setFailed(true)}
         />

@@ -8,14 +8,14 @@
   }
 }
 
-/* Below md the portrait sits beside the name (portrait left at 25%, the
+/* Below md the portrait sits beside the name (portrait left at 40%, the
    greeting right-aligned next to it) and the intro + CTAs run full width
    underneath. `.copy` is display:contents so its children can take part in
    this grid; from md up it collapses back to an ordinary left-hand column
    and the portrait returns to the right, unchanged. */
 .grid {
   display: grid;
-  grid-template-columns: 25% 1fr;
+  grid-template-columns: 40% 1fr;
   grid-template-areas:
     "portrait heading"
     "intro    intro"
@@ -157,8 +157,8 @@
 .portrait {
   position: relative;
   width: 100%;
-  /* Below md the portrait is a small 25%-wide column beside the greeting,
-     so it is sized by ratio rather than the fixed desktop height. */
+  /* Below md the portrait is a 40%-wide column beside the greeting, so it is
+     sized by ratio rather than the fixed desktop height. */
   aspect-ratio: 3 / 4;
   border-radius: 14px;
   box-shadow: 0 10px 20px -12px oklch(0.27 0.025 45 / 0.35);
