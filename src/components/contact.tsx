@@ -1,4 +1,4 @@
-import { SITE } from "@/lib/config";
+import { AVAILABILITY, SITE } from "@/lib/config";
 import styles from "./contact.module.css";
 
 export function Contact() {
@@ -12,6 +12,7 @@ export function Contact() {
               Building something that needs someone who can lead AI delivery,
               not just code it? Let&rsquo;s talk.
             </h2>
+            <p className={styles.availability}>{AVAILABILITY.full}</p>
             <p className={styles.place}>{SITE.location}</p>
           </div>
 

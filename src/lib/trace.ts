@@ -15,6 +15,8 @@ export interface TraceHit {
   index: number;
   title: string;
   category: string;
+  /** The artefact the chunk cites — rendered as a live link in the trace. */
+  url?: string;
 }
 
 export interface TraceStep {
@@ -154,6 +156,7 @@ export function collectTrace(message: UIMessage): TraceStep[] {
         index: sourceCursor,
         title: hit.title,
         category: hit.category,
+        url: typeof hit.url === "string" ? hit.url : undefined,
       });
     }
 

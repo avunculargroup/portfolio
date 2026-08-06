@@ -52,6 +52,27 @@
   font-size: 13px;
 }
 
+.repoLine {
+  font-size: 15px;
+  color: var(--muted);
+  max-width: 62ch;
+  margin: 0 0 8px;
+}
+
+/* Its own line, not inline in the sentence, so it can carry a 44px tap
+   target without stretching the paragraph's line height. */
+.repoLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-bottom: 26px;
+  color: var(--signal-dk);
+  font-size: 15px;
+  font-weight: 600;
+  /* Long URL must never push the page sideways on a 320px screen. */
+  overflow-wrap: anywhere;
+}
+
 .cards {
   display: grid;
   grid-template-columns: 1fr;

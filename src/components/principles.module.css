@@ -1,0 +1,34 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  max-width: 900px;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+.item {
+  border-top: 2px solid var(--signal);
+  padding-top: 16px;
+}
+
+.title {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.body {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 12px 0 0;
+  max-width: 46ch;
+}

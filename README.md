@@ -70,15 +70,17 @@ Retrieval always goes through the `Retriever` interface in [`src/lib/retriever.t
 1. **`staticRetriever`** — the intended path. Cosine similarity over `data/embeddings.json` plus a small tag boost. Requires `OPENROUTER_API_KEY` at query time (to embed the question).
 2. **`lexicalRetriever`** — a dependency-free BM25 fallback over the corpus, with a small synonym map for recruiter phrasing.
 
-The exported `retriever` prefers embeddings and falls back to lexical when `embeddings.json` is unbuilt, `OPENROUTER_API_KEY` is missing, or an embedding call fails mid-request. This keeps answers grounded rather than failing hard.
+The exported `retriever` prefers embeddings and falls back to lexical when `embeddings.json` is unbuilt, **out of date with `corpus.json`**, `OPENROUTER_API_KEY` is missing, or an embedding call fails mid-request. This keeps answers grounded rather than failing hard.
 
-> ⚠️ **`data/embeddings.json` is currently an empty array.** It could not be generated in the build environment because no `OPENROUTER_API_KEY` was available. **Run `npm run embed` once before deploying** and commit the result — until then the agent is grounded by the lexical fallback, which passes the retrieval evals (12/12) but is weaker on paraphrased questions than real embeddings.
+The staleness check matters: `staticRetriever` serves the text stored beside each vector, so an `embeddings.json` built before a corpus edit would feed the agent superseded facts and hide new chunks entirely — a failure that reads as "the agent got worse", not as an error. When the two have drifted, the retriever logs a warning and uses lexical search over the live corpus instead.
+
+> ⚠️ **`data/embeddings.json` is stale.** It holds the 26 chunks from the previous corpus; `data/corpus.json` now has 46. It could not be regenerated here because no `OPENROUTER_API_KEY` was available. **Run `npm run embed` and commit the result before deploying** — until then the agent is grounded by the lexical fallback, which passes the retrieval evals (16/16) but is weaker on paraphrased questions than real embeddings.
 
 A pgvector implementation can replace either one with no caller changes.
 
 ## Editing content
 
-All of the agent's knowledge lives in **`data/corpus.json`** (26 chunks). Edit the `text` fields there, then **re-run `npm run embed`** so `data/embeddings.json` reflects the change. Don't hand-edit `embeddings.json`. Keys prefixed with `_` are authoring notes and are ignored at runtime.
+All of the agent's knowledge lives in **`data/corpus.json`** (46 chunks). Edit the `text` fields there, then **re-run `npm run embed`** so `data/embeddings.json` reflects the change. Don't hand-edit `embeddings.json`. Keys prefixed with `_` are authoring notes and are ignored at runtime.
 
 Both `[bracketed]` placeholders called out in spec §11 (`faq-remote`, `faq-availability`) are already filled in.
 

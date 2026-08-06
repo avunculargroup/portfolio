@@ -4,13 +4,20 @@ import { useId, useRef, useState } from "react";
 import { MAX_INPUT_CHARS } from "@/lib/config";
 import styles from "./ask-console.module.css";
 
+/* Chosen against the current corpus — every one of these retrieves a chunk
+   that answers it directly. Covered by the retrieval evals in scripts/eval.ts;
+   re-check there before changing one. */
 const EXAMPLES = [
-  { label: "Production RAG?", query: "Has Chris shipped production RAG?" },
   {
-    label: "How does it stay safe?",
-    query: "How does his agent system stay safe?",
+    label: "See his code?",
+    query: "Can I see code he's actually written?",
   },
-  { label: "Where has he worked?", query: "Where has Chris worked?" },
+  { label: "Has he led a team?", query: "Has Chris led a team?" },
+  { label: "With clients?", query: "What's he like with clients?" },
+  {
+    label: "Legacy code?",
+    query: "How does he handle legacy code?",
+  },
 ] as const;
 
 interface AskConsoleProps {
@@ -81,7 +88,7 @@ export function AskConsole({
           type="text"
           value={value}
           onChange={(event) => setValue(event.target.value)}
-          placeholder="e.g. Has Chris shipped production RAG?"
+          placeholder="e.g. Can I see code he's actually written?"
           autoComplete="off"
           maxLength={MAX_INPUT_CHARS}
           disabled={disabled}

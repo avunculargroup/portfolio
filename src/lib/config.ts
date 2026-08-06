@@ -31,13 +31,24 @@ export const SESSION_MESSAGE_CAP = 12;
 export const MAX_INPUT_CHARS = 1000;
 export const MAX_THREAD_MESSAGES = 40;
 
+/**
+ * Availability. Kept here rather than inline in the components because it is
+ * the fact most likely to change, and it appears in more than one place
+ * (hero, contact). It must stay in step with the `faq-availability` corpus
+ * chunk — the agent answers from the corpus, the page reads from here.
+ */
+export const AVAILABILITY = {
+  short: "Part-time & fractional now",
+  full: "Available now for part-time and fractional engagements · full contract capacity from mid-2027",
+} as const;
+
 /** Site metadata. */
 export const SITE = {
   name: "Chris Pollard",
   role: "AI Delivery Lead",
   title: "Chris Pollard — AI Delivery Lead",
   description:
-    "Melbourne-based AI delivery lead — a hands-on engineer who also brings a decade of project and product management. Ask the live agent about his work.",
+    "Melbourne-based AI delivery lead — a hands-on engineer who also brings a decade of project and product management. Available for part-time and fractional engagements now. Ask the live agent about his work.",
   url: "https://chrispollard.dev",
   email: "cpollard@protonmail.com",
   location: "Melbourne, Australia",

@@ -9,15 +9,16 @@
 }
 
 /* Below md the portrait sits beside the name (portrait left at 40%, the
-   greeting right-aligned next to it) and the intro + CTAs run full width
-   underneath. `.copy` is display:contents so its children can take part in
-   this grid; from md up it collapses back to an ordinary left-hand column
-   and the portrait returns to the right, unchanged. */
+   greeting right-aligned next to it) and the availability line, intro and
+   CTAs run full width underneath. `.copy` is display:contents so its children
+   can take part in this grid; from md up it collapses back to an ordinary
+   left-hand column and the portrait returns to the right, unchanged. */
 .grid {
   display: grid;
   grid-template-columns: 40% 1fr;
   grid-template-areas:
     "portrait heading"
+    "avail    avail"
     "intro    intro"
     "ctas     ctas";
   column-gap: 16px;
@@ -102,6 +103,44 @@
   .intro {
     font-size: 19px;
     margin: 0 0 32px;
+  }
+}
+
+/* Availability sits above the fold on every breakpoint — it is the first
+   thing a recruiter needs in order to decide whether to keep reading. Below
+   md it is a full-width row of the hero grid, so the grid's row-gap carries
+   the spacing and the margin stays at zero. */
+.availability {
+  grid-area: avail;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  max-width: 46ch;
+  margin: 0;
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--tint);
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.availabilityDot {
+  flex: none;
+  width: 9px;
+  height: 9px;
+  margin-top: 7px;
+  border-radius: 50%;
+  background: var(--signal);
+}
+
+/* From md up `.copy` is an ordinary block column, so spacing comes back from
+   the margin rather than the grid. Declared after the base rule so it wins. */
+@media (min-width: 768px) {
+  .availability {
+    margin: 0 0 24px;
   }
 }
 

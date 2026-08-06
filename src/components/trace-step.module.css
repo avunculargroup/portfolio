@@ -90,6 +90,16 @@
   word-break: break-word;
 }
 
+/* Small target, so give it room to be tappable without breaking the row. */
+.hitLink {
+  color: var(--signal-dk);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  display: inline-block;
+  padding: 3px 0;
+}
+
 .hitCat {
   opacity: 0.75;
 }
