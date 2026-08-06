@@ -8,10 +8,21 @@
   }
 }
 
+/* Below md the portrait sits beside the name (portrait left at 40%, the
+   greeting right-aligned next to it) and the availability line, intro and
+   CTAs run full width underneath. `.copy` is display:contents so its children
+   can take part in this grid; from md up it collapses back to an ordinary
+   left-hand column and the portrait returns to the right, unchanged. */
 .grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 40px;
+  grid-template-columns: 40% 1fr;
+  grid-template-areas:
+    "portrait heading"
+    "avail    avail"
+    "intro    intro"
+    "ctas     ctas";
+  column-gap: 16px;
+  row-gap: 28px;
   align-items: center;
 }
 
@@ -19,10 +30,40 @@
   min-width: 0;
 }
 
+.copy {
+  display: contents;
+}
+
+.heading {
+  grid-area: heading;
+  text-align: right;
+  min-width: 0;
+}
+
+.intro {
+  grid-area: intro;
+  min-width: 0;
+}
+
+.ctas {
+  grid-area: ctas;
+  min-width: 0;
+}
+
 @media (min-width: 768px) {
   .grid {
     grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    grid-template-areas: none;
     gap: 56px;
+  }
+
+  .copy {
+    display: block;
+    min-width: 0;
+  }
+
+  .heading {
+    text-align: left;
   }
 }
 
@@ -32,36 +73,50 @@
   font-size: 13px;
   font-weight: 700;
   color: var(--signal-dk);
-  margin: 0 0 16px;
+  margin: 0 0 10px;
 }
 
 .name {
-  font-size: clamp(36px, 5.5vw, 64px);
+  font-size: clamp(32px, 9vw, 44px);
   line-height: 1.06;
-  margin: 0 0 20px;
+  margin: 0;
+  overflow-wrap: break-word;
 }
 
 .intro {
   font-size: 18px;
   color: var(--muted);
   max-width: 52ch;
-  margin: 0 0 32px;
+  margin: 0;
 }
 
 @media (min-width: 768px) {
+  .eyebrow {
+    margin: 0 0 16px;
+  }
+
+  .name {
+    font-size: clamp(36px, 5.5vw, 64px);
+    margin: 0 0 24px;
+  }
+
   .intro {
     font-size: 19px;
+    margin: 0 0 32px;
   }
 }
 
 /* Availability sits above the fold on every breakpoint — it is the first
-   thing a recruiter needs in order to decide whether to keep reading. */
+   thing a recruiter needs in order to decide whether to keep reading. Below
+   md it is a full-width row of the hero grid, so the grid's row-gap carries
+   the spacing and the margin stays at zero. */
 .availability {
+  grid-area: avail;
   display: flex;
   align-items: flex-start;
   gap: 10px;
   max-width: 46ch;
-  margin: 0 0 24px;
+  margin: 0;
   padding: 12px 16px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -79,6 +134,14 @@
   margin-top: 7px;
   border-radius: 50%;
   background: var(--signal);
+}
+
+/* From md up `.copy` is an ordinary block column, so spacing comes back from
+   the margin rather than the grid. Declared after the base rule so it wins. */
+@media (min-width: 768px) {
+  .availability {
+    margin: 0 0 24px;
+  }
 }
 
 .ctas {
@@ -116,35 +179,50 @@
 /* Portrait ------------------------------------------------------------- */
 
 .portraitWrap {
+  grid-area: portrait;
   position: relative;
-  max-width: 420px;
   width: 100%;
-  justify-self: center;
 }
 
 .portraitBacking {
   position: absolute;
   /* Right edge flush with the wrap (not offset) so the decorative shift
      never pushes past the viewport on narrow screens. */
-  inset: 20px 0 -20px 20px;
+  inset: 8px 0 -8px 8px;
   background: var(--tint);
-  border-radius: 28px;
+  border-radius: 14px;
 }
 
 .portrait {
   position: relative;
   width: 100%;
-  height: 360px;
-  border-radius: 28px;
-  box-shadow: 0 20px 40px -20px oklch(0.27 0.025 45 / 0.35);
+  /* Below md the portrait is a 40%-wide column beside the greeting, so it is
+     sized by ratio rather than the fixed desktop height. */
+  aspect-ratio: 3 / 4;
+  border-radius: 14px;
+  box-shadow: 0 10px 20px -12px oklch(0.27 0.025 45 / 0.35);
   object-fit: cover;
   display: block;
   background: var(--tint);
 }
 
-@media (min-width: 640px) {
+@media (min-width: 768px) {
+  .portraitWrap {
+    grid-area: auto;
+    max-width: 420px;
+    justify-self: center;
+  }
+
+  .portraitBacking {
+    inset: 20px 0 -20px 20px;
+    border-radius: 28px;
+  }
+
   .portrait {
+    aspect-ratio: auto;
     height: 460px;
+    border-radius: 28px;
+    box-shadow: 0 20px 40px -20px oklch(0.27 0.025 45 / 0.35);
   }
 }
 
@@ -158,6 +236,12 @@ div.portrait {
 .portraitMonogram {
   font-family: var(--font-serif), Georgia, serif;
   font-weight: 500;
-  font-size: 64px;
+  font-size: 26px;
   color: var(--signal-dk);
+}
+
+@media (min-width: 768px) {
+  .portraitMonogram {
+    font-size: 64px;
+  }
 }

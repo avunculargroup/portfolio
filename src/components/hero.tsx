@@ -6,9 +6,14 @@ export function Hero() {
   return (
     <section className={styles.hero}>
       <div className={`wrap ${styles.grid}`}>
-        <div>
-          <p className={styles.eyebrow}>Hello, I&rsquo;m</p>
-          <h1 className={styles.name}>Chris Pollard.</h1>
+        {/* display:contents below md so the heading, availability, intro and
+            CTAs become items of the hero grid and can be placed around the
+            portrait; a plain block column from md up (see hero.module.css). */}
+        <div className={styles.copy}>
+          <div className={styles.heading}>
+            <p className={styles.eyebrow}>Hello, I&rsquo;m</p>
+            <h1 className={styles.name}>Chris Pollard.</h1>
+          </div>
           {/* Availability sits ahead of the prose deliberately: it's the first
               thing a recruiter needs in order to decide whether to keep
               reading, and it must survive a 320px screen without scrolling. */}

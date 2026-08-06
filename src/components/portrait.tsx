@@ -17,7 +17,8 @@ import styles from "./hero.module.css";
  * <img>, and a missing file surfaces as a 400 from the optimizer.
  *
  * width/height are the intrinsic aspect hint only; hero.module.css drives the
- * rendered box (100% wide, fixed height, object-fit: cover). `priority` is
+ * rendered box (100% wide, ratio-sized beside the greeting below md, fixed
+ * height in the desktop right-hand column, object-fit: cover). `priority` is
  * deliberate — this is the hero's LCP candidate, and next/image would
  * otherwise lazy-load it and push LCP out past the Lighthouse budget.
  */
@@ -49,7 +50,7 @@ export function Portrait() {
           className={styles.portrait}
           width={1400}
           height={1400}
-          sizes="(min-width: 768px) 420px, 100vw"
+          sizes="(min-width: 768px) 420px, 40vw"
           priority
           onError={() => setFailed(true)}
         />
