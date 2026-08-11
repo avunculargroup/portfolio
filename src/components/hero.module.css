@@ -9,7 +9,7 @@
 }
 
 /* Below md the portrait sits beside the name (portrait left at 40%, the
-   greeting right-aligned next to it) and the availability line, intro and
+   greeting left-aligned beside it) and the availability line, intro and
    CTAs run full width underneath. `.copy` is display:contents so its children
    can take part in this grid; from md up it collapses back to an ordinary
    left-hand column and the portrait returns to the right, unchanged. */
@@ -34,9 +34,14 @@
   display: contents;
 }
 
+/* Left-aligned beside the portrait, with padding on top of the grid's column
+   gap so the greeting reads as its own column rather than crowding the photo.
+   At 320px this leaves ~137px for the name, enough for "Pollard." to sit on
+   one line at the largest size the clamp below can reach there. */
 .heading {
   grid-area: heading;
-  text-align: right;
+  text-align: left;
+  padding-left: 20px;
   min-width: 0;
 }
 
@@ -63,21 +68,21 @@
   }
 
   .heading {
-    text-align: left;
+    padding-left: 0;
   }
 }
 
 .eyebrow {
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 13px;
+  letter-spacing: 0.1em;
+  font-size: 15px;
   font-weight: 700;
   color: var(--signal-dk);
   margin: 0 0 10px;
 }
 
 .name {
-  font-size: clamp(32px, 9vw, 44px);
+  font-size: clamp(34px, 11vw, 46px);
   line-height: 1.06;
   margin: 0;
   overflow-wrap: break-word;
@@ -92,6 +97,10 @@
 
 @media (min-width: 768px) {
   .eyebrow {
+    /* The 15px below md is sized to hold its own next to the portrait; the
+       desktop column doesn't need it. */
+    font-size: 13px;
+    letter-spacing: 0.12em;
     margin: 0 0 16px;
   }
 
