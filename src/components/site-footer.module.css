@@ -1,8 +1,8 @@
 .footer {
-  background: var(--moss);
+  background: var(--paper-2);
   color: var(--panel-text-dim);
   padding: 40px 0 max(40px, env(safe-area-inset-bottom));
-  border-top: 1px solid oklch(0.985 0.01 78 / 0.15);
+  border-top: 1px solid var(--line);
   font-size: 13px;
 }
 

@@ -1,28 +1,28 @@
 /* ---------------------------------------------------------------------------
-   Design tokens — fixed. Warm paper neutrals + one eucalyptus/sage-olive
-   accent (nature/Melbourne-bush inspired). Concept: a warm, human editorial
-   page — no dark "instrument" surface; the agent trace reads as a calm card,
-   not a terminal.
+   Design tokens — fixed. Warm paper neutrals + one terracotta accent (hue ~40).
+   Concept: a warm, human editorial page — no dark surfaces anywhere; the
+   contact/footer band is a light tint, and the agent trace reads as a calm
+   card, not a terminal.
    --------------------------------------------------------------------------- */
 
 :root {
-  --ink: oklch(0.27 0.025 45);
-  --paper: oklch(0.985 0.01 78);
-  --paper-2: oklch(0.965 0.018 70);
-  --tint: oklch(0.94 0.028 110);
-  --moss: oklch(0.3 0.05 130);
-  --line: oklch(0.89 0.02 55);
-  --muted: oklch(0.48 0.02 45);
-  --signal: oklch(0.54 0.075 135);
-  --signal-dk: oklch(0.42 0.065 135);
-  --signal-soft: oklch(0.94 0.028 110);
+  --ink: oklch(0.27 0.022 45);
+  --paper: oklch(0.975 0.012 75);
+  --paper-2: oklch(0.965 0.016 70);
+  --tint: oklch(0.93 0.035 55);
+  --moss: oklch(0.93 0.035 55);
+  --line: oklch(0.885 0.02 65);
+  --muted: oklch(0.50 0.018 50);
+  --signal: oklch(0.55 0.12 40);
+  --signal-dk: oklch(0.44 0.10 40);
+  --signal-soft: oklch(0.93 0.035 55);
   --ok: #4fb286;
   --radius: 12px;
   --container: 1160px;
 
-  /* Text on the dark moss surface (contact/footer). */
-  --panel-text: oklch(0.985 0.01 78);
-  --panel-text-dim: oklch(0.965 0.018 70 / 0.75);
+  /* Text on the light tint panel surface (contact/footer). */
+  --panel-text: oklch(0.27 0.022 45);
+  --panel-text-dim: oklch(0.50 0.018 50);
 
   --pad-x: 16px;
   --header-h: 52px;

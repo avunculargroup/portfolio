@@ -1,27 +1,54 @@
 import type { Metadata, Viewport } from "next";
-import { Newsreader, Manrope } from "next/font/google";
+import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
 import { SITE } from "@/lib/config";
 import "./globals.css";
 
 /*
- * Fonts are self-hosted by next/font at build time — no runtime request to
- * fonts.googleapis.com. This also removes a class of blank-render bugs
- * (CLAUDE.md → design).
+ * Fonts are self-hosted — no runtime request to fonts.googleapis.com, which
+ * removes a class of blank-render bugs (CLAUDE.md → design).
+ *
+ * The woff2 files are vendored in ./fonts and loaded with next/font/local
+ * rather than next/font/google, so the *build* has no network dependency
+ * either: next/font/google fetches from fonts.gstatic.com at build time, and
+ * a gstatic blip there fails the whole deploy.
+ *
+ * These are the latin-subset variable files (one per style), matching the
+ * previous `subsets: ["latin"]`. To refresh them, pull the `latin` @font-face
+ * srcs from the Google Fonts css2 API — Newsreader `opsz 6..72, wght 400..600`
+ * (normal + italic) and Manrope `wght 400..800` — and drop the woff2 in place.
  */
-const serif = Newsreader({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
+const newsreader = localFont({
+  src: [
+    {
+      path: "./fonts/newsreader-latin-var.woff2",
+      weight: "400 600",
+      style: "normal",
+    },
+    {
+      path: "./fonts/newsreader-latin-italic-var.woff2",
+      weight: "400 600",
+      style: "italic",
+    },
+  ],
   display: "swap",
   variable: "--font-serif",
+  fallback: ["Georgia", "Times New Roman", "serif"],
+  adjustFontFallback: "Times New Roman",
 });
 
-const sans = Manrope({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+const manrope = localFont({
+  src: [
+    {
+      path: "./fonts/manrope-latin-var.woff2",
+      weight: "400 800",
+      style: "normal",
+    },
+  ],
   display: "swap",
   variable: "--font-sans",
+  fallback: ["system-ui", "-apple-system", "Segoe UI", "Roboto", "sans-serif"],
+  adjustFontFallback: "Arial",
 });
 
 export const metadata: Metadata = {
@@ -87,7 +114,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${serif.variable} ${sans.variable}`}
+      className={`${newsreader.variable} ${manrope.variable}`}
     >
       <body>
         <a className="skipLink" href="#main">
