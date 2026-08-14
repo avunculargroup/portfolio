@@ -15,8 +15,10 @@
       "faq"
     ],
     "todo": [
-      "LinkedIn currently shows the VTAC start as December 2015; the corpus now says November 2014. Update LinkedIn so the two agree.",
-      "LinkedIn must also show the Juvare role ending May 2026 — the corpus and the site now do."
+      "LinkedIn currently shows the VTAC start as December 2015; the corpus says November 2014. Update LinkedIn so the two agree.",
+      "Check the capability one-pager PDF for the same ANZ-to-Australian client correction applied here.",
+      "Juvare end date (May 2026) and the co-founder / principal engineer title need to match on LinkedIn and the portfolio site.",
+      "Confirm the exact RMIT job title on the employment record — corpus and LinkedIn both say Project Manager."
     ],
     "categoryNotes": {
       "story": "Concrete, dated examples for behavioural questions ('tell me about a time'). Deliberately separated from experience so retrieval doesn't surface 2007 anecdotes when someone asks what Chris does now. Always keep the date in the text."
@@ -28,12 +30,13 @@
       "title": "Who Chris is",
       "category": "profile",
       "url": "https://www.linkedin.com/in/chris-pollard-au",
-      "text": "Chris Pollard is a Melbourne-based AI delivery lead — a hands-on engineer who also brings a decade of project and product management. He builds production LLM systems himself, with a solo-built multi-agent platform as his flagship, and can own delivery end to end: roadmap and stakeholders through to shipped, working software.",
+      "text": "Chris Pollard is a Melbourne-based engineer who takes LLM agents from demo to production, with a decade of project and product delivery behind it. He builds production LLM systems himself, with a solo-built multi-agent platform as his flagship, and can own delivery end to end: roadmap and stakeholders through to shipped, working software.",
       "tags": [
         "chris pollard",
         "who",
         "about",
-        "ai delivery lead",
+        "technical product lead",
+        "llm agents",
         "delivery",
         "engineer",
         "melbourne"
@@ -47,7 +50,8 @@
       "text": "What's rare is the pairing. Most AI hires are strong on the build or strong on delivery; Chris does both — writing the agents and the retrieval, and landing the project with the people around it. He keeps a human at the edge of every automated decision, and cares that what ships is trustworthy and actually used. He is based in Melbourne, Australia.",
       "tags": [
         "positioning",
-        "ai delivery lead",
+        "technical product lead",
+        "llm agents",
         "delivery",
         "product",
         "build",
@@ -57,13 +61,15 @@
     },
     {
       "id": "exp-bts",
-      "title": "Bitcoin Treasury Solutions — Director",
+      "title": "Bitcoin Treasury Solutions — Co-founder & Principal Engineer",
       "category": "experience",
       "url": "https://www.linkedin.com/in/chris-pollard-au",
-      "text": "Bitcoin Treasury Solutions — Director (March 2025 to present, Melbourne). This is Chris's current role. The business delivers structured bitcoin training for professionals, SMEs and individuals, and it is also where his production AI work sits: business-mono, the multi-agent operations platform he architected and built solo in TypeScript on Mastra, Next.js 15 and Supabase with pgvector, runs the operation day to day.",
+      "text": "Bitcoin Treasury Solutions — Co-founder and Principal Engineer (March 2025 to present, Melbourne). The company delivers structured bitcoin training for professionals, SMEs and individuals; Chris co-founded it with Carolyn Crawford, who leads the commercial and training side. Chris owns the technology end to end, including business-mono, the multi-agent operations platform that runs the business.",
       "tags": [
         "bitcoin treasury solutions",
-        "director",
+        "co-founder",
+        "founder",
+        "principal engineer",
         "current",
         "bitcoin",
         "business-mono",
@@ -75,10 +81,9 @@
       "title": "Juvare — Technical Implementation Analyst",
       "category": "experience",
       "url": "https://www.linkedin.com/in/chris-pollard-au",
-      "text": "Juvare — Technical Implementation Analyst (December 2023 to May 2026, Melbourne). The title understates the shape of it: roughly 70% front-end web development, 20% business analysis and 10% direct client work. The product is WebEOC, Juvare's emergency and incident management platform; the company is US-owned with core server-side development based in Lithuania, so the Australian team operated as the client-facing end of a distributed product organisation. Chris mentored newer developers both locally and remotely, helped supervise onboarding, and led the implementation of a code-review system.",
+      "text": "Juvare — Technical Implementation Analyst, frontend and solutions delivery (December 2023 to May 2026, Melbourne). The title understated the shape of it: roughly 70% front-end web development, 20% business analysis and 10% direct client work. The product is WebEOC, Juvare's emergency and incident management platform; the company is US-owned with core server-side development based in Lithuania, so the Australian team operated as the client-facing end of a distributed product organisation. Chris mentored newer developers both locally and remotely, helped supervise onboarding, and led the implementation of a code-review system.",
       "tags": [
         "juvare",
-        "current",
         "frontend",
         "business analysis",
         "client facing",
@@ -117,15 +122,19 @@
       "title": "General Assembly — Software Engineering Immersive",
       "category": "experience",
       "url": "https://www.linkedin.com/in/chris-pollard-au",
-      "text": "General Assembly — Software Engineering Immersive (2021, Melbourne). A 12-week full-time programme covering JavaScript, Node.js (Express), React, REST APIs, Ruby/Sinatra, PostgreSQL and Git — Chris's structured transition from product management into software engineering.",
+      "text": "General Assembly — Software Engineering Immersive (February 2021 to August 2021, Melbourne). A full-time twelve-week immersive, taken across two intakes, covering JavaScript, Node.js (Express), React, REST APIs, Ruby/Sinatra, PostgreSQL and Git — Chris's deliberate, structured transition from product management into software engineering. He went straight into full-stack engineering at Beyond Essential Systems on completing it.",
       "tags": [
-        "general assembly",
+        "2021",
         "bootcamp",
-        "transition",
+        "dates",
+        "experience",
+        "full-time study",
+        "general assembly",
         "javascript",
-        "react",
         "node",
-        "experience"
+        "react",
+        "retraining",
+        "transition"
       ]
     },
     {
@@ -147,15 +156,55 @@
       ]
     },
     {
+      "id": "exp-rmit",
+      "title": "RMIT University — Project Manager (pandemic response)",
+      "category": "experience",
+      "url": "https://www.linkedin.com/in/chris-pollard-au",
+      "text": "RMIT University — Project Manager (March 2020 to December 2020, Melbourne). Project management for RMIT's pandemic response, where the constraint was rarely technical: it was getting senior stakeholders with different operational realities to agree on a single course of action, quickly, while government direction kept changing underneath. Chris facilitated consensus across executives with competing priorities and no precedent to work from, and translated operational detail into terms executives could decide on — then translated those decisions back into something operationally workable.",
+      "tags": [
+        "rmit",
+        "project manager",
+        "pandemic",
+        "covid",
+        "crisis",
+        "executive stakeholders",
+        "consensus",
+        "facilitation",
+        "uncertainty",
+        "ambiguity",
+        "higher education",
+        "experience"
+      ]
+    },
+    {
+      "id": "wow-consensus",
+      "title": "Making operational reality legible to executives",
+      "category": "ways-of-working",
+      "url": "https://www.linkedin.com/in/chris-pollard-au",
+      "text": "The capability Chris has been paid for most consistently is being the person in the room who makes operational truth legible to the people deciding, and the decision legible to the people executing. Three separate instances: VTAC, where the clients were also the owners and priorities genuinely competed; RMIT in 2020, driving executive consensus on pandemic response with no precedent and requirements changing weekly; and Juvare, turning a government agency's business process into a built system. Three instances across a decade is a pattern rather than an anecdote — and it is the half of the profile most AI engineers cannot evidence.",
+      "tags": [
+        "consensus",
+        "executives",
+        "stakeholder management",
+        "translation",
+        "facilitation",
+        "communication",
+        "operational",
+        "decision-making",
+        "pattern",
+        "differentiator",
+        "ways of working"
+      ]
+    },
+    {
       "id": "exp-earlier",
       "title": "Earlier career (2007–2021)",
       "category": "experience",
       "url": "https://www.linkedin.com/in/chris-pollard-au",
-      "text": "Before software, Chris spent over a decade leading projects, coordinating teams and managing stakeholders — including pandemic-response project management at RMIT University, project coordination at La Trobe, and student-administration roles at Monash, the University of Melbourne and Swinburne. It's where the delivery-and-stakeholder half of his skill set was built.",
+      "text": "Before software, Chris spent over a decade leading projects, coordinating teams and managing stakeholders — including project coordination at La Trobe and student-administration roles at Monash, the University of Melbourne and Swinburne. It's where the delivery-and-stakeholder half of his skill set was built.",
       "tags": [
         "earlier",
         "project management",
-        "rmit",
         "operations",
         "coordination",
         "history",
@@ -182,7 +231,7 @@
       "title": "business-mono — overview",
       "category": "project",
       "url": "https://github.com/avunculargroup/business-mono",
-      "text": "business-mono is a production multi-agent operations platform Chris built single-handedly as the system behind Bitcoin Treasury Solutions, where he is Director. It uses a hub-and-spoke design: a coordinator agent (Simon) is the only agent that talks to humans and routes work to specialists, all sharing one Supabase database. A Mastra server runs the agents and workflows; a Next.js 15 app handles dashboards and human approvals.",
+      "text": "business-mono is a production multi-agent operations platform Chris built single-handedly as the system behind Bitcoin Treasury Solutions, where he is co-founder and principal engineer. It uses a hub-and-spoke design: a coordinator agent (Simon) is the only agent that talks to humans and routes work to specialists, all sharing one Supabase database. A Mastra server runs the agents and workflows; a Next.js 15 app handles dashboards and human approvals.",
       "tags": [
         "business-mono",
         "project",
@@ -198,14 +247,17 @@
       "title": "Hub-and-spoke coordination",
       "category": "project",
       "url": "https://github.com/avunculargroup/business-mono",
-      "text": "Rather than a flat swarm, a single coordinator routes each request to the right specialist agent — recorder, archivist, project manager, business analyst, content, research, relationship and compliance roles — behind a consistent audit trail. Centralising human contact in the coordinator keeps behaviour predictable and the whole system observable.",
+      "text": "Rather than a flat swarm, a single coordinator (Simon) routes each request to the right specialist agent — recorder, archivist, project manager, business analyst, content creator, researcher, relationship manager, marketer and compliance — behind a consistent audit trail, with two further agents invoked only inside workflows. Centralising human contact in the coordinator keeps behaviour predictable and the whole system observable.",
       "tags": [
+        "agents",
+        "compliance",
         "coordinator",
-        "simon",
-        "routing",
+        "marketer",
+        "nine specialists",
         "orchestration",
-        "specialists",
-        "agents"
+        "routing",
+        "simon",
+        "specialists"
       ]
     },
     {
@@ -291,7 +343,7 @@
       "title": "Deployment and structure",
       "category": "project",
       "url": "https://github.com/avunculargroup/business-mono",
-      "text": "The codebase is a Turborepo monorepo. Agents and workflows run on Railway; the Next.js web app deploys to Vercel; Supabase provides Postgres and pgvector. A Vitest suite, including agent evals, is gated in CI.",
+      "text": "The codebase is a Turborepo monorepo. Agents and workflows run on Railway; the Next.js web app deploys to Vercel; Supabase provides Postgres and pgvector. Vitest suites for both apps are gated in CI alongside typecheck; a separate LLM eval suite for agent routing and prompts runs on demand rather than in CI, because non-deterministic model calls do not belong in a PR gate.",
       "tags": [
         "deployment",
         "railway",
@@ -328,7 +380,7 @@
       "title": "LLM engineering skills",
       "category": "skills",
       "url": "https://github.com/avunculargroup/business-mono",
-      "text": "On the LLM side he builds agent orchestration, retrieval-augmented generation, hybrid search, tool use and human-in-the-loop control flow, and treats evals as first-class, gated in CI. His production agent work is built on Mastra; he has also prototyped pipelines with Flowise and LangChain.",
+      "text": "On the LLM side he builds agent orchestration, retrieval-augmented generation, hybrid search, tool use and human-in-the-loop control flow, and treats evals as first-class — a dedicated routing and prompt eval suite, run on demand against real models, with the deterministic test suites gated in CI. His production agent work is built on Mastra; he has also prototyped pipelines with Flowise and LangChain.",
       "tags": [
         "skills",
         "llm",
@@ -347,7 +399,7 @@
       "title": "Scale and ownership",
       "category": "scale",
       "url": "https://github.com/avunculargroup/business-mono",
-      "text": "business-mono is a genuinely solo build: the coordinator, the specialist agents, the workflows, the ingestion pipelines and the web app were all architected and shipped by one person, across a Turborepo monorepo with a CI-gated eval suite. It has been under sustained development rather than built in a burst, and it runs a real business daily. The repository is public, so the scope can be inspected rather than taken on trust.",
+      "text": "business-mono is a genuinely solo build: the coordinator, the specialist agents, the workflows, the ingestion pipelines and the web app were all architected and shipped by one person, across a Turborepo monorepo with CI-gated test suites. It has been under sustained development rather than built in a burst, and it runs a real business daily. The repository is public, so the scope can be inspected rather than taken on trust.",
       "tags": [
         "scale",
         "solo",
@@ -365,7 +417,7 @@
       "title": "How Chris works",
       "category": "ways-of-working",
       "url": "https://github.com/avunculargroup/business-mono",
-      "text": "Chris works docs-first — per-agent specifications, a design brief and a defined brand voice sit alongside the code — and brings design thinking to systems, not just interfaces. Evals gate changes in CI, so behaviour is verified rather than assumed.",
+      "text": "Chris works docs-first — per-agent specifications, a design brief and a defined brand voice sit alongside the code — and brings design thinking to systems, not just interfaces. Deterministic tests and typecheck gate every change in CI, and a separate eval suite exercises agent routing and prompts against real models on demand, so behaviour is verified rather than assumed.",
       "tags": [
         "ways of working",
         "process",
@@ -439,18 +491,17 @@
       "title": "Is he available?",
       "category": "faq",
       "url": "https://www.linkedin.com/in/chris-pollard-au",
-      "text": "Chris is available now for part-time and fractional engagements, and has full contract capacity from mid-2027. He finished at Juvare in May 2026 and directs Bitcoin Treasury Solutions, so until then the shape of the engagement matters as much as the role. He's particularly interested in AI delivery lead work.",
+      "text": "Chris is open to work now, with a preference for technical product and hands-on AI engineering roles. His Juvare role ended in May 2026. He takes fractional and part-time engagements immediately, and is available full-time from January 2027, alongside co-founding Bitcoin Treasury Solutions with Carolyn Crawford.",
       "tags": [
         "availability",
-        "open to work",
-        "start date",
-        "notice",
-        "fractional",
-        "part-time",
         "contract",
-        "capacity",
         "engagement",
-        "faq"
+        "faq",
+        "fractional",
+        "notice",
+        "open to work",
+        "part-time",
+        "start date"
       ]
     },
     {
@@ -614,7 +665,7 @@
       "title": "Has he led a team?",
       "category": "faq",
       "url": "https://www.linkedin.com/in/chris-pollard-au",
-      "text": "Yes, though it's worth being precise about which kind. He built and led VTAC's project management office growing it from one person to six between 2018 and 2020, and at Juvare he mentored newer developers locally and remotely, supervised onboarding, and led the rollout of a code-review system. business-mono, by contrast, is a solo build — the evidence there is architectural ownership and the ability to carry a whole system alone, not headcount.",
+      "text": "Yes, though it's worth being precise about which kind. He built and led VTAC's project management office, growing it from one person to six between 2018 and 2020, and at Juvare he mentored newer developers locally and remotely, supervised onboarding, and led the rollout of a code-review system. business-mono, by contrast, is a solo build — the evidence there is architectural ownership and the ability to carry a whole system alone, not headcount.",
       "tags": [
         "leadership",
         "management",
@@ -746,7 +797,7 @@
       "title": "Visual craft and design taste",
       "category": "ways-of-working",
       "url": "https://www.linkedin.com/in/chris-pollard-au",
-      "text": "Chris came into software from a visual discipline: a performing arts degree, then six years running his own video production business through to 2011 — shooting, editing and delivering for paying clients — including a stint as camera operator and editor on a broadcast series. It left him with a trained eye rather than a decorative one, and it showed in the front-end work he did at Juvare and in how he approaches interface and information design. It is also why design thinking reads as a habit in his work rather than borrowed vocabulary. Running that business — quoting, budgeting, delivering — is the same shape as the fractional engagements he takes now.",
+      "text": "Chris came into software from a visual discipline: a performing arts degree, then six years running his own video production business through to 2011 — shooting, editing and delivering for paying clients — including a stint as camera operator and editor on a broadcast series. It left him with a trained eye rather than a decorative one, and it shows in the front-end work at Juvare and in how he approaches interface and information design. It is also why design thinking reads as a habit in his work rather than borrowed vocabulary. Running that business — quoting, budgeting, delivering — is the same shape as the fractional engagements he takes now.",
       "tags": [
         "design",
         "visual",
@@ -800,7 +851,7 @@
       "title": "Juvare — government clients and requirements work",
       "category": "experience",
       "url": "https://www.linkedin.com/in/chris-pollard-au",
-      "text": "At Juvare (December 2023 to May 2026), Chris's clients were Australian and New Zealand government agencies at state level, ranging from police through to primary industries. The work was to sit with them, understand their requirements and business processes, and tailor WebEOC into applications that fit how they actually operate — the systems these agencies rely on during incidents. It was forward-deployed work in all but name — the same person ran the discovery conversation and built the result.",
+      "text": "At Juvare, Chris's clients were Australian state government agencies, ranging from police through to primary industries. The work was to sit with them, understand their requirements and business processes, and tailor WebEOC into applications that fit how they actually operate — the systems these agencies rely on during incidents. It was forward-deployed work in all but name — the same person ran the discovery conversation and built the result.",
       "tags": [
         "juvare",
         "government",
@@ -815,7 +866,6 @@
         "forward deployed",
         "fde",
         "solutions engineer",
-        "anz",
         "experience",
         "webeoc",
         "emergency management",
