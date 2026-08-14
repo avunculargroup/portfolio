@@ -4,7 +4,7 @@ Project conventions for building and maintaining this repo. Read alongside `port
 
 ## What this is
 
-A recruiter-facing portfolio for **Chris Pollard**, positioned as an **AI Delivery Lead** — a hands-on engineer with a decade of delivery. Its centrepiece is a live agent that answers questions about Chris, grounded in `data/corpus.json` and cited, with the trace of its tool loop shown inline under the answer. Stateless and anonymous.
+A recruiter-facing portfolio for **Chris Pollard**, positioned as a **Technical Product Lead — AI** — a hands-on engineer who takes LLM agents from demo to production, with a decade of delivery behind it. (The earlier "AI delivery lead" framing was retired in the August 2026 copy pass: it read as "manager who doesn't build", the opposite of the argument this site makes.) Its centrepiece is a live agent that answers questions about Chris, grounded in `data/corpus.json` and cited, with the trace of its tool loop shown inline under the answer. Stateless and anonymous.
 
 ## Non-negotiables
 

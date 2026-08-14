@@ -90,9 +90,8 @@ export default function OpengraphImage() {
               letterSpacing: -1,
             }}
           >
-            I lead AI delivery — and&nbsp;
-            <span style={{ color: "#52693F" }}>build the systems</span>
-            &nbsp;myself.
+            I take LLM agents from&nbsp;
+            <span style={{ color: "#52693F" }}>demo to production</span>.
           </div>
 
           <div
@@ -105,8 +104,7 @@ export default function OpengraphImage() {
               maxWidth: 900,
             }}
           >
-            A decade turning roadmaps into shipped software, now pointed at
-            agentic AI.
+            Hands-on engineer with a decade of product and delivery behind it.
           </div>
         </div>
 

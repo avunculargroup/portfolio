@@ -62,7 +62,7 @@ export const metadata: Metadata = {
   authors: [{ name: SITE.name, url: SITE.linkedin }],
   creator: SITE.name,
   keywords: [
-    "AI Delivery Lead",
+    "Technical Product Lead AI",
     "LLM engineer",
     "agent engineering",
     "RAG",

@@ -5,7 +5,7 @@ const SPECIALISTS = [
   "Archivist",
   "PM",
   "BA",
-  "Content",
+  "Content Creator",
   "Researcher",
   "RM",
   "Marketer",
@@ -40,9 +40,13 @@ export function CaseStudy() {
     <section className="blk" id="work" aria-labelledby="work-title">
       <div className="wrap">
         <p className="secEyebrow">The system on show</p>
+        {/* Named by what it does, not by its repo slug — "business-mono"
+            means nothing to a visitor, and the CV, LinkedIn Featured section
+            and GitHub landing all lead with this phrasing. */}
         <h2 id="work-title" className="sectionTitle">
-          business-mono — a multi-agent platform I designed and run
+          Multi-agent operations platform — Bitcoin Treasury Solutions
         </h2>
+        <p className={styles.subtitle}>business-mono</p>
         <p className="lead">
           Plainly: it&rsquo;s the software that runs a small business&rsquo;s
           operations — client records, research, content, compliance review,

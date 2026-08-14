@@ -52,6 +52,16 @@
   font-size: 13px;
 }
 
+/* The repo name, kept as a quiet subtitle under the functional heading. */
+.subtitle {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  margin: -4px 0 18px;
+  overflow-wrap: anywhere;
+}
+
 .repoLine {
   font-size: 15px;
   color: var(--muted);

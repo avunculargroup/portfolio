@@ -66,9 +66,9 @@ export const PROJECTS = {
           "A dedicated compliance agent reviews advice-framed drafts against Australian financial-services (AFSL) rules, records its verdict and never auto-approves. If the copy changes, the review re-runs — governance is wired into the workflow rather than left to a final human glance.",
       },
       {
-        title: "Evals gated in CI",
+        title: "Deterministic tests in CI, LLM evals on demand",
         detail:
-          "A Vitest suite including agent evals runs in CI, so behaviour is verified rather than assumed.",
+          "Vitest suites and typecheck gate every change in CI; the LLM eval suite for agent routing and prompts runs on demand, because non-deterministic model calls don't belong in a PR gate.",
       },
     ],
     stack: [
@@ -79,10 +79,10 @@ export const PROJECTS = {
       "Turborepo monorepo",
       "Railway (agents)",
       "Vercel (web app)",
-      "Vitest (incl. agent evals, CI-gated)",
+      "Vitest (CI-gated) · LLM evals on demand",
     ],
     scale:
-      "A genuinely solo build: the coordinator, the specialist agents, the workflows, the ingestion pipelines and the web app were all architected and shipped by one person, across a Turborepo monorepo with a CI-gated eval suite. It has been under sustained development rather than built in a burst, and it runs a real business daily. The repository is public, so the scope can be inspected rather than taken on trust.",
+      "A genuinely solo build: the coordinator, the specialist agents, the workflows, the ingestion pipelines and the web app were all architected and shipped by one person, across a Turborepo monorepo with CI-gated test suites. It has been under sustained development rather than built in a burst, and it runs a real business daily. The repository is public, so the scope can be inspected rather than taken on trust.",
   },
 } as const satisfies Record<string, ProjectRecord>;
 

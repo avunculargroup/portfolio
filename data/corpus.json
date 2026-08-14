@@ -73,7 +73,8 @@
         "current",
         "bitcoin",
         "business-mono",
-        "experience"
+        "experience",
+        "employer"
       ]
     },
     {
@@ -95,7 +96,8 @@
         "experience",
         "webeoc",
         "emergency management",
-        "incident management"
+        "incident management",
+        "employer"
       ]
     },
     {
@@ -114,7 +116,8 @@
         "tamanu",
         "experience",
         "public repo",
-        "open source"
+        "open source",
+        "employer"
       ]
     },
     {
@@ -440,7 +443,9 @@
         "delivery",
         "background",
         "how long",
-        "faq"
+        "faq",
+        "employer",
+        "employment history"
       ]
     },
     {

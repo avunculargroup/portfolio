@@ -12,18 +12,18 @@ interface Role {
 const ROLES: Role[] = [
   {
     year: "2025 — now",
-    role: "Director",
+    role: "Co-founder & Principal Engineer",
     company: "Bitcoin Treasury Solutions",
     current: true,
     blurb:
-      "My current role, and where the AI work sits. I architected and built business-mono — a multi-agent operations platform in TypeScript on Mastra, Next.js 15 and Supabase with pgvector — and it runs the business daily. I also own the roadmap and the client relationships.",
+      "We co-founded this one — Carolyn Crawford leads the commercial and training side, I own the technology end to end. I architected and built business-mono, a multi-agent operations platform in TypeScript on Mastra, Next.js 15 and Supabase with pgvector, and it runs the business daily.",
   },
   {
     year: "2023 — 2026",
     role: "Technical Implementation Analyst",
     company: "Juvare",
     blurb:
-      "Two years embedded with ANZ state government agencies — police through primary industries — running requirements with them and tailoring WebEOC, their incident management platform, into applications that fit how they actually work. Front-end build inside a legacy codebase, plus mentoring and a code-review process I set up.",
+      "Two years embedded with Australian state government agencies — police through primary industries — running requirements with them and tailoring WebEOC, their incident management platform, into applications that fit how they actually work. Front-end build inside a legacy codebase, plus mentoring and a code-review process I set up.",
   },
   {
     year: "2021 — 2023",
@@ -40,6 +40,13 @@ const ROLES: Role[] = [
       "Twelve weeks, full-time, learning to actually build things — JavaScript, Node, React, Postgres. The turning point.",
   },
   {
+    year: "2020",
+    role: "Project Manager",
+    company: "RMIT University",
+    blurb:
+      "Pandemic response. The constraint was almost never technical — it was getting senior people with different operational realities to agree on one course of action, quickly, while government direction changed underneath us.",
+  },
+  {
     year: "2014 — 2020",
     role: "Project Manager",
     company: "VTAC",
@@ -49,7 +56,7 @@ const ROLES: Role[] = [
   {
     year: "2007 — 2014",
     role: "Project & operations roles",
-    company: "RMIT · La Trobe · Monash · Melbourne · Swinburne",
+    company: "La Trobe · Monash · Melbourne · Swinburne",
     blurb:
       "A decade in project coordination and student admin. Not glamorous, but it's where I learned how organisations actually work.",
   },
