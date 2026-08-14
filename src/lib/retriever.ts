@@ -122,7 +122,10 @@ const STOP_WORDS = new Set([
  * instead of them, so a literal match still wins on IDF.
  */
 const SYNONYMS: Record<string, string[]> = {
-  work: ["experience", "employer", "role"],
+  /* The bare verb "work" is deliberately absent: it reads as employment in
+     "where does he work" but as mechanism in "how does retrieval work", and
+     expanding it pulled employment chunks into questions about the system.
+     The past and continuous forms are unambiguous enough to keep. */
   worked: ["experience", "employer", "role"],
   working: ["experience", "employer", "role"],
   job: ["experience", "role"],

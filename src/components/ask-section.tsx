@@ -7,6 +7,7 @@ import type { PortfolioUIMessage } from "@/lib/agent";
 import { collectTrace, estimateCost, estimateTokens } from "@/lib/trace";
 import { AskConsole } from "./ask-console";
 import { Dossier } from "./dossier";
+import { Signposts } from "./signposts";
 import { TracePanel } from "./trace-panel";
 import styles from "./ask-section.module.css";
 
@@ -164,6 +165,10 @@ export function AskSection({
             </p>
           </div>
         </div>
+
+        {/* Inside the section rather than a sibling of it: the rows pre-fill
+            the console above, so they need the same `ask` callback. */}
+        <Signposts onAsk={ask} disabled={!agentAvailable || streaming} />
       </div>
     </section>
   );

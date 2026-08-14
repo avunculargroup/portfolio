@@ -19,6 +19,7 @@
   grid-template-areas:
     "portrait heading"
     "avail    avail"
+    "thesis   thesis"
     "intro    intro"
     "ctas     ctas";
   column-gap: 16px;
@@ -42,6 +43,11 @@
   grid-area: heading;
   text-align: left;
   padding-left: 20px;
+  min-width: 0;
+}
+
+.thesis {
+  grid-area: thesis;
   min-width: 0;
 }
 
@@ -88,6 +94,19 @@
   overflow-wrap: break-word;
 }
 
+/* The positioning claim: serif, ink, sized between the name and the intro so
+   it reads as the hero's sentence rather than a second heading. */
+.thesis {
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(22px, 6.5vw, 28px);
+  line-height: 1.24;
+  color: var(--ink);
+  max-width: 30ch;
+  margin: 0;
+  overflow-wrap: break-word;
+}
+
 .intro {
   font-size: 18px;
   color: var(--muted);
@@ -107,6 +126,11 @@
   .name {
     font-size: clamp(36px, 5.5vw, 64px);
     margin: 0 0 24px;
+  }
+
+  .thesis {
+    font-size: clamp(26px, 2.8vw, 34px);
+    margin: 0 0 20px;
   }
 
   .intro {

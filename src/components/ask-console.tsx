@@ -9,14 +9,21 @@ import styles from "./ask-console.module.css";
    re-check there before changing one. */
 const EXAMPLES = [
   {
-    label: "See his code?",
-    query: "Can I see code he's actually written?",
+    label: "Shipped to production?",
+    query: "What has he actually shipped to production?",
   },
-  { label: "Has he led a team?", query: "Has Chris led a team?" },
-  { label: "With clients?", query: "What's he like with clients?" },
   {
-    label: "Legacy code?",
-    query: "How does he handle legacy code?",
+    label: "Code in a team?",
+    query: "Can I see code he's written in a team?",
+  },
+  { label: "Led people?", query: "Has he led people, or just built things?" },
+  {
+    label: "Non-technical stakeholders?",
+    query: "How does he handle non-technical stakeholders?",
+  },
+  {
+    label: "Available from when?",
+    query: "Is he available, and from when?",
   },
 ] as const;
 
@@ -88,7 +95,7 @@ export function AskConsole({
           type="text"
           value={value}
           onChange={(event) => setValue(event.target.value)}
-          placeholder="e.g. Can I see code he's actually written?"
+          placeholder="e.g. What has he actually shipped to production?"
           autoComplete="off"
           maxLength={MAX_INPUT_CHARS}
           disabled={disabled}

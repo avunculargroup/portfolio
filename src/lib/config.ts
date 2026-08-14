@@ -38,19 +38,19 @@ export const MAX_THREAD_MESSAGES = 40;
  * chunk — the agent answers from the corpus, the page reads from here.
  */
 export const AVAILABILITY = {
-  short: "Part-time & fractional now",
-  full: "Available now for part-time and fractional engagements · full contract capacity from mid-2027",
+  short: "Fractional & part-time now",
+  full: "Open to work now · fractional and part-time immediately, full-time from January 2027",
 } as const;
 
 /** Site metadata. */
 export const SITE = {
   name: "Chris Pollard",
-  role: "AI Delivery Lead",
-  title: "Chris Pollard — AI Delivery Lead",
+  role: "Technical Product Lead — AI",
+  title: "Chris Pollard — Technical Product Lead, AI",
   description:
-    "Melbourne-based AI delivery lead — a hands-on engineer who also brings a decade of project and product management. Available for part-time and fractional engagements now. Ask the live agent about his work.",
+    "Melbourne-based engineer who takes LLM agents from demo to production, with a decade of product and delivery behind it. Fractional and part-time now, full-time from January 2027. Ask the live agent about his work.",
   url: "https://chrispollard.com.au",
-  email: "hello@chrispollard.com.au",
+  email: "chris@chrispollard.com.au",
   location: "Melbourne, Australia",
   linkedin: "https://www.linkedin.com/in/chris-pollard-au",
   github: "https://github.com/avunculargroup/business-mono",

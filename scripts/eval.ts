@@ -58,32 +58,88 @@ const RETRIEVAL_FIXTURES: RetrievalFixture[] = [
     question: "Is he open to new roles right now?",
     expectAnyOf: ["faq-availability"],
   },
-  /* The four starter prompts in the ask console. If one of these regresses,
+  /* The five starter prompts in the ask console. If one of these regresses,
      the chip sends a visitor to a thin answer — keep them in step. */
   {
-    name: "starter — see his code",
-    question: "Can I see code he's actually written?",
-    expectAnyOf: ["faq-see-code", "profile-github", "exp-beyond"],
+    name: "starter — shipped to production",
+    question: "What has he actually shipped to production?",
+    expectAnyOf: ["faq-production", "scale-ownership", "project-overview"],
   },
   {
-    name: "starter — led a team",
-    question: "Has Chris led a team?",
+    name: "starter — code in a team",
+    question: "Can I see code he's written in a team?",
+    expectAnyOf: [
+      "faq-see-code",
+      "profile-github",
+      "exp-beyond",
+      "exp-beyond-engineering",
+    ],
+  },
+  {
+    name: "starter — led people",
+    question: "Has he led people, or just built things?",
     expectAnyOf: ["faq-leadership", "story-pmo-growth", "exp-vtac-pmo"],
   },
   {
-    name: "starter — with clients",
-    question: "What's he like with clients?",
+    name: "starter — non-technical stakeholders",
+    question: "How does he handle non-technical stakeholders?",
     expectAnyOf: [
-      "exp-juvare-clients",
       "wow-translation",
+      "wow-consensus",
       "wow-stakeholders",
       "faq-people",
     ],
   },
   {
-    name: "starter — legacy code",
+    name: "starter — available from when",
+    question: "Is he available, and from when?",
+    expectAnyOf: ["faq-availability"],
+  },
+  /* The signpost rows beneath the answer card ask the agent too. */
+  {
+    name: "signpost — routing",
+    question: "How does the coordinator route work to the specialist agents?",
+    expectAnyOf: ["project-coordination", "project-overview"],
+  },
+  {
+    name: "signpost — retrieval",
+    question: "How does retrieval work in business-mono?",
+    expectAnyOf: ["project-retrieval", "project-overview"],
+  },
+  {
+    name: "signpost — suspend/resume",
+    question: "How does the system pause mid-workflow to ask a human?",
+    expectAnyOf: ["project-elicitation", "project-approvals"],
+  },
+  {
+    name: "signpost — safety and compliance",
+    question: "How does the system stay safe and compliant?",
+    expectAnyOf: ["faq-safety", "project-compliance", "project-approvals"],
+  },
+  {
+    name: "signpost — team codebase",
+    question: "What did Chris build at Beyond Essential Systems?",
+    expectAnyOf: [
+      "exp-beyond-engineering",
+      "exp-beyond",
+      "exp-beyond-mapconfig",
+    ],
+  },
+  {
+    name: "legacy code",
     question: "How does he handle legacy code?",
     expectAnyOf: ["exp-juvare-constraints"],
+  },
+  /* The two chunks added in the August 2026 corpus revision. */
+  {
+    name: "executive consensus",
+    question: "How does he get executives to agree on a decision?",
+    expectAnyOf: ["exp-rmit", "wow-consensus", "wow-stakeholders"],
+  },
+  {
+    name: "crisis with no precedent",
+    question: "What did he do during the pandemic?",
+    expectAnyOf: ["exp-rmit", "wow-consensus"],
   },
   {
     name: "remote / location",
