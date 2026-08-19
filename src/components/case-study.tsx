@@ -47,6 +47,25 @@ export function CaseStudy() {
           Multi-agent operations platform — Bitcoin Treasury Solutions
         </h2>
         <p className={styles.subtitle}>business-mono</p>
+        {/* The problem comes before the architecture, deliberately.
+            Architecture proves the system can be built; it doesn't prove the
+            judgement about what to build, which is the thing an interface
+            role hires for (spec-broadening S5). */}
+        <p className="lead">
+          The problem: a two-person company with a real compliance obligation,
+          and more operational surface than two people can hold. Client
+          conversations, research, content, CRM, scheduling — all of it either
+          done properly or done at all, never both.
+        </p>
+        <p className="lead">
+          So the design question wasn&rsquo;t &ldquo;what can agents
+          do.&rdquo; It was which decisions could safely leave a
+          human&rsquo;s hands, and which never could. That&rsquo;s why a
+          single coordinator holds every human conversation, why approvals
+          graduate from confirmed to autonomous only as reliability is proven,
+          and why regulated advice hits a compliance reviewer that has no
+          authority to approve anything.
+        </p>
         <p className="lead">
           Plainly: it&rsquo;s the software that runs a small business&rsquo;s
           operations — client records, research, content, compliance review,
@@ -111,6 +130,19 @@ export function CaseStudy() {
             </article>
           ))}
         </div>
+
+        {/* Closes the section on the adoption argument rather than the
+            architecture one: human-in-the-loop is a product judgement about
+            whether the thing gets used, not only a safety pattern
+            (spec-broadening S8). */}
+        <p className={styles.coda}>
+          This isn&rsquo;t only an engineering pattern. Systems people
+          don&rsquo;t trust don&rsquo;t get used, and an AI system that gets
+          quietly worked around has failed no matter how good the retrieval
+          is. Keeping a human at the edge of every consequential decision is
+          how adoption survives contact with the people who have to live with
+          it.
+        </p>
       </div>
     </section>
   );

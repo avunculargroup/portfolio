@@ -26,6 +26,23 @@ const GROUPS = [
       "Docs-first",
     ],
   },
+  /* Deliberately the fourth column and not a footnote: a visitor scanning a
+     stack list is forming a category judgement about what kind of
+     professional this is, and an all-technical list answers that before they
+     read a word of prose. Keep it visually equal to the other three
+     (spec-broadening S4). */
+  {
+    title: "Product & delivery",
+    tags: [
+      "Requirements elicitation",
+      "Discovery workshops",
+      "User stories",
+      "Roadmapping",
+      "Agile and hybrid delivery",
+      "Stakeholder alignment",
+      "Cross-functional coordination",
+    ],
+  },
 ] as const;
 
 export function SkillsBand() {

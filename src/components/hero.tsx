@@ -28,12 +28,10 @@ export function Hero() {
             I take LLM agents from demo to production.
           </p>
           <p className={styles.intro}>
-            Hands-on engineer with a decade of product and delivery behind it.
-            The flagship is solo-built, shipped, and running a real business
-            every day, and I spent two years embedded with Australian state
-            government agencies — police through primary industries — running
-            the requirements and building what came out of them. Ask the agent
-            below about my work — it&rsquo;s one I built.
+            Two years embedded with Australian state government agencies,
+            running requirements and shipping the result. A decade of product
+            and delivery behind it. This site is one of the systems — ask it
+            something real.
           </p>
           <div className={styles.ctas}>
             <a href="#ask" className={styles.ctaPrimary}>

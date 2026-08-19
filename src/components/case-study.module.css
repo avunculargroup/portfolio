@@ -121,3 +121,16 @@
   margin: 0;
   line-height: 1.55;
 }
+
+/* The adoption note that closes the section (spec-broadening S8). Set a shade
+   quieter than `.lead` so it reads as the conclusion drawn from the decision
+   cards rather than another headline claim. */
+.coda {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.65;
+  max-width: 62ch;
+  margin: 28px 0 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
