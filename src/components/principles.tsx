@@ -8,7 +8,13 @@ import styles from "./principles.module.css";
 const PRINCIPLES = [
   {
     title: "I listen more than I talk.",
-    body: "I pay as much attention to what people aren't saying as to what they are. Most people already know the right decision — what they need is a room safe enough to say it out loud. It's why elicitation and human-in-the-loop keep turning up in the systems I build: the same instinct, written down as architecture.",
+    /* The second paragraph is the one that matters for an interface role: it
+       says this runs toward the engineers as well as the client, which is
+       the actual job (spec-broadening S7). */
+    body: [
+      "I pay as much attention to what people aren't saying as to what they are. Most people already know the right decision — what they need is a room safe enough to say it out loud. It's why elicitation and human-in-the-loop keep turning up in the systems I build: the same instinct, written down as architecture.",
+      "It cuts both ways. Clients rarely state the constraint that actually matters, and engineers rarely state the one they've already decided is obvious. Most of the failures I've seen came from one of those going unsaid, not from anyone being wrong.",
+    ],
   },
   {
     title: "I own the decisions — including the wrong ones.",
@@ -32,7 +38,14 @@ export function Principles() {
           {PRINCIPLES.map((principle) => (
             <article key={principle.title} className={styles.item}>
               <h3 className={styles.title}>{principle.title}</h3>
-              <p className={styles.body}>{principle.body}</p>
+              {(typeof principle.body === "string"
+                ? [principle.body]
+                : principle.body
+              ).map((para) => (
+                <p key={para} className={styles.body}>
+                  {para}
+                </p>
+              ))}
             </article>
           ))}
         </div>

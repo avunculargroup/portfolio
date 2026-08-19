@@ -1,31 +1,8 @@
 "use client";
 
 import { useId, useRef, useState } from "react";
-import { MAX_INPUT_CHARS } from "@/lib/config";
+import { ASK_PROMPTS, MAX_INPUT_CHARS } from "@/lib/config";
 import styles from "./ask-console.module.css";
-
-/* Chosen against the current corpus — every one of these retrieves a chunk
-   that answers it directly. Covered by the retrieval evals in scripts/eval.ts;
-   re-check there before changing one. */
-const EXAMPLES = [
-  {
-    label: "Shipped to production?",
-    query: "What has he actually shipped to production?",
-  },
-  {
-    label: "Code in a team?",
-    query: "Can I see code he's written in a team?",
-  },
-  { label: "Led people?", query: "Has he led people, or just built things?" },
-  {
-    label: "Non-technical stakeholders?",
-    query: "How does he handle non-technical stakeholders?",
-  },
-  {
-    label: "Available from when?",
-    query: "Is he available, and from when?",
-  },
-] as const;
 
 interface AskConsoleProps {
   onAsk: (question: string) => void;
@@ -112,7 +89,7 @@ export function AskConsole({
       </form>
 
       <div className={styles.chips}>
-        {EXAMPLES.map((example) => (
+        {ASK_PROMPTS.map((example) => (
           <button
             key={example.label}
             type="button"

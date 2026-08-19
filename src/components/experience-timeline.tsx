@@ -4,7 +4,8 @@ interface Role {
   year: string;
   role: string;
   company: string;
-  blurb: string;
+  /** An array where the entry needs more than one paragraph to land. */
+  blurb: string | readonly string[];
   /** Marks the one role held today, so the current position reads at a glance. */
   current?: boolean;
 }
@@ -22,8 +23,14 @@ const ROLES: Role[] = [
     year: "2023 — 2026",
     role: "Technical Implementation Analyst",
     company: "Juvare",
-    blurb:
-      "Two years embedded with Australian state government agencies — police through primary industries — running requirements with them and tailoring WebEOC, their incident management platform, into applications that fit how they actually work. Front-end build inside a legacy codebase, plus mentoring and a code-review process I set up.",
+    /* The longest entry on the timeline, and deliberately so: this is the
+       strongest evidence of the interface work, and as a build credit alone
+       it read as far less than it was (spec-broadening S6). */
+    blurb: [
+      "Australian state government agencies — police through primary industries — running systems people depend on during live incidents. My job was to sit with them, understand how they actually operate, and turn that into working software.",
+      "The friction was structural. Agencies needed the system to match processes they couldn't change, and WebEOC — their incident management platform — had real constraints underneath: jQuery and legacy bundles. Neither side could simply be told no. So the work was finding what the agency actually needed underneath what they asked for, and what the platform could honestly deliver, and landing something in the overlap. I ran that conversation and then I built the result.",
+      "Alongside the client work: mentoring, and a code-review process I set up.",
+    ],
   },
   {
     year: "2021 — 2023",
@@ -85,7 +92,14 @@ export function ExperienceTimeline() {
               </span>
               <h3 className={styles.role}>{entry.role}</h3>
               <span className={styles.company}>{entry.company}</span>
-              <p className={styles.blurb}>{entry.blurb}</p>
+              {(typeof entry.blurb === "string"
+                ? [entry.blurb]
+                : entry.blurb
+              ).map((para) => (
+                <p key={para} className={styles.blurb}>
+                  {para}
+                </p>
+              ))}
             </li>
           ))}
         </ol>

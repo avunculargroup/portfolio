@@ -44,6 +44,7 @@ The original spec (§7) and `portfolio-demo.html` describe the first version of 
 - **Never unpin the embedding provider.** `embeddingModel` is pinned to the OpenAI upstream with `allow_fallbacks: false`. Letting OpenRouter route it elsewhere returns vectors in a different space and silently breaks retrieval — a failure that looks like "the agent got worse", not like an error.
 - **Retrieval:** always go through the `Retriever` interface. The static implementation is provided; a pgvector implementation must be a drop-in with no caller changes.
 - **Corpus is the source of truth.** To change what the agent knows, edit `data/corpus.json` and re-run `scripts/embed-corpus.ts`. Never hand-edit `data/embeddings.json`. Ignore `_`-prefixed keys in the corpus.
+- **Starter prompts live in `lib/config.ts`** (`ASK_PROMPTS`), not inline in `AskConsole` — they are the highest-leverage copy on the page and get tuned often. Every prompt needs a matching retrieval eval in `scripts/eval.ts`; the same rule already applies to the `Signposts` queries.
 - Prefer small, composable components (spec §2). Server components by default; client components only where interactivity needs them (console, trace panel).
 - No secrets in client code. `OPENROUTER_API_KEY` is server-only; `lib/openrouter.ts` must never be imported from a client component.
 

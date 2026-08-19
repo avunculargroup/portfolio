@@ -58,8 +58,9 @@ const RETRIEVAL_FIXTURES: RetrievalFixture[] = [
     question: "Is he open to new roles right now?",
     expectAnyOf: ["faq-availability"],
   },
-  /* The five starter prompts in the ask console. If one of these regresses,
-     the chip sends a visitor to a thin answer — keep them in step. */
+  /* The six starter prompts in the ask console (ASK_PROMPTS in lib/config).
+     If one of these regresses, the chip sends a visitor to a thin answer —
+     keep them in step. */
   {
     name: "starter — shipped to production",
     question: "What has he actually shipped to production?",
@@ -81,17 +82,39 @@ const RETRIEVAL_FIXTURES: RetrievalFixture[] = [
     expectAnyOf: ["faq-leadership", "story-pmo-growth", "exp-vtac-pmo"],
   },
   {
-    name: "starter — non-technical stakeholders",
-    question: "How does he handle non-technical stakeholders?",
+    name: "starter — changing requirements",
+    question: "How does he handle changing client requirements?",
     expectAnyOf: [
       "wow-translation",
+      "story-agile-waterfall",
+      "exp-rmit",
+      "exp-juvare-clients",
+    ],
+  },
+  {
+    name: "starter — non-technical executives",
+    question: "How does he work with executives who aren't technical?",
+    expectAnyOf: [
       "wow-consensus",
+      "wow-translation",
       "wow-stakeholders",
+      "exp-rmit",
       "faq-people",
     ],
   },
   {
-    name: "starter — available from when",
+    name: "starter — technical debt vs shipping",
+    question: "Tell me about a time he balanced technical debt against shipping.",
+    expectAnyOf: [
+      "exp-juvare-constraints",
+      "story-agile-waterfall",
+      "story-autonomy",
+    ],
+  },
+  /* No longer a starter chip, but still the question a recruiter most needs
+     answered — keep the retrieval honest. */
+  {
+    name: "availability from when",
     question: "Is he available, and from when?",
     expectAnyOf: ["faq-availability"],
   },

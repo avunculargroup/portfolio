@@ -11,7 +11,9 @@ export function PullQuote() {
           explain why it&rsquo;s the right call.
         </p>
         <p className={styles.coda}>
-          Consider me a product manager with a lot of hands-on experience.
+          Consider me the bridge between your stakeholders and your codebase
+          — whether that means steering product, leading delivery, or
+          architecting the solution.
         </p>
       </div>
     </section>

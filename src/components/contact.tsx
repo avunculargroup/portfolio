@@ -8,10 +8,13 @@ export function Contact() {
         <div className={styles.contact}>
           <div>
             <p className={styles.eyebrow}>Get in touch</p>
+            {/* Keeps the AI anchor and adds the adoption/stakeholder framing
+                — the forward-deployed shape without the jargon
+                (spec-broadening S9). */}
             <h2 id="contact-title" className={styles.headline}>
-              Building something that needs someone who can take LLM agents
-              from demo to production — and land the delivery around them?
-              Let&rsquo;s talk.
+              Building something with AI in it that has to actually work for
+              the people using it — and need someone who can run that
+              conversation and then build the result? Let&rsquo;s talk.
             </h2>
             <p className={styles.availability}>{AVAILABILITY.full}</p>
             <p className={styles.place}>{SITE.location}</p>

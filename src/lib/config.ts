@@ -42,6 +42,44 @@ export const AVAILABILITY = {
   full: "Open to work now · fractional and part-time immediately, full-time from January 2027",
 } as const;
 
+/**
+ * The starter prompts under the ask console. Kept here rather than inline in
+ * the component because they are the highest-leverage copy on the page and
+ * will want tuning independently of the markup (spec-broadening S3).
+ *
+ * The mix is deliberate: three that evidence the build, three that evidence
+ * the interface work — requirements, executives, and the debt/ship trade-off.
+ * A visitor assessing Chris for delivery, product or account work has
+ * something to click, not just an architecture tour.
+ *
+ * Every `query` is covered by a retrieval eval in scripts/eval.ts — re-check
+ * there before changing one.
+ */
+export const ASK_PROMPTS = [
+  {
+    label: "Shipped to production?",
+    query: "What has he actually shipped to production?",
+  },
+  {
+    label: "Code in a team?",
+    query: "Can I see code he's written in a team?",
+  },
+  { label: "Led people?", query: "Has he led people, or just built things?" },
+  {
+    label: "Changing requirements?",
+    query: "How does he handle changing client requirements?",
+  },
+  {
+    label: "Non-technical execs?",
+    query: "How does he work with executives who aren't technical?",
+  },
+  {
+    label: "Debt vs shipping?",
+    query:
+      "Tell me about a time he balanced technical debt against shipping.",
+  },
+] as const;
+
 /** Site metadata. */
 export const SITE = {
   name: "Chris Pollard",
