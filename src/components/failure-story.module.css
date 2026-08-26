@@ -1,0 +1,70 @@
+/* Sits immediately under the Principles block as its evidence, so it opens
+   without the full `.blk` top padding — the two read as one argument. */
+.section {
+  padding: 0 0 56px;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 0 0 96px;
+  }
+}
+
+.inner {
+  max-width: 760px;
+  padding-top: 36px;
+  border-top: 1px solid var(--line);
+}
+
+@media (min-width: 768px) {
+  .inner {
+    padding-top: 48px;
+  }
+}
+
+/* Deliberately smaller than a `.sectionTitle`: this is a story inside "How I
+   work", not a section of its own. */
+.title {
+  font-size: clamp(24px, 3vw, 30px);
+  line-height: 1.22;
+  max-width: 26ch;
+  margin: 0 0 28px;
+}
+
+.beats {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+}
+
+@media (min-width: 640px) {
+  .beats {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 40px;
+  }
+}
+
+.beat {
+  min-width: 0;
+  border-left: 2px solid var(--signal);
+  padding-left: 16px;
+}
+
+.beatLabel {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--signal-dk);
+  margin: 0 0 8px;
+}
+
+.beatBody {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0;
+  max-width: 44ch;
+}

@@ -251,3 +251,27 @@ ul {
     scroll-behavior: auto !important;
   }
 }
+
+/* Placeholder pass (August 2026) ------------------------------------------
+   Scaffolding for the product-repositioning content pass. `--placeholder-bar-h`
+   is 0px unless layout.tsx stamps `data-placeholder="true"` on <html>, so this
+   block is inert in a normal build. Delete it with the placeholder pass.
+   --------------------------------------------------------------------------- */
+
+:root {
+  --placeholder-bar-h: 0px;
+}
+
+:root[data-placeholder="true"] {
+  --placeholder-bar-h: 34px;
+}
+
+:root[data-placeholder="true"] body {
+  padding-top: var(--placeholder-bar-h);
+}
+
+:root[data-placeholder="true"] {
+  scroll-padding-top: calc(
+    var(--header-h) + var(--placeholder-bar-h) + 12px
+  );
+}

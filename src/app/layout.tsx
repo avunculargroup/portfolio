@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
 import { SITE } from "@/lib/config";
+import { PLACEHOLDER_MODE } from "@/lib/placeholder";
 import "./globals.css";
 
 /*
@@ -115,6 +116,10 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${newsreader.variable} ${manrope.variable}`}
+      /* Placeholder pass: drives --placeholder-bar-h in globals.css, which
+         offsets the body and the sticky header under the warning banner.
+         Undefined (and so inert) in a normal build. */
+      data-placeholder={PLACEHOLDER_MODE ? "true" : undefined}
     >
       <body>
         <a className="skipLink" href="#main">
