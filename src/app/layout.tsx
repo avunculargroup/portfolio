@@ -95,11 +95,16 @@ export const metadata: Metadata = {
     description: SITE.description,
     images: ["/opengraph-image"],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: { index: true, follow: true, "max-image-preview": "large" },
-  },
+  /* Placeholder pass: a deployment carrying fabricated copy is noindex,
+     nofollow. robots.txt is advisory; this tag is what actually keeps the
+     fake claims out of an index. Reverts with the placeholder pass. */
+  robots: PLACEHOLDER_MODE
+    ? { index: false, follow: false, googleBot: { index: false, follow: false } }
+    : {
+        index: true,
+        follow: true,
+        googleBot: { index: true, follow: true, "max-image-preview": "large" },
+      },
 };
 
 export const viewport: Viewport = {
