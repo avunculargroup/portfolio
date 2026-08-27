@@ -32,3 +32,58 @@
   margin: 12px 0 0;
   max-width: 46ch;
 }
+
+/* Visual-craft aside. Sits under the two principles as a quieter, wider block
+   so it reads as a footnote to "How I work" rather than a third principle. */
+.craft {
+  max-width: 900px;
+  margin-top: 36px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+@media (min-width: 768px) {
+  .craft {
+    margin-top: 48px;
+  }
+}
+
+.craftKicker {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--signal-dk);
+  margin: 0 0 12px;
+}
+
+.craftBody {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 768px) {
+  .craftBody {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    gap: 40px;
+    align-items: start;
+  }
+}
+
+.craftLead {
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 500;
+  font-size: 19px;
+  line-height: 1.35;
+  color: var(--ink);
+  margin: 0;
+}
+
+.craftDetail {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}

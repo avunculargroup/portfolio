@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
 import { SITE } from "@/lib/config";
+import { PLACEHOLDER_MODE } from "@/lib/placeholder";
 import "./globals.css";
 
 /*
@@ -94,11 +95,16 @@ export const metadata: Metadata = {
     description: SITE.description,
     images: ["/opengraph-image"],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: { index: true, follow: true, "max-image-preview": "large" },
-  },
+  /* Placeholder pass: a deployment carrying fabricated copy is noindex,
+     nofollow. robots.txt is advisory; this tag is what actually keeps the
+     fake claims out of an index. Reverts with the placeholder pass. */
+  robots: PLACEHOLDER_MODE
+    ? { index: false, follow: false, googleBot: { index: false, follow: false } }
+    : {
+        index: true,
+        follow: true,
+        googleBot: { index: true, follow: true, "max-image-preview": "large" },
+      },
 };
 
 export const viewport: Viewport = {
@@ -115,6 +121,10 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${newsreader.variable} ${manrope.variable}`}
+      /* Placeholder pass: drives --placeholder-bar-h in globals.css, which
+         offsets the body and the sticky header under the warning banner.
+         Undefined (and so inert) in a normal build. */
+      data-placeholder={PLACEHOLDER_MODE ? "true" : undefined}
     >
       <body>
         <a className="skipLink" href="#main">

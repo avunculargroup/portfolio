@@ -1,7 +1,17 @@
 import type { MetadataRoute } from "next";
 import { SITE } from "@/lib/config";
+import { PLACEHOLDER_MODE } from "@/lib/placeholder";
 
 export default function robots(): MetadataRoute.Robots {
+  /*
+   * The placeholder pass puts fabricated claims on the page under Chris's real
+   * name. A deployment carrying them must not be crawlable — a search result
+   * outlives the deployment that produced it. Removed with the placeholder pass.
+   */
+  if (PLACEHOLDER_MODE) {
+    return { rules: [{ userAgent: "*", disallow: "/" }] };
+  }
+
   return {
     rules: [
       {
