@@ -1,4 +1,3 @@
-import { FactSlot } from "./fact-slot";
 import styles from "./principles.module.css";
 
 /*
@@ -50,37 +49,7 @@ export function Principles() {
             </article>
           ))}
         </div>
-
-        <CraftNote />
       </div>
     </section>
-  );
-}
-
-/*
- * PLACEHOLDER CONTENT — fabricated, marked `{{FAKE: }}`.
- *
- * The visual-craft slot: performing arts, and six years running a video
- * production business. Framed as design taste plus commercial ownership, not
- * as biography — a small aside inside "How I work", deliberately not a
- * timeline entry, because on the timeline it reads as a gap to explain rather
- * than a capability.
- */
-function CraftNote() {
-  return (
-    <FactSlot
-      label="Visual craft — the arts background and the video business, as taste + ownership"
-      className={styles.craft}
-    >
-      <p className={styles.craftKicker}>{"{{FAKE: Where the eye came from}}"}</p>
-      <div className={styles.craftBody}>
-        <p className={styles.craftLead}>
-          {"{{FAKE: Twelve years on stage, then six years running Acme Motion Pictures — my own video production business, 200 films for 60 clients, every invoice and every edit my own.}}"}
-        </p>
-        <p className={styles.craftDetail}>
-          {"{{FAKE: The arts half is why I can tell you what is wrong with a layout in specifics rather than in vibes, and why I care whether an interface has a rhythm. The business half is the part people skip: I quoted the work, I carried the risk when a shoot ran over, and I learned what a client will actually pay for — which turns out to be almost never the thing they asked for.}}"}
-        </p>
-      </div>
-    </FactSlot>
   );
 }

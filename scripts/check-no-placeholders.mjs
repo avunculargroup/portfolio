@@ -1,25 +1,32 @@
 #!/usr/bin/env node
 /**
- * Placeholder guard (August 2026 content pass).
+ * Placeholder guard.
  *
  * Scans the Next build output for the fabricated-content marker. Wired into
  * `npm run build` after `next build`.
  *
+ * This is a standing net on main, not a temporary measure. The August 2026
+ * placeholder pass reached production once already — the branch carrying
+ * fabricated copy was merged with its `.env.production` opt-in intact, and
+ * this check is what stopped the live build. It stays in place for as long as
+ * a placeholder branch exists, so a re-merge fails loudly instead of shipping
+ * invented claims under a real name.
+ *
  * Two tiers, because the placeholder branch is deliberately deployed to a
  * Vercel PREVIEW while the real copy is being written:
  *
- *   - VERCEL_ENV === "production"  → always fails. No opt-in, no override.
+ *   - VERCEL_ENV === "production"  -> always fails. No opt-in, no override.
  *     chrispollard.com.au cannot be built while markers are present, however
- *     the build was triggered — a promote, a merge, a manual redeploy.
- *   - anything else → fails, unless ALLOW_PLACEHOLDER_BUILD === "true", in
- *     which case it warns loudly and passes. That opt-in lives in the
- *     committed .env.production on the placeholder branch only, so it cannot
- *     reach main without showing up in the diff.
+ *     the build was triggered - a promote, a merge, a manual redeploy.
+ *   - anything else -> fails, unless ALLOW_PLACEHOLDER_BUILD === "true", in
+ *     which case it warns loudly and passes. That opt-in lives in a committed
+ *     .env.production on the placeholder branch only, so it cannot reach main
+ *     without showing up in the diff.
  *
  * The marker is assembled from parts below so that this file, and any bundle
  * that ever inlined it, cannot itself trip the check.
  *
- * Delete this script (and its `build` hook) when the placeholder pass is over.
+ * Retire this only when no placeholder branch remains unmerged.
  */
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative, sep } from "node:path";

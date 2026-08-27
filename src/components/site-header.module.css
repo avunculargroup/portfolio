@@ -1,8 +1,6 @@
 .bar {
   position: sticky;
-  /* 0px in a normal build; only the placeholder banner ever sets this
-     (globals.css → placeholder pass). */
-  top: var(--placeholder-bar-h, 0px);
+  top: 0;
   z-index: 50;
   background: oklch(0.985 0.01 78 / 0.92);
   backdrop-filter: blur(8px);
