@@ -449,6 +449,23 @@
       ]
     },
     {
+      "id": "faq-career",
+      "title": "Where has Chris worked, and where does he work now?",
+      "category": "faq",
+      "url": "https://www.linkedin.com/in/chris-pollard-au",
+      "text": "Chris's career, most recent first. Now: co-founder and Principal Engineer at Bitcoin Treasury Solutions (March 2025 to present, Melbourne), where he owns the technology end to end. Before that: Juvare, Technical Implementation Analyst (December 2023 to May 2026); Beyond Essential Systems, Software Engineer (September 2021 to December 2023); General Assembly's Software Engineering Immersive (February to August 2021), where he retrained as an engineer; RMIT University, Project Manager for the pandemic response (March to December 2020); and VTAC, Project Manager (November 2014 to March 2020). From 2007 to 2014 he worked in video production and university student administration.",
+      "tags": [
+        "current role",
+        "current employer",
+        "where does he work",
+        "employment history",
+        "career history",
+        "employer",
+        "faq",
+        "experience"
+      ]
+    },
+    {
       "id": "faq-production",
       "title": "Has he shipped to production?",
       "category": "faq",

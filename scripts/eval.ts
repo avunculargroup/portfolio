@@ -46,7 +46,12 @@ const RETRIEVAL_FIXTURES: RetrievalFixture[] = [
   {
     name: "employment history",
     question: "Where has Chris worked?",
-    expectAnyOf: ["exp-juvare", "exp-beyond", "exp-bts", "faq-experience"],
+    expectAnyOf: ["faq-career", "exp-juvare", "exp-beyond", "exp-bts", "faq-experience"],
+  },
+  {
+    name: "current role",
+    question: "Where does Chris work now?",
+    expectAnyOf: ["faq-career", "exp-bts"],
   },
   {
     name: "education",
@@ -226,6 +231,7 @@ const REFUSAL_MARKERS = [
   "don't", "doesn't", "do not", "does not", "can't", "cannot", "not able",
   "no information", "isn't covered", "is not covered", "doesn't cover",
   "not something", "outside", "only", "won't", "will not", "unable",
+  "not general", "here to help with questions about chris",
 ];
 
 function looksLikeRefusal(answer: string): boolean {
