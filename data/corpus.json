@@ -18,7 +18,8 @@
       "LinkedIn currently shows the VTAC start as December 2015; the corpus says November 2014. Update LinkedIn so the two agree.",
       "Check the capability one-pager PDF for the same ANZ-to-Australian client correction applied here.",
       "Juvare end date (May 2026) and the co-founder / principal engineer title need to match on LinkedIn and the portfolio site.",
-      "Confirm the exact RMIT job title on the employment record — corpus and LinkedIn both say Project Manager."
+      "Confirm the exact RMIT job title on the employment record — corpus and LinkedIn both say Project Manager.",
+      "Nov 2026: PRINCE2 Practitioner added to edu, exp-vtac-pmo and story-pmo-growth, marked as lapsed (earned 2016, no longer current). Run `npm run embed` before merging; LinkedIn and the CV should show it as lapsed too."
     ],
     "categoryNotes": {
       "story": "Concrete, dated examples for behavioural questions ('tell me about a time'). Deliberately separated from experience so retrieval doesn't surface 2007 anecdotes when someone asks what Chris does now. Always keep the date in the text."
@@ -219,14 +220,17 @@
       "title": "Education and certifications",
       "category": "education",
       "url": "https://www.linkedin.com/in/chris-pollard-au",
-      "text": "Bachelor of Performing Arts, Monash University (2004–2007); Graduate Diploma in Education, La Trobe University (2009–2010); Software Engineering Immersive, General Assembly (2021). Certifications include WebEOC Bootcamp, a Bitcoin Protocol Development seminar series, and freelance website development.",
+      "text": "Bachelor of Performing Arts, Monash University (2004–2007); Graduate Diploma in Education, La Trobe University (2009–2010); Software Engineering Immersive, General Assembly (2021). Certifications include PRINCE2 Practitioner (earned in 2016 while at VTAC, now lapsed), WebEOC Bootcamp, a Bitcoin Protocol Development seminar series, and freelance website development.",
       "tags": [
         "education",
         "degree",
         "monash",
         "la trobe",
         "general assembly",
-        "certifications"
+        "certifications",
+        "prince2",
+        "project management",
+        "qualifications"
       ]
     },
     {
@@ -531,7 +535,7 @@
       "title": "VTAC — building and leading the project management office",
       "category": "experience",
       "url": "https://www.linkedin.com/in/chris-pollard-au",
-      "text": "Alongside managing product at VTAC, Chris ran the project management office, which he grew from one person to six full-time staff between 2018 and 2020. He set the practice up as well as staffing it: documentation standards, risk and change management, and coordination across developers, testers and UX. It is the clearest example of him leading people, not just delivery.",
+      "text": "Alongside managing product at VTAC, Chris ran the project management office, which he grew from one person to six full-time staff between 2018 and 2020. He set the practice up as well as staffing it, using PRINCE2, in which he qualified as a Practitioner in 2016 (the certification has since lapsed): documentation standards, risk and change management, and coordination across developers, testers and UX. It is the clearest example of him leading people, not just delivery.",
       "tags": [
         "vtac",
         "pmo",
@@ -540,6 +544,9 @@
         "managed people",
         "project management office",
         "grew team",
+        "prince2",
+        "methodology",
+        "governance",
         "experience"
       ]
     },
@@ -617,7 +624,7 @@
       "title": "Example — growing a project office from one to six",
       "category": "story",
       "url": "https://www.linkedin.com/in/chris-pollard-au",
-      "text": "Example (VTAC, 2018–2020). Chris took a project management office that was one person — him — and grew it to six full-time staff over two years, defining how the practice worked as it scaled: documentation, risk and change management, and how project managers interfaced with an in-house full-stack team building both B2C and B2B applications. Useful answer to 'has he built anything beyond his own output?'",
+      "text": "Example (VTAC, 2018–2020). Chris took a project management office that was one person — him — and grew it to six full-time staff over two years, defining how the practice worked as it scaled: documentation, risk and change management grounded in PRINCE2 (he qualified as a Practitioner in 2016; the certification has since lapsed), and how project managers interfaced with an in-house full-stack team building both B2C and B2B applications. Useful answer to 'has he built anything beyond his own output?'",
       "tags": [
         "example",
         "story",
@@ -627,7 +634,8 @@
         "scaling",
         "pmo",
         "vtac",
-        "hiring"
+        "hiring",
+        "prince2"
       ]
     },
     {
