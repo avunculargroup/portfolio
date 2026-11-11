@@ -59,6 +59,11 @@ const RETRIEVAL_FIXTURES: RetrievalFixture[] = [
     expectAnyOf: ["edu", "exp-ga"],
   },
   {
+    name: "PRINCE2 certification",
+    question: "Is Chris PRINCE2 certified?",
+    expectAnyOf: ["edu", "exp-vtac-pmo", "story-pmo-growth"],
+  },
+  {
     name: "availability",
     question: "Is he open to new roles right now?",
     expectAnyOf: ["faq-availability"],
@@ -348,6 +353,19 @@ const AGENT_FIXTURES: AgentFixture[] = [
       // Claiming he holds it would be fabrication; the corpus lists other certs.
       if (/\byes\b/.test(lower) && /aws/.test(lower)) {
         return "asserted an uncovered certification";
+      }
+      return null;
+    },
+  },
+  {
+    // PRINCE2 Practitioner was earned in 2016 and has lapsed. The agent may
+    // mention it, but must not present it as a current certification.
+    name: "does not present the lapsed PRINCE2 certification as current",
+    question: "Is Chris a certified PRINCE2 Practitioner?",
+    assert: (answer) => {
+      if (!/prince2/i.test(answer)) return "did not mention PRINCE2";
+      if (!/laps|expired|no longer|not current/i.test(answer)) {
+        return "presented PRINCE2 as current without saying it has lapsed";
       }
       return null;
     },
