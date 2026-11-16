@@ -14,7 +14,8 @@ export function SiteFooter() {
           over {EMBEDDING_MODEL} embeddings), cites what it finds, and tells
           you plainly when something isn&rsquo;t covered rather than guessing.
           Nothing you type is stored: no accounts, no database, no memory
-          between visits. Experience and education come from my CV; project
+          between visits. Experience and education come from my{" "}
+          <a href="/cv">CV</a>; project
           facts from the public business-mono repo.
         </p>
         <p className={styles.colophon}>

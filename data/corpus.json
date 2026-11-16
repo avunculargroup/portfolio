@@ -19,7 +19,8 @@
       "Check the capability one-pager PDF for the same ANZ-to-Australian client correction applied here.",
       "Juvare end date (May 2026) and the co-founder / principal engineer title need to match on LinkedIn and the portfolio site.",
       "Confirm the exact RMIT job title on the employment record — corpus and LinkedIn both say Project Manager.",
-      "Nov 2026: PRINCE2 Practitioner added to edu, exp-vtac-pmo and story-pmo-growth, marked as lapsed (earned 2016, no longer current). Run `npm run embed` before merging; LinkedIn and the CV should show it as lapsed too."
+      "Nov 2026: PRINCE2 Practitioner added to edu, exp-vtac-pmo and story-pmo-growth, marked as lapsed (earned 2016, no longer current). Run `npm run embed` before merging; LinkedIn and the CV should show it as lapsed too.",
+      "Nov 2026: added faq-cv (the /cv page and PDF). Run `npm run embed` before merging."
     ],
     "categoryNotes": {
       "story": "Concrete, dated examples for behavioural questions ('tell me about a time'). Deliberately separated from experience so retrieval doesn't surface 2007 anecdotes when someone asks what Chris does now. Always keep the date in the text."
@@ -921,6 +922,23 @@
         "existing codebase",
         "experience",
         "webeoc"
+      ]
+    },
+    {
+      "id": "faq-cv",
+      "title": "Can I get his CV?",
+      "category": "faq",
+      "url": "https://chrispollard.com.au/cv",
+      "text": "Yes. Chris's CV is on this site at chrispollard.com.au/cv, and a two-page PDF of it can be downloaded from the same page. Anything on it can be asked about here, and he can be reached at chris@chrispollard.com.au.",
+      "tags": [
+        "cv",
+        "resume",
+        "résumé",
+        "pdf",
+        "download",
+        "copy",
+        "curriculum vitae",
+        "faq"
       ]
     }
   ]

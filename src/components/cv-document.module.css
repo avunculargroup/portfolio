@@ -1,0 +1,408 @@
+/* CV document — shared by /cv (web) and /cv/print (the PDF source).
+   Sizes are custom properties set per mode, so the two stay one layout.
+   Accent is a marker only (dots, the current role), never text colour. */
+
+.doc {
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, -apple-system, "Segoe UI", Roboto,
+    sans-serif;
+  font-size: var(--fs-body);
+  line-height: var(--lh);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.web {
+  --fs-body: 16px;
+  --fs-small: 14px;
+  --fs-label: 12px;
+  --fs-name: clamp(36px, 7vw, 52px);
+  --fs-thesis: clamp(19px, 3vw, 23px);
+  --fs-org: 19px;
+  --lh: 1.55;
+  --gap: 32px;
+  --rail: 9rem;
+  max-width: 760px;
+}
+
+.print {
+  --fs-body: 10pt;
+  --fs-small: 9.4pt;
+  --fs-label: 7.8pt;
+  --fs-name: 32pt;
+  --fs-thesis: 15pt;
+  --fs-org: 12pt;
+  --lh: 1.45;
+  --gap: 16pt;
+  --rail: 25mm;
+  background: #fff;
+}
+
+.doc p,
+.doc ul,
+.doc dl,
+.doc dd {
+  margin: 0;
+}
+
+.doc a {
+  color: inherit;
+  text-decoration-color: var(--line);
+  text-underline-offset: 3px;
+}
+
+.print a {
+  text-decoration: none;
+}
+
+/* Header ------------------------------------------------------------------ */
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55em;
+  padding-bottom: var(--gap);
+  border-bottom: 1px solid var(--line);
+}
+
+.eyebrow,
+.label {
+  /* Some labels are h2s; the site's global h2 is serif. */
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+}
+
+.dot {
+  display: inline-block;
+  flex: none;
+  width: 0.62em;
+  height: 0.62em;
+  border-radius: 50%;
+  background: var(--signal);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.name {
+  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+  font-size: var(--fs-name);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+}
+
+.thesis {
+  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+  font-size: var(--fs-thesis);
+  line-height: 1.3;
+}
+
+.contact {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2em 1.4em;
+  font-size: var(--fs-small);
+  color: var(--muted);
+  margin-top: 0.3em;
+}
+
+.availability {
+  font-size: var(--fs-small);
+  font-weight: 600;
+}
+
+/* Rail rows --------------------------------------------------------------- */
+
+.row,
+.role {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.35em;
+}
+
+@media (min-width: 640px) {
+  .row,
+  .role {
+    grid-template-columns: var(--rail) minmax(0, 1fr);
+    column-gap: 1.6em;
+  }
+}
+
+/* Print is always the two-column layout, whatever the print viewport. */
+.print .row,
+.print .role {
+  grid-template-columns: var(--rail) minmax(0, 1fr);
+  column-gap: 5mm;
+}
+
+.label {
+  margin: 0;
+  padding-top: 0.15em;
+}
+
+.profile {
+  text-wrap: pretty;
+}
+
+/* Selected build ---------------------------------------------------------- */
+
+.build {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75em;
+  padding: 1.1em 1.3em;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  break-inside: avoid;
+}
+
+.print .build {
+  border-radius: 6pt;
+  padding: 10pt 12pt;
+}
+
+.buildHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3em 0.9em;
+}
+
+.buildName {
+  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+  font-size: var(--fs-org);
+  font-weight: 600;
+}
+
+.buildLink {
+  margin-left: auto;
+  font-size: var(--fs-small);
+  color: var(--muted) !important;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.7em 1.6em;
+}
+
+@media (min-width: 640px) {
+  .facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.print .facts {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6pt 14pt;
+}
+
+.facts dt {
+  font-weight: 700;
+}
+
+.facts dd {
+  font-size: var(--fs-small);
+}
+
+.stack {
+  font-size: var(--fs-small);
+  color: var(--muted);
+}
+
+/* Experience -------------------------------------------------------------- */
+
+.experience {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--gap) * 0.85);
+}
+
+.sectionLabel {
+  margin-bottom: -0.4em;
+}
+
+.role {
+  break-inside: avoid;
+}
+
+.breakBefore {
+  break-before: auto;
+}
+
+.print .breakBefore {
+  break-before: page;
+}
+
+.when {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 0.35em;
+  font-size: var(--fs-small);
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Rail layout: one stacked column — from, to, place. nowrap matters: with
+   wrap on, .place's 100% basis pushes it into a second column. */
+@media (min-width: 640px) {
+  .when {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    padding-top: 0.2em;
+  }
+
+  .when .place {
+    flex-basis: auto;
+  }
+}
+
+.print .when {
+  flex-direction: column;
+  flex-wrap: nowrap;
+  padding-top: 0.15em;
+}
+
+.print .when .place {
+  flex-basis: auto;
+}
+
+.current {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+}
+
+.place {
+  color: var(--muted);
+  flex-basis: 100%;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+  min-width: 0;
+}
+
+.org {
+  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+  font-size: var(--fs-org);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.title {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: var(--fs-body);
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.points {
+  padding-left: 1.1em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+}
+
+.points li::marker {
+  color: var(--muted);
+}
+
+.doc p,
+.points li {
+  text-wrap: pretty;
+}
+
+/* Skills and education ---------------------------------------------------- */
+
+.skills {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.4em 1.6em;
+  padding-top: var(--gap);
+  border-top: 1px solid var(--line);
+  font-size: var(--fs-small);
+}
+
+@media (min-width: 640px) {
+  .skills {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.print .skills {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0 14pt;
+  break-inside: avoid;
+}
+
+.skills > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45em;
+}
+
+.skills .label {
+  margin-bottom: 0.15em;
+}
+
+/* "Ask the agent" (web only) --------------------------------------------- */
+
+.ask {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  align-self: flex-start;
+  min-height: 44px;
+  font-size: var(--fs-small);
+  font-weight: 700;
+  color: var(--signal-dk) !important;
+  text-decoration: none;
+}
+
+.ask:hover {
+  text-decoration: underline;
+}
+
+@media print {
+  .ask {
+    display: none;
+  }
+}
+
+/* Web: list links get full tap targets (CLAUDE.md → 44×44px). Inline links
+   inside prose are exempt, as elsewhere on the site. */
+.web .contact {
+  row-gap: 0;
+}
+
+.web .contact a,
+.web .buildLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.web .contact li:first-child {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}

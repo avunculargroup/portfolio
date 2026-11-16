@@ -1,13 +1,17 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { SITE } from "@/lib/config";
 import styles from "./site-header.module.css";
 
+/* Root-relative so the header works on /cv as well as the home page. On the
+   home page "/#ask" is still an in-page jump, not a navigation. */
 const NAV_LINKS = [
-  { href: "#ask", label: "Ask" },
-  { href: "#work", label: "Work" },
-  { href: "#experience", label: "Experience" },
+  { href: "/#ask", label: "Ask" },
+  { href: "/#work", label: "Work" },
+  { href: "/#experience", label: "Experience" },
+  { href: "/cv", label: "CV" },
 ] as const;
 
 export function SiteHeader() {
@@ -112,13 +116,13 @@ export function SiteHeader() {
 
         <nav className={styles.nav} aria-label="Primary">
           {NAV_LINKS.map((link) => (
-            <a key={link.href} href={link.href} className={styles.navLink}>
+            <Link key={link.href} href={link.href} className={styles.navLink}>
               {link.label}
-            </a>
+            </Link>
           ))}
-          <a href="#contact" className={styles.sayHi}>
+          <Link href="/#contact" className={styles.sayHi}>
             Say hi
-          </a>
+          </Link>
         </nav>
 
         <button
@@ -144,23 +148,23 @@ export function SiteHeader() {
             <ul className={styles.panelList}>
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
-                  <a
+                  <Link
                     href={link.href}
                     className={styles.panelLink}
                     onClick={() => close(false)}
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
               <li>
-                <a
-                  href="#contact"
+                <Link
+                  href="/#contact"
                   className={styles.panelLink}
                   onClick={() => close(false)}
                 >
                   Say hi
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>

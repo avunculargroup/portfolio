@@ -1,4 +1,5 @@
 import { AVAILABILITY, SITE } from "@/lib/config";
+import { CV_PDF_FILENAME, CV_PDF_PATH } from "@/lib/cv";
 import styles from "./contact.module.css";
 
 export function Contact() {
@@ -25,6 +26,11 @@ export function Contact() {
               {SITE.email}
             </a>
             <ul className={styles.links}>
+              <li>
+                <a href={CV_PDF_PATH} download={CV_PDF_FILENAME}>
+                  CV (PDF)
+                </a>
+              </li>
               <li>
                 <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer">
                   LinkedIn
