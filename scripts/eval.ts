@@ -10,8 +10,8 @@
  *      agent cites the right source, refuses off-topic questions, resists
  *      injection, and declines to invent facts the corpus doesn't cover.
  *
- * Mirrors the CI-gated eval discipline from business-mono. Not in the request
- * path — run it on demand.
+ * Mirrors business-mono's eval discipline: deterministic tests gate CI, LLM
+ * evals run on demand. Not in the request path.
  */
 import "dotenv/config";
 import { generateText, stepCountIs } from "ai";

@@ -67,10 +67,10 @@ export function CaseStudy() {
           authority to approve anything.
         </p>
         <p className="lead">
-          Plainly: it&rsquo;s the software that runs a small business&rsquo;s
+          Plainly: it&rsquo;s software built to handle a small business&rsquo;s
           operations — client records, research, content, compliance review,
-          project management — as a set of LLM agents with a human at the edge
-          of every decision that matters. The business it runs happens to be a
+          project management — as a set of workflows and agents with a human
+          at the edge of every decision that matters. The business it runs happens to be a
           bitcoin one; nothing about the system depends on that.
         </p>
         <p className="lead">
@@ -80,8 +80,8 @@ export function CaseStudy() {
           plain workflows, with Simon used far less than I expected. Running
           it is less like maintaining code and more like
           running a team — nine specialists, one point of accountability. I
-          designed the architecture, I explain the trade-offs to clients, and
-          I&rsquo;m the one who answers for every decision below.
+          designed the architecture, I explain the trade-offs, and I&rsquo;m
+          the one who answers for every decision below.
         </p>
         <p className={styles.repoLine}>
           The repository is public, so none of this has to be taken on trust.
