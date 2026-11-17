@@ -21,13 +21,20 @@ A recruiter-facing portfolio for **Chris Pollard**, positioned as a **Technical 
 - Positioning through-line: builds the system *and* leads the delivery. "A human at the edge of every automated decision" is Chris's own phrase — fine to use, don't overuse.
 - Don't inflate: the AI-leadership claim rests on a solo build, not on leading a team. Keep copy defensible in an interview (see spec §4 / the delivery-lead framing).
 
-## Design (redesigned 2026 — warm/nature palette)
+## Design (2026 — warm paper + terracotta)
 
-The original spec (§7) and `portfolio-demo.html` describe the first version of this site: a dark amber "dossier vs instrument" concept. It has been superseded by a warm, human redesign — paper neutrals + one eucalyptus/sage-olive accent, nature/Melbourne-bush inspired. The tokens below are now the fixed ones; treat spec §7's amber/dark-panel tokens as historical.
+`src/app/globals.css` is the source of truth for tokens; if this section and that file disagree, the file wins and this section should be fixed.
 
-- Tokens (`src/app/globals.css`): `--ink`, `--paper`, `--paper-2` (warm neutrals), `--tint` (light sage), `--moss` (dark section bg — contact/footer only), `--line`, `--muted`, `--signal` / `--signal-dk` (the one accent, sage-olive), `--signal-soft`. No dark "instrument" panel anywhere anymore — the agent trace is a plain warm card, not a terminal.
-- Type roles: **Newsreader** (serif — headings, italic pull-quotes) + **Manrope** (sans — everything else: body, UI, labels). No mono typeface; the old JetBrains Mono "trace/label" role is gone along with the terminal aesthetic. Load via `next/font` — **no runtime external font fetch** (this also avoids a class of blank-render bugs).
-- Concept: a calm, warm editorial page. The live agent Q&A reads as a real card, not an "instrument" — the "How I got there" trace sits inline below the answer, in the same card, not a separate dark panel.
+History, so old references don't mislead:
+1. **Original (July 2026)** — dark amber "dossier vs instrument": Space Grotesk / Source Serif 4 / JetBrains Mono, a dark trace panel. Described by spec §7 and `design-reference/portfolio-demo.html`. Retired.
+2. **Warm/nature redesign (early August 2026)** — paper neutrals with a eucalyptus/sage-olive accent and a dark moss contact band. `design-reference/warm-redesign-2026.dc.html` is this version. Retired: its sage accent and dark band are gone.
+3. **Current (mid-August 2026)** — the same warm structure repainted terracotta-on-paper, with a light contact panel. This is what's live.
+
+- **Tokens** (`globals.css`): `--ink` (warm near-black), `--paper` (page background), `--paper-2` (cards, footer, header), `--line`, `--muted`; one accent: `--signal` (terracotta, hue ~40) and `--signal-dk` (deeper terracotta, for text: eyebrows, links, labels); `--signal-soft` and `--tint` (light terracotta tint: chips, selection, soft fills); `--radius` 12px.
+- **No dark surfaces anywhere.** `--moss` keeps its old name but is now the same light tint as `--tint`; it is the contact section's background, with `--panel-text` / `--panel-text-dim` (= ink / muted) on it. The footer sits on `--paper-2`. The agent trace is a plain warm card, not a terminal.
+- **Accent rules:** `--signal` for marks and fills — dots, rules and borders, focus rings, primary buttons; `--signal-dk` when the accent is text, for contrast. Don't add a second accent. `--ok` is defined but unused.
+- **Type roles:** **Newsreader** (serif — headings, italic pull-quotes) + **Manrope** (sans — everything else: body, UI, labels). No mono typeface. Both are vendored as variable woff2 in `src/app/fonts` and loaded with `next/font/local` — **no external font fetch at runtime or build time** (avoids blank renders and gstatic-blip deploy failures).
+- **Concept:** a calm, warm editorial page. The live agent Q&A reads as a real card — the "How I got there" trace sits inline below the answer, in the same card, not a separate panel.
 
 ## Mobile-first
 
@@ -54,4 +61,4 @@ Work against the checklist in spec §12. Key gates: grounded + cited streaming a
 
 ## When unsure
 
-If a requirement here conflicts with something else, the order of authority is: this file first (it documents the current warm/nature redesign), then `portfolio-build-spec.md` for everything unrelated to visual design (the agent, guardrails, structure). `design-reference/portfolio-demo.html` is the *original* dark "dossier" mock and is superseded for look/interaction — it's kept for historical context only. If a decision affects Chris's factual representation or the honesty of the positioning, stop and flag it rather than resolving it silently.
+If a requirement here conflicts with something else, the order of authority is: this file first (it documents the current terracotta-on-paper design, with `globals.css` as the token source of truth), then `portfolio-build-spec.md` for everything unrelated to visual design (the agent, guardrails, structure). Both files in `design-reference/` are superseded for look/interaction — `portfolio-demo.html` (the original dark "dossier" mock) and `warm-redesign-2026.dc.html` (the sage-accent version) — and kept for historical context only. If a decision affects Chris's factual representation or the honesty of the positioning, stop and flag it rather than resolving it silently.
