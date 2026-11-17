@@ -11,7 +11,7 @@
  * like "end-toend".
  *
  * Fails, and writes nothing, if the result isn't exactly two A4 pages under
- * 500 KB. Fix the copy in lib/cv.ts or PRINT_BREAK_BEFORE, not the check.
+ * 500 KB, or if any font is embedded as Type 3 (see build-cv-print-fonts.py). Fix the copy in lib/cv.ts or PRINT_BREAK_BEFORE, not the check.
  *
  * Env:
  *   CV_BASE_URL               default http://localhost:3000
@@ -28,6 +28,7 @@ import {
   CV_PDF_PAGES,
   HASH_PREFIX,
   cvSourceHash,
+  type3Fonts,
 } from "./cv-source";
 
 const BASE = (process.env.CV_BASE_URL ?? "http://localhost:3000").replace(/\/$/, "");
@@ -95,6 +96,13 @@ async function main() {
   if (pages !== CV_PDF_PAGES) {
     fail(
       `got ${pages} pages, expected ${CV_PDF_PAGES}. Trim copy in src/lib/cv.ts or move PRINT_BREAK_BEFORE, then re-run.`,
+    );
+  }
+
+  const type3 = type3Fonts(doc);
+  if (type3.length) {
+    fail(
+      `fonts embedded as Type 3 (${type3.join(", ")}). /cv/print must load the static fonts in src/app/cv/print/fonts; see scripts/build-cv-print-fonts.py.`,
     );
   }
 

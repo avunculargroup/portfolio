@@ -7,6 +7,7 @@
  * change, regenerate by hand.
  */
 import { createHash } from "node:crypto";
+import { PDFDict, PDFName, type PDFDocument } from "pdf-lib";
 import { CV, CV_UPDATED, PRINT_BREAK_BEFORE } from "../src/lib/cv";
 
 export const CV_PDF_FILE = "public/cv/chris-pollard-cv.pdf";
@@ -19,4 +20,25 @@ export function cvSourceHash(): string {
     .update(JSON.stringify({ CV, CV_UPDATED, PRINT_BREAK_BEFORE }))
     .digest("hex")
     .slice(0, 16);
+}
+
+/**
+ * Names of any Type 3 fonts in the PDF. Chrome embeds variable fonts as
+ * Type 3, which some applicant tracking systems parse badly; /cv/print loads
+ * static fonts (scripts/build-cv-print-fonts.py) so this should be empty.
+ */
+export function type3Fonts(doc: PDFDocument): string[] {
+  const found = new Set<string>();
+  for (const [, object] of doc.context.enumerateIndirectObjects()) {
+    if (!(object instanceof PDFDict)) continue;
+    if (object.get(PDFName.of("Type")) !== PDFName.of("Font")) continue;
+    if (object.get(PDFName.of("Subtype")) !== PDFName.of("Type3")) continue;
+    const descriptor = object.lookupMaybe(PDFName.of("FontDescriptor"), PDFDict);
+    const name =
+      object.get(PDFName.of("BaseFont")) ??
+      object.get(PDFName.of("Name")) ??
+      descriptor?.get(PDFName.of("FontName"));
+    found.add(name ? name.toString().replace(/^\//, "") : "(unnamed)");
+  }
+  return [...found];
 }

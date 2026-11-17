@@ -5,7 +5,8 @@
  *    elsewhere (the corpus, LinkedIn), and must not carry a phone number.
  * 2. Links: every "Ask the agent" query must have a retrieval eval.
  * 3. PDF: public/cv/chris-pollard-cv.pdf must exist, be two A4 pages under
- *    500 KB, and have been generated from the current lib/cv.ts.
+ *    500 KB, embed no Type 3 fonts, and have been generated from the current
+ *    lib/cv.ts.
  *
  * No API key or running server needed.
  */
@@ -19,6 +20,7 @@ import {
   CV_PDF_PAGES,
   HASH_PREFIX,
   cvSourceHash,
+  type3Fonts,
 } from "./cv-source";
 
 const problems: string[] = [];
@@ -102,6 +104,13 @@ async function checkPdf() {
     if (Math.abs(width - 595.3) > 2 || Math.abs(height - 841.9) > 2) {
       problems.push(`page ${i + 1} is ${Math.round(width)}×${Math.round(height)} pt, not A4.`);
     }
+  }
+
+  const type3 = type3Fonts(doc);
+  if (type3.length) {
+    problems.push(
+      `${CV_PDF_FILE} embeds Type 3 fonts (${type3.join(", ")}), which some applicant tracking systems parse badly. /cv/print should load the static fonts; regenerate with npm run cv:pdf.`,
+    );
   }
 
   const expected = `${HASH_PREFIX}${cvSourceHash()}`;

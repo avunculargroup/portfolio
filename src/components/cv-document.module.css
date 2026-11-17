@@ -83,6 +83,15 @@
   gap: 0.7em;
 }
 
+/* Print only: at 0.12em, PDF text extractors (and the applicant tracking
+   systems built on them) read the uppercase labels as "E X P E R I E N C E",
+   so section headings stop being recognised. 0.08em extracts cleanly in
+   pdftotext, pdfminer and pypdf and looks the same at 7.8pt. */
+.print .eyebrow,
+.print .label {
+  letter-spacing: 0.08em;
+}
+
 .dot {
   display: inline-block;
   flex: none;
