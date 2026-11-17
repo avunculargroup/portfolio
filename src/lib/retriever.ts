@@ -166,6 +166,9 @@ const SYNONYMS: Record<string, string[]> = {
   manage: ["delivery", "management"],
   managed: ["delivery", "management"],
   team: ["delivery", "mentoring"],
+  /* "How much did he build himself?" is a scope-of-ownership question. Without
+     this, short story chunks tagged business-mono outrank scale-ownership. */
+  himself: ["solo", "ownership"],
 };
 
 function tokenize(text: string): string[] {

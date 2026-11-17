@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  margin: 0 0 40px;
+  margin: 0 0 14px;
   padding: 32px 20px;
   background: var(--paper-2);
   border-radius: 20px;
@@ -13,6 +13,24 @@
 @media (min-width: 768px) {
   .arch {
     padding: 40px 24px;
+  }
+}
+
+/* What happened in practice, set directly under the diagram as a caption. It
+   carries the section spacing the diagram used to, so the cards still sit
+   40px / 56px below. */
+.archNote {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.55;
+  max-width: 62ch;
+  margin: 0 auto 40px;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+@media (min-width: 768px) {
+  .archNote {
     margin-bottom: 56px;
   }
 }

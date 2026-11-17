@@ -67,19 +67,21 @@ export function CaseStudy() {
           authority to approve anything.
         </p>
         <p className="lead">
-          Plainly: it&rsquo;s the software that runs a small business&rsquo;s
+          Plainly: it&rsquo;s software built to handle a small business&rsquo;s
           operations — client records, research, content, compliance review,
-          project management — as a set of LLM agents with a human at the edge
-          of every decision that matters. The business it runs happens to be a
+          project management — as a set of workflows and agents with a human
+          at the edge of every decision that matters. The business it runs happens to be a
           bitcoin one; nothing about the system depends on that.
         </p>
         <p className="lead">
           Picture a hub-and-spoke team: one coordinator agent, Simon, routes
           work to a roster of specialists, all reading and writing to the same
-          database. Running it is less like maintaining code and more like
+          database. That was the plan; these days most of the work runs as
+          plain workflows, with Simon used far less than I expected. Running
+          it is less like maintaining code and more like
           running a team — nine specialists, one point of accountability. I
-          designed the architecture, I explain the trade-offs to clients, and
-          I&rsquo;m the one who answers for every decision below.
+          designed the architecture, I explain the trade-offs, and I&rsquo;m
+          the one who answers for every decision below.
         </p>
         <p className={styles.repoLine}>
           The repository is public, so none of this has to be taken on trust.
@@ -96,7 +98,7 @@ export function CaseStudy() {
         <div
           className={styles.arch}
           role="img"
-          aria-label="Architecture: directors reach the system through Signal and web; Simon, the coordinator, is the only agent that talks to humans; Simon routes to nine specialist agents; all agents share one Supabase Postgres database with pgvector."
+          aria-label="Architecture: directors reach the system through Signal and web; Simon, the coordinator, is the only agent that talks to humans; Simon routes to nine specialist agents; all agents share one Supabase Postgres database with pgvector. In practice most work now runs as structured workflows rather than through the coordinator."
         >
           <span className={styles.archTier}>Directors (Signal · Web)</span>
           <span className={styles.archArrow} aria-hidden="true">
@@ -120,6 +122,12 @@ export function CaseStudy() {
             Supabase — Postgres + pgvector (shared)
           </span>
         </div>
+        <p className={styles.archNote}>
+          That&rsquo;s the design. In practice Simon does less than I planned:
+          most of the platform now runs as structured workflows, because for
+          most jobs a workflow proved more reliable and easier to reason about
+          than an agent deciding what to do next.
+        </p>
 
         <div className={styles.cards}>
           {DECISIONS.map((decision) => (

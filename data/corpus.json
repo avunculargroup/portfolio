@@ -19,7 +19,13 @@
       "Check the capability one-pager PDF for the same ANZ-to-Australian client correction applied here.",
       "Juvare end date (May 2026) and the co-founder / principal engineer title need to match on LinkedIn and the portfolio site.",
       "Confirm the exact RMIT job title on the employment record — corpus and LinkedIn both say Project Manager.",
-      "Nov 2026: PRINCE2 Practitioner added to edu, exp-vtac-pmo and story-pmo-growth, marked as lapsed (earned 2016, no longer current). Run `npm run embed` before merging; LinkedIn and the CV should show it as lapsed too."
+      "Nov 2026: PRINCE2 Practitioner shown as lapsed in edu, exp-vtac-pmo and story-pmo-growth (merged, embeddings rebuilt). LinkedIn should show it as lapsed too.",
+      "Nov 2026: business-mono chunks brought up to date (news and podcast curation; mostly structured workflows, coordinator does less than planned; output mostly internal). Added Avuncular Group to exp-bts, BTS mission to faq-bitcoin, contract-now availability, and new chunks story-news-email, story-coordinator, story-out-of-credit, wow-incremental, profile-writing.",
+      "Nov 2026: skills-models added (model-agnostic business-mono; Claude, DeepSeek, Gemini image model; OpenAI and Copilot as dev tools at Juvare; site agent on Claude Haiku). CV already matches.",
+      "Content gap (needs Chris's facts, don't draft): FlexiDirect case study framed as problem definition → pricing model and opportunity sizing → incremental delivery to waterfall clients. Needs real numbers (providers onboarded, applications processed, revenue).",
+      "Content gap (needs Chris's facts, don't draft): 'how Chris defines success' — only if true, e.g. the real criteria business-mono uses to move an action from human-confirmed to batch-approved to autonomous. Add 'how do you measure success' tags once it exists.",
+      "Content gap (needs Chris's facts, don't draft): 'why BTS needed agents' — the problem framing: two co-founders, compliance obligations, and what was deliberately not automated.",
+      "Pending /cv route: add a faq-cv chunk so the agent can hand out the CV (/cv and /cv/chris-pollard-cv.pdf) when asked. Ship it in the same PR as the /cv page, not before."
     ],
     "categoryNotes": {
       "story": "Concrete, dated examples for behavioural questions ('tell me about a time'). Deliberately separated from experience so retrieval doesn't surface 2007 anecdotes when someone asks what Chris does now. Always keep the date in the text."
@@ -61,11 +67,28 @@
       ]
     },
     {
+      "id": "profile-writing",
+      "title": "Writing about the work",
+      "category": "profile",
+      "url": "https://www.linkedin.com/in/chris-pollard-au",
+      "text": "Chris posts weekly on LinkedIn about building agents and workflows, drawing on what he has learned running business-mono. His portfolio site is itself a demo: a live retrieval agent that answers questions about his work from a cited corpus.",
+      "tags": [
+        "linkedin",
+        "writing",
+        "posts",
+        "sharing",
+        "communication",
+        "demo",
+        "portfolio",
+        "thought leadership"
+      ]
+    },
+    {
       "id": "exp-bts",
       "title": "Bitcoin Treasury Solutions — Co-founder & Principal Engineer",
       "category": "experience",
       "url": "https://www.linkedin.com/in/chris-pollard-au",
-      "text": "Bitcoin Treasury Solutions — Co-founder and Principal Engineer (March 2025 to present, Melbourne). The company delivers structured bitcoin training for professionals, SMEs and individuals; Chris co-founded it with Carolyn Crawford, who leads the commercial and training side. Chris owns the technology end to end, including business-mono, the multi-agent operations platform that runs the business.",
+      "text": "Bitcoin Treasury Solutions — Co-founder and Principal Engineer (March 2025 to present, Melbourne). The company delivers structured bitcoin training for professionals, SMEs and individuals. Chris set up Avuncular Group Pty Ltd, the company behind it, runs its strategy and administration, and brought Carolyn Crawford on as co-founder; she leads the commercial and training side. Chris owns the technology end to end, including business-mono, the agent platform behind the business. The business is pre-revenue, so he is used to thinking through business problems and the trade-offs in what to build.",
       "tags": [
         "bitcoin treasury solutions",
         "co-founder",
@@ -75,7 +98,12 @@
         "bitcoin",
         "business-mono",
         "experience",
-        "employer"
+        "employer",
+        "avuncular group",
+        "company",
+        "strategy",
+        "commercial",
+        "pre-revenue"
       ]
     },
     {
@@ -156,7 +184,9 @@
         "flexidirect",
         "direct application portal",
         "roadmap",
-        "experience"
+        "experience",
+        "how do you decide what to build",
+        "prioritisation"
       ]
     },
     {
@@ -238,7 +268,7 @@
       "title": "business-mono — overview",
       "category": "project",
       "url": "https://github.com/avunculargroup/business-mono",
-      "text": "business-mono is a production multi-agent operations platform Chris built single-handedly as the system behind Bitcoin Treasury Solutions, where he is co-founder and principal engineer. It uses a hub-and-spoke design: a coordinator agent (Simon) is the only agent that talks to humans and routes work to specialists, all sharing one Supabase database. A Mastra server runs the agents and workflows; a Next.js 15 app handles dashboards and human approvals.",
+      "text": "business-mono is a production operations platform Chris built single-handedly as the system behind Bitcoin Treasury Solutions, where he is co-founder and principal engineer. It monitors news and podcast sources, analyses and stores what is useful in a searchable knowledge base, and runs the curation workflows built on top of it, including a daily news email. A Mastra server runs the agents and workflows, all sharing one Supabase database; a Next.js 15 app handles dashboards and human approvals. It began as a hub-and-spoke design around a coordinator agent (Simon), but most of it now runs as structured workflows.",
       "tags": [
         "business-mono",
         "project",
@@ -246,15 +276,18 @@
         "mastra",
         "overview",
         "multi-agent",
-        "bitcoin treasury solutions"
+        "bitcoin treasury solutions",
+        "news curation",
+        "podcasts",
+        "workflows"
       ]
     },
     {
       "id": "project-coordination",
-      "title": "Hub-and-spoke coordination",
+      "title": "From a coordinator to structured workflows",
       "category": "project",
       "url": "https://github.com/avunculargroup/business-mono",
-      "text": "Rather than a flat swarm, a single coordinator (Simon) routes each request to the right specialist agent — recorder, archivist, project manager, business analyst, content creator, researcher, relationship manager, marketer and compliance — behind a consistent audit trail, with two further agents invoked only inside workflows. Centralising human contact in the coordinator keeps behaviour predictable and the whole system observable.",
+      "text": "business-mono was designed hub-and-spoke rather than as a flat swarm: a single coordinator (Simon) routes each request to the right specialist agent — recorder, archivist, project manager, business analyst, content creator, researcher, relationship manager, marketer and compliance — behind a consistent audit trail. In practice the coordinator now does far less than Chris planned. Most of the platform runs as structured workflows, because for most jobs a workflow proved more reliable and easier to reason about than an agent deciding what to do next.",
       "tags": [
         "agents",
         "compliance",
@@ -264,7 +297,10 @@
         "orchestration",
         "routing",
         "simon",
-        "specialists"
+        "specialists",
+        "workflows",
+        "agents vs workflows",
+        "design decision"
       ]
     },
     {
@@ -332,17 +368,18 @@
     },
     {
       "id": "project-ingestion",
-      "title": "Ingestion and interfaces",
+      "title": "Ingestion: news and podcast monitoring",
       "category": "project",
       "url": "https://github.com/avunculargroup/business-mono",
-      "text": "The platform ingests real-world inputs through several channels — a Signal messaging interface for directors, plus telephony and meeting sources — with speech transcription feeding the same knowledge base the agents retrieve from. Inputs become searchable context, closing the loop between what happens and what the agents know.",
+      "text": "The platform monitors news and podcast sources, analyses what comes in, and stores what is useful in the same knowledge base the agents and workflows retrieve from. That material feeds the curation workflows, including a daily news email that summarises the relevant stories with headline links.",
       "tags": [
         "ingestion",
-        "signal",
-        "telephony",
-        "transcription",
+        "news",
+        "podcasts",
+        "monitoring",
+        "curation",
         "pipelines",
-        "interfaces"
+        "knowledge base"
       ]
     },
     {
@@ -402,11 +439,37 @@
       ]
     },
     {
+      "id": "skills-models",
+      "title": "Which models he uses",
+      "category": "skills",
+      "url": "https://github.com/avunculargroup/business-mono",
+      "text": "business-mono is model-agnostic. Its steps run on models from several providers, from Claude and DeepSeek to Google's Gemini image model (Nano Banana), so each job can use the model that suits it rather than one default. Chris builds mostly with Claude, and at Juvare he also worked with OpenAI and Copilot as development tools. The agent on his portfolio site runs on Claude Haiku, with OpenAI text-embedding-3-small for retrieval.",
+      "tags": [
+        "models",
+        "model-agnostic",
+        "llm providers",
+        "claude",
+        "anthropic",
+        "gemini",
+        "google",
+        "deepseek",
+        "openai",
+        "gpt",
+        "copilot",
+        "image generation",
+        "nano banana",
+        "model selection",
+        "multi-model",
+        "skills",
+        "business-mono"
+      ]
+    },
+    {
       "id": "scale-ownership",
       "title": "Scale and ownership",
       "category": "scale",
       "url": "https://github.com/avunculargroup/business-mono",
-      "text": "business-mono is a genuinely solo build: the coordinator, the specialist agents, the workflows, the ingestion pipelines and the web app were all architected and shipped by one person, across a Turborepo monorepo with CI-gated test suites. It has been under sustained development rather than built in a burst, and it runs a real business daily. The repository is public, so the scope can be inspected rather than taken on trust.",
+      "text": "business-mono is a genuinely solo build: the coordinator, the specialist agents, the workflows, the ingestion pipelines and the web app were all architected and shipped by one person, across a Turborepo monorepo with CI-gated test suites. It has been under sustained development rather than built in a burst, and it runs every day, though most of its output is used inside the business rather than sent to customers. The repository is public, so the scope can be inspected rather than taken on trust.",
       "tags": [
         "scale",
         "solo",
@@ -432,6 +495,25 @@
         "design thinking",
         "evals",
         "practice"
+      ]
+    },
+    {
+      "id": "wow-incremental",
+      "title": "How Chris changes a live workflow",
+      "category": "ways-of-working",
+      "url": "https://github.com/avunculargroup/business-mono",
+      "text": "Chris changes business-mono incrementally. He user-tests before changing or adding pieces of a workflow, adds them one at a time, and reads the real output every day. Anything that leaves the business still goes through human approval, so new pieces earn trust before they matter.",
+      "tags": [
+        "ways of working",
+        "incremental",
+        "user testing",
+        "testing",
+        "change management",
+        "monitoring",
+        "production",
+        "human-in-the-loop",
+        "how do you decide what to build",
+        "prioritisation"
       ]
     },
     {
@@ -474,7 +556,7 @@
       "title": "Has he shipped to production?",
       "category": "faq",
       "url": "https://github.com/avunculargroup/business-mono",
-      "text": "Yes. business-mono is a live, deployed multi-agent system running real operations, not a demo — built and shipped solo, with agents on Railway, the web app on Vercel and a CI-gated test suite.",
+      "text": "Yes. business-mono is a live, deployed system that runs every day, not a demo — built and shipped solo, with agents on Railway, the web app on Vercel and a CI-gated test suite. Most of its output is used inside the business rather than sent to customers, and anything that does leave the business goes through human approval.",
       "tags": [
         "production",
         "shipped",
@@ -517,7 +599,7 @@
       "title": "Is he available?",
       "category": "faq",
       "url": "https://www.linkedin.com/in/chris-pollard-au",
-      "text": "Chris is open to work now, with a preference for technical product and hands-on AI engineering roles. His Juvare role ended in May 2026. He takes fractional and part-time engagements immediately, and is available full-time from January 2027, alongside co-founding Bitcoin Treasury Solutions with Carolyn Crawford.",
+      "text": "Chris is open to work now, with a preference for technical product and hands-on AI engineering roles. His Juvare role ended in May 2026. He takes contract, fractional and part-time engagements immediately, and is available full-time from mid-January 2027, alongside co-founding Bitcoin Treasury Solutions with Carolyn Crawford.",
       "tags": [
         "availability",
         "contract",
@@ -616,7 +698,9 @@
         "governance",
         "commercial",
         "negotiation",
-        "ways of working"
+        "ways of working",
+        "how do you decide what to build",
+        "prioritisation"
       ]
     },
     {
@@ -675,6 +759,61 @@
       ]
     },
     {
+      "id": "story-news-email",
+      "title": "Example — catching what tests miss by reading the output",
+      "category": "story",
+      "url": "https://github.com/avunculargroup/business-mono",
+      "text": "Example (business-mono, 2025–2026). One of Chris's first workflows produces a daily news email: it takes stories collected and judged in the knowledge base and turns them into a summary with headline links. Live feeds kept surfacing problems that are easy to miss unless you read the output — once, a headline arrived with a raw HTML entity ('&amp;') in it. He only caught it because he reads the email every day; he fixed how headlines are parsed and added the case to the tests. Good answer to 'how do you monitor and tune an agent system once it's live?'",
+      "tags": [
+        "example",
+        "story",
+        "tell me about a time",
+        "monitoring",
+        "production",
+        "testing",
+        "failure",
+        "real data",
+        "business-mono",
+        "news email"
+      ]
+    },
+    {
+      "id": "story-coordinator",
+      "title": "Example — the agent that wasn't needed",
+      "category": "story",
+      "url": "https://github.com/avunculargroup/business-mono",
+      "text": "Example (business-mono, 2025–2026). Chris designed a coordinator agent as the front door to the whole system, routing every request to specialist agents. In practice it ended up doing far less than planned: most of the platform now runs as structured workflows, because for most jobs a workflow was more reliable and easier to reason about. Good answer to 'tell me about a design decision that didn't work out' or 'when should you not use an agent?'",
+      "tags": [
+        "example",
+        "story",
+        "tell me about a time",
+        "mistake",
+        "design decision",
+        "agents vs workflows",
+        "coordinator",
+        "lessons",
+        "business-mono",
+        "how do you decide what to build",
+        "prioritisation"
+      ]
+    },
+    {
+      "id": "story-out-of-credit",
+      "title": "Example — debugging the dull things first",
+      "category": "story",
+      "url": "https://github.com/avunculargroup/business-mono",
+      "text": "Example (business-mono, 2025–2026). A recurring lesson from running the platform: plenty of debugging sessions end in the same place — a provider account out of credit. It taught Chris to check the unglamorous causes first before assuming the model or the prompt is at fault.",
+      "tags": [
+        "example",
+        "story",
+        "debugging",
+        "operations",
+        "production",
+        "lessons",
+        "business-mono"
+      ]
+    },
+    {
       "id": "faq-people",
       "title": "Is he good with people and stakeholders?",
       "category": "faq",
@@ -727,7 +866,7 @@
       "title": "Why bitcoin?",
       "category": "faq",
       "url": "https://www.linkedin.com/in/chris-pollard-au",
-      "text": "It's a long-running interest rather than a recent turn — he was following the protocol closely by 2019, running a bitcoin-core full node and experimenting with lightning by 2021, and completed a protocol development seminar series. Bitcoin Treasury Solutions grew out of that, and its main relevance here is that it gave him a real business with real compliance obligations to build production agents against. His personal bitcoin projects sit under the dragon-foobar GitHub account.",
+      "text": "He started Bitcoin Treasury Solutions because he sees bitcoin as a neutral, peaceful money that encourages better human coordination. As bitcoin's users shifted from cypherpunks to investors and companies, he wanted businesses to understand its value proposition properly, as distinct from 'crypto' in general. It's a long-running interest rather than a recent turn — he was following the protocol closely by 2019, running a bitcoin-core full node and experimenting with lightning by 2021, and completed a protocol development seminar series. The business also gave him a real company with real compliance obligations to build production agents against. His personal bitcoin projects sit under the dragon-foobar GitHub account.",
       "tags": [
         "bitcoin",
         "why",
@@ -737,7 +876,11 @@
         "faq",
         "github",
         "dragon-foobar",
-        "projects"
+        "projects",
+        "mission",
+        "motivation",
+        "sound money",
+        "coordination"
       ]
     },
     {
