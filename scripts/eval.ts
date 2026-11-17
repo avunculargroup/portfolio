@@ -213,6 +213,50 @@ const RETRIEVAL_FIXTURES: RetrievalFixture[] = [
     question: "How does he approach documentation and testing?",
     expectAnyOf: ["ways-of-working", "project-deployment", "skills-llm"],
   },
+  /* "Ask the agent about this" links on /cv (CV_ASK_PROMPTS in lib/config).
+     Each sends its query on landing, so a regression here sends a visitor
+     from the CV to a thin answer. scripts/check-cv.ts checks every query in
+     CV_ASK_PROMPTS appears in this file. */
+  {
+    name: "cv — business-mono",
+    question: "What is business-mono, and how did Chris build it?",
+    expectAnyOf: ["project-overview", "scale-ownership", "project-coordination"],
+  },
+  {
+    name: "cv — bts",
+    question: "What does Chris do at Bitcoin Treasury Solutions?",
+    expectAnyOf: ["exp-bts", "faq-career", "faq-bitcoin"],
+  },
+  {
+    name: "cv — juvare",
+    question: "What did Chris do at Juvare?",
+    expectAnyOf: ["exp-juvare", "exp-juvare-clients", "exp-juvare-constraints"],
+  },
+  {
+    name: "cv — beyond essential",
+    question: "What did Chris build at Beyond Essential Systems?",
+    expectAnyOf: ["exp-beyond", "exp-beyond-engineering", "exp-beyond-mapconfig"],
+  },
+  {
+    name: "cv — transition",
+    question: "Why did he move from project management into engineering?",
+    expectAnyOf: ["faq-transition", "exp-ga"],
+  },
+  {
+    name: "cv — rmit",
+    question: "What did Chris do at RMIT during the pandemic?",
+    expectAnyOf: ["exp-rmit", "wow-consensus"],
+  },
+  {
+    name: "cv — vtac",
+    question: "What did Chris own at VTAC?",
+    expectAnyOf: ["exp-vtac", "exp-vtac-pmo", "story-agile-waterfall", "story-pmo-growth"],
+  },
+  {
+    name: "cv — where to get it",
+    question: "Can I get a copy of his CV?",
+    expectAnyOf: ["faq-cv"],
+  },
 ];
 
 interface ToolRun {

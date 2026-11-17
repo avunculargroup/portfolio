@@ -1,9 +1,10 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import type { PortfolioUIMessage } from "@/lib/agent";
+import { CV_ASK_PROMPTS, isCvAskId } from "@/lib/config";
 import { collectTrace, estimateCost, estimateTokens } from "@/lib/trace";
 import { AskConsole } from "./ask-console";
 import { Dossier } from "./dossier";
@@ -103,6 +104,18 @@ export function AskSection({
     },
     [agentAvailable, clearError, sendMessage],
   );
+
+  /* "Ask the agent about this" links on /cv land here as /?ask=<id>#ask.
+     Only allow-listed ids are honoured (CV_ASK_PROMPTS): free text from a URL
+     would let anyone put words in the agent's mouth on this site. The ref
+     stops React strict mode's double effect from sending it twice. */
+  const askedFromLink = useRef(false);
+  useEffect(() => {
+    if (askedFromLink.current) return;
+    askedFromLink.current = true;
+    const id = new URLSearchParams(window.location.search).get("ask");
+    if (isCvAskId(id)) ask(CV_ASK_PROMPTS[id]);
+  }, [ask]);
 
   const pitch = useCallback(
     (role: string, company: string) => {
