@@ -38,8 +38,8 @@ export const MAX_THREAD_MESSAGES = 40;
  * chunk — the agent answers from the corpus, the page reads from here.
  */
 export const AVAILABILITY = {
-  short: "Fractional & part-time now",
-  full: "Open to work now · fractional and part-time immediately, full-time from January 2027",
+  short: "Available mid-January 2027",
+  full: "Available from mid-January 2027 · contract or permanent, full-time or part-time",
 } as const;
 
 /**
@@ -86,7 +86,7 @@ export const SITE = {
   role: "Technical Product Lead — AI",
   title: "Chris Pollard — Technical Product Lead, AI",
   description:
-    "Melbourne-based engineer who takes LLM agents from demo to production, with a decade of product and delivery behind it. Fractional and part-time now, full-time from January 2027. Ask the live agent about his work.",
+    "Melbourne-based engineer who takes LLM agents from demo to production, with a decade of product and delivery behind it. Available from mid-January 2027 for contract or permanent roles. Ask the live agent about his work.",
   url: "https://chrispollard.com.au",
   email: "chris@chrispollard.com.au",
   location: "Melbourne, Australia",
