@@ -24,7 +24,8 @@
       "24 Nov 2026: repositioned for technical product roles generally (technical PM, product owner, product lead; AI a plus, not a requirement) and the value proposition of working between the business and the engineers. Rewrote profile-summary, profile-positioning and faq-availability (now available from mid-January 2027 only, contract or permanent; replaces the earlier contract-now wording). Removed the fractional-engagements line from wow-visual-craft and the 'AI engineers' comparisons from faq-people and wow-consensus. Softened tone in profile-writing, faq-experience, wow-translation and story-autonomy. Added exp-vtac-presales, story-coaching-pms and exp-vbtc. Run `npm run embed` before merging.",
       "24 Nov 2026: carried over from the unapplied 16 Nov patch: skills-models chunk (model-agnostic; does not claim GPT in production) and 'how do you decide what to build' / 'prioritisation' tags on exp-vtac, wow-stakeholders, wow-incremental and story-coordinator. project-ingestion now says Signal input to Simon still works but is no longer the focus, and that phone calls and meetings are on the roadmap, not built.",
       "26 Nov 2026: added Victorian Certificate of Education (VCE), Xavier College (2003) to edu, with tags. Run `npm run embed` before merging; add it to LinkedIn and the CV too.",
-      "Check profile-writing still matches how often Chris actually posts on LinkedIn."
+      "Check profile-writing still matches how often Chris actually posts on LinkedIn.",
+      "Nov 2026: business-mono build start corrected to late 2025 (the business itself started March 2025). Updated profile-summary, exp-bts, story-news-email, story-coordinator and story-out-of-credit. Run `npm run embed` before merging."
     ],
     "categoryNotes": {
       "story": "Concrete, dated examples for behavioural questions ('tell me about a time'). Deliberately separated from experience so retrieval doesn't surface 2007 anecdotes when someone asks what Chris does now. Always keep the date in the text."
@@ -36,7 +37,7 @@
       "title": "Who Chris is",
       "category": "profile",
       "url": "https://www.linkedin.com/in/chris-pollard-au",
-      "text": "Chris Pollard is a Melbourne-based technical product manager who works in the gap between the business and the engineers. He has about a decade of project and product delivery behind him, then five years as a software engineer, and since 2025 he has been building AI agent systems for his own company. That mix means he can usually follow both sides of the conversation, from roadmap and stakeholders through to what is actually being built.",
+      "text": "Chris Pollard is a Melbourne-based technical product manager who works in the gap between the business and the engineers. He has about a decade of project and product delivery behind him, then five years as a software engineer, and since late 2025 he has been building AI agent systems for his own company. That mix means he can usually follow both sides of the conversation, from roadmap and stakeholders through to what is actually being built.",
       "tags": [
         "chris pollard",
         "who",
@@ -89,7 +90,7 @@
       "title": "Bitcoin Treasury Solutions — Co-founder & Principal Engineer",
       "category": "experience",
       "url": "https://www.linkedin.com/in/chris-pollard-au",
-      "text": "Bitcoin Treasury Solutions — Co-founder and Principal Engineer (March 2025 to present, Melbourne). The company delivers structured bitcoin training for professionals, SMEs and individuals. Chris set up Avuncular Group Pty Ltd, the company behind it, runs its strategy and administration, and brought Carolyn Crawford on as co-founder; she leads the commercial and training side. Chris owns the technology end to end, including business-mono, the agent platform behind the business. The business is pre-revenue, so he is used to thinking through business problems and the trade-offs in what to build.",
+      "text": "Bitcoin Treasury Solutions — Co-founder and Principal Engineer (March 2025 to present, Melbourne). The company delivers structured bitcoin training for professionals, SMEs and individuals. Chris set up Avuncular Group Pty Ltd, the company behind it, runs its strategy and administration, and brought Carolyn Crawford on as co-founder; she leads the commercial and training side. Chris owns the technology end to end, including business-mono, the agent platform behind the business. He began building it in late 2025. The business is pre-revenue, so he is used to thinking through business problems and the trade-offs in what to build.",
       "tags": [
         "bitcoin treasury solutions",
         "co-founder",
@@ -835,7 +836,7 @@
       "title": "Example — catching what tests miss by reading the output",
       "category": "story",
       "url": "https://github.com/avunculargroup/business-mono",
-      "text": "Example (business-mono, 2025–2026). One of Chris's first workflows produces a daily news email: it takes stories collected and judged in the knowledge base and turns them into a summary with headline links. Live feeds kept surfacing problems that are easy to miss unless you read the output — once, a headline arrived with a raw HTML entity ('&amp;') in it. He only caught it because he reads the email every day; he fixed how headlines are parsed and added the case to the tests. Good answer to 'how do you monitor and tune an agent system once it's live?'",
+      "text": "Example (business-mono, late 2025–2026). One of Chris's first workflows produces a daily news email: it takes stories collected and judged in the knowledge base and turns them into a summary with headline links. Live feeds kept surfacing problems that are easy to miss unless you read the output — once, a headline arrived with a raw HTML entity ('&amp;') in it. He only caught it because he reads the email every day; he fixed how headlines are parsed and added the case to the tests. Good answer to 'how do you monitor and tune an agent system once it's live?'",
       "tags": [
         "example",
         "story",
@@ -854,7 +855,7 @@
       "title": "Example — the agent that wasn't needed",
       "category": "story",
       "url": "https://github.com/avunculargroup/business-mono",
-      "text": "Example (business-mono, 2025–2026). Chris designed a coordinator agent as the front door to the whole system, routing every request to specialist agents. In practice it ended up doing far less than planned: most of the platform now runs as structured workflows, because for most jobs a workflow was more reliable and easier to reason about. Good answer to 'tell me about a design decision that didn't work out' or 'when should you not use an agent?'",
+      "text": "Example (business-mono, late 2025–2026). Chris designed a coordinator agent as the front door to the whole system, routing every request to specialist agents. In practice it ended up doing far less than planned: most of the platform now runs as structured workflows, because for most jobs a workflow was more reliable and easier to reason about. Good answer to 'tell me about a design decision that didn't work out' or 'when should you not use an agent?'",
       "tags": [
         "example",
         "story",
@@ -874,7 +875,7 @@
       "title": "Example — debugging the dull things first",
       "category": "story",
       "url": "https://github.com/avunculargroup/business-mono",
-      "text": "Example (business-mono, 2025–2026). A recurring lesson from running the platform: plenty of debugging sessions end in the same place — a provider account out of credit. It taught Chris to check the unglamorous causes first before assuming the model or the prompt is at fault.",
+      "text": "Example (business-mono, late 2025–2026). A recurring lesson from running the platform: plenty of debugging sessions end in the same place — a provider account out of credit. It taught Chris to check the unglamorous causes first before assuming the model or the prompt is at fault.",
       "tags": [
         "example",
         "story",
