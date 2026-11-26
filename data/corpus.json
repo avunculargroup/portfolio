@@ -23,6 +23,7 @@
       "Nov 2026: business-mono chunks brought up to date (news and podcast curation; mostly structured workflows, coordinator does less than planned; output mostly internal). Added Avuncular Group to exp-bts, BTS mission to faq-bitcoin, and new chunks story-news-email, story-coordinator, story-out-of-credit, wow-incremental, profile-writing. Run `npm run embed` before merging.",
       "24 Nov 2026: repositioned for technical product roles generally (technical PM, product owner, product lead; AI a plus, not a requirement) and the value proposition of working between the business and the engineers. Rewrote profile-summary, profile-positioning and faq-availability (now available from mid-January 2027 only, contract or permanent; replaces the earlier contract-now wording). Removed the fractional-engagements line from wow-visual-craft and the 'AI engineers' comparisons from faq-people and wow-consensus. Softened tone in profile-writing, faq-experience, wow-translation and story-autonomy. Added exp-vtac-presales, story-coaching-pms and exp-vbtc. Run `npm run embed` before merging.",
       "24 Nov 2026: carried over from the unapplied 16 Nov patch: skills-models chunk (model-agnostic; does not claim GPT in production) and 'how do you decide what to build' / 'prioritisation' tags on exp-vtac, wow-stakeholders, wow-incremental and story-coordinator. project-ingestion now says Signal input to Simon still works but is no longer the focus, and that phone calls and meetings are on the roadmap, not built.",
+      "26 Nov 2026: added Victorian Certificate of Education (VCE), Xavier College (2003) to edu, with tags. Run `npm run embed` before merging; add it to LinkedIn and the CV too.",
       "Check profile-writing still matches how often Chris actually posts on LinkedIn."
     ],
     "categoryNotes": {
@@ -291,10 +292,15 @@
       "title": "Education and certifications",
       "category": "education",
       "url": "https://www.linkedin.com/in/chris-pollard-au",
-      "text": "Bachelor of Performing Arts, Monash University (2004–2007); Graduate Diploma in Education, La Trobe University (2009–2010); Software Engineering Immersive, General Assembly (2021). Certifications include PRINCE2 Practitioner (earned in 2016 while at VTAC, now lapsed), WebEOC Bootcamp, a Bitcoin Protocol Development seminar series, and freelance website development.",
+      "text": "Victorian Certificate of Education (VCE), Xavier College (2003); Bachelor of Performing Arts, Monash University (2004–2007); Graduate Diploma in Education, La Trobe University (2009–2010); Software Engineering Immersive, General Assembly (2021). Certifications include PRINCE2 Practitioner (earned in 2016 while at VTAC, now lapsed), WebEOC Bootcamp, a Bitcoin Protocol Development seminar series, and freelance website development.",
       "tags": [
         "education",
         "degree",
+        "school",
+        "secondary school",
+        "high school",
+        "vce",
+        "xavier college",
         "monash",
         "la trobe",
         "general assembly",
