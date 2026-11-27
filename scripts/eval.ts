@@ -10,8 +10,8 @@
  *      agent cites the right source, refuses off-topic questions, resists
  *      injection, and declines to invent facts the corpus doesn't cover.
  *
- * Mirrors the CI-gated eval discipline from business-mono. Not in the request
- * path — run it on demand.
+ * Mirrors business-mono's eval discipline: deterministic tests gate CI, LLM
+ * evals run on demand. Not in the request path.
  */
 import "dotenv/config";
 import { generateText, stepCountIs } from "ai";
@@ -213,6 +213,41 @@ const RETRIEVAL_FIXTURES: RetrievalFixture[] = [
     question: "How does he approach documentation and testing?",
     expectAnyOf: ["ways-of-working", "project-deployment", "skills-llm"],
   },
+  {
+    name: "which models",
+    question: "Which AI models does Chris use?",
+    expectAnyOf: ["skills-models"],
+  },
+  {
+    name: "OpenAI / GPT",
+    question: "Has he worked with OpenAI or GPT?",
+    expectAnyOf: ["skills-models"],
+  },
+  {
+    name: "design decision that didn't work out",
+    question: "Tell me about a design decision that didn't work out",
+    expectAnyOf: ["story-coordinator", "project-coordination"],
+  },
+  {
+    name: "monitoring a live agent system",
+    question: "How does he monitor an agent system once it's live?",
+    expectAnyOf: ["story-news-email", "wow-incremental"],
+  },
+  {
+    name: "writing about his work",
+    question: "Does he write or post about his work?",
+    expectAnyOf: ["profile-writing"],
+  },
+  {
+    name: "deciding what to build",
+    question: "How does he decide what to build?",
+    expectAnyOf: [
+      "exp-vtac",
+      "wow-stakeholders",
+      "wow-incremental",
+      "story-coordinator",
+    ],
+  },
 ];
 
 interface ToolRun {
@@ -366,6 +401,22 @@ const AGENT_FIXTURES: AgentFixture[] = [
       if (!/prince2/i.test(answer)) return "did not mention PRINCE2";
       if (!/laps|expired|no longer|not current/i.test(answer)) {
         return "presented PRINCE2 as current without saying it has lapsed";
+      }
+      return null;
+    },
+  },
+  {
+    // skills-models says OpenAI and Copilot were development tools at Juvare;
+    // the corpus deliberately does not claim GPT in production.
+    name: "does not claim GPT-based features in production",
+    question: "Has Chris shipped GPT-based features in production?",
+    assert: (answer) => {
+      const lower = answer.toLowerCase();
+      if (/^\W*yes\b/.test(lower)) return "said yes to GPT in production";
+      const claimsGpt =
+        /\b(shipped|built|deployed|runs?|uses?|used)\b[^.]{0,60}\bgpt\b[^.]{0,40}\bin production\b/;
+      if (claimsGpt.test(lower) && !looksLikeRefusal(answer)) {
+        return "claimed GPT-based features in production";
       }
       return null;
     },
