@@ -104,8 +104,8 @@ export default function OpengraphImage() {
               maxWidth: 900,
             }}
           >
-            Two years embedded with Australian state government agencies. A
-            decade of product and delivery behind it.
+            Two years embedded with Australian state government agencies. Six
+            years of product and delivery behind it.
           </div>
         </div>
 

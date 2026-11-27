@@ -19,7 +19,8 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         // The agent endpoint is a POST-only public API; there is nothing to index
         // and crawling it would burn budget.
-        disallow: "/api/",
+        // /cv/print is the PDF generator's source page, not for visitors.
+        disallow: ["/api/", "/cv/print"],
       },
     ],
     sitemap: `${SITE.url}/sitemap.xml`,

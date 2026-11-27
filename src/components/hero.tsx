@@ -28,7 +28,7 @@ export const HERO_VARIANTS = [
     eyebrow: "Hello, I’m",
     thesis: "I take LLM agents from demo to production.",
     intro:
-      "Two years embedded with Australian state government agencies, running requirements and shipping the result. A decade of product and delivery behind it. This site is one of the systems — ask it something real.",
+      "Two years embedded with Australian state government agencies, running requirements and shipping the result. Six years of product and delivery behind it. This site is one of the systems — ask it something real.",
     ctaPrimary: "Ask me something ↓",
     ctaSecondary: "See what I’ve built",
   },

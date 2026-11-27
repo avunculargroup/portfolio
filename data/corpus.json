@@ -20,6 +20,7 @@
       "Juvare end date (May 2026) and the co-founder / principal engineer title need to match on LinkedIn and the portfolio site.",
       "Confirm the exact RMIT job title on the employment record — corpus and LinkedIn both say Project Manager.",
       "Nov 2026: PRINCE2 Practitioner added to edu, exp-vtac-pmo and story-pmo-growth, marked as lapsed (earned 2016, no longer current). Run `npm run embed` before merging; LinkedIn and the CV should show it as lapsed too.",
+      "Nov 2026: added faq-cv (the /cv page and PDF). Run `npm run embed` before merging.",
       "Nov 2026: business-mono chunks brought up to date (news and podcast curation; mostly structured workflows, coordinator does less than planned; output mostly internal). Added Avuncular Group to exp-bts, BTS mission to faq-bitcoin, and new chunks story-news-email, story-coordinator, story-out-of-credit, wow-incremental, profile-writing. Run `npm run embed` before merging.",
       "24 Nov 2026: repositioned for technical product roles generally (technical PM, product owner, product lead; AI a plus, not a requirement) and the value proposition of working between the business and the engineers. Rewrote profile-summary, profile-positioning and faq-availability (now available from mid-January 2027 only, contract or permanent; replaces the earlier contract-now wording). Removed the fractional-engagements line from wow-visual-craft and the 'AI engineers' comparisons from faq-people and wow-consensus. Softened tone in profile-writing, faq-experience, wow-translation and story-autonomy. Added exp-vtac-presales, story-coaching-pms and exp-vbtc. Run `npm run embed` before merging.",
       "24 Nov 2026: carried over from the unapplied 16 Nov patch: skills-models chunk (model-agnostic; does not claim GPT in production) and 'how do you decide what to build' / 'prioritisation' tags on exp-vtac, wow-stakeholders, wow-incremental and story-coordinator. project-ingestion now says Signal input to Simon still works but is no longer the focus, and that phone calls and meetings are on the roadmap, not built.",
@@ -27,7 +28,8 @@
       "Check profile-writing still matches how often Chris actually posts on LinkedIn.",
       "Nov 2026: business-mono build start corrected to late 2025 (the business itself started March 2025). Updated profile-summary, exp-bts, story-news-email, story-coordinator and story-out-of-credit. Run `npm run embed` before merging.",
       "27 Nov 2026: made the late-2025 business-mono start findable: added it to project-overview and scale-ownership (replacing the undated 'sustained development' line) and added start-date / how-long tags to project-overview, exp-bts, profile-summary and scale-ownership. Run `npm run embed` before merging.",
-      "27 Nov 2026: edu reworded so PRINCE2's lapsed status comes before anything else said about it (the agent dropped 'now lapsed' when listing qualifications). Run `npm run embed` before merging."
+      "27 Nov 2026: edu reworded so PRINCE2's lapsed status comes before anything else said about it (the agent dropped 'now lapsed' when listing qualifications). Run `npm run embed` before merging.",
+      "27 Nov 2026: Chris corrected his delivery experience to six years, not a decade. Updated profile-summary and faq-experience. faq-people reworded to name the roles without a year count."
     ],
     "categoryNotes": {
       "story": "Concrete, dated examples for behavioural questions ('tell me about a time'). Deliberately separated from experience so retrieval doesn't surface 2007 anecdotes when someone asks what Chris does now. Always keep the date in the text."
@@ -39,7 +41,7 @@
       "title": "Who Chris is",
       "category": "profile",
       "url": "https://www.linkedin.com/in/chris-pollard-au",
-      "text": "Chris Pollard is a Melbourne-based technical product manager who works in the gap between the business and the engineers. He has about a decade of project and product delivery behind him, then five years as a software engineer, and since late 2025 he has been building AI agent systems for his own company. That mix means he can usually follow both sides of the conversation, from roadmap and stakeholders through to what is actually being built.",
+      "text": "Chris Pollard is a Melbourne-based technical product manager who works in the gap between the business and the engineers. He has six years of project and product delivery behind him, then five years as a software engineer, and since late 2025 he has been building AI agent systems for his own company. That mix means he can usually follow both sides of the conversation, from roadmap and stakeholders through to what is actually being built.",
       "tags": [
         "chris pollard",
         "who",
@@ -588,7 +590,7 @@
       "title": "How much experience does he have?",
       "category": "faq",
       "url": "https://www.linkedin.com/in/chris-pollard-au",
-      "text": "Chris has about a decade of project and product delivery, followed by hands-on engineering. He moved into software in 2021 — full-stack roles at Beyond Essential Systems and Juvare — and now builds multi-agent LLM systems, so he can usually follow the technical detail as well as lead the delivery.",
+      "text": "Chris has six years of project and product delivery, followed by hands-on engineering. He moved into software in 2021 — full-stack roles at Beyond Essential Systems and Juvare — and now builds multi-agent LLM systems, so he can usually follow the technical detail as well as lead the delivery.",
       "tags": [
         "experience",
         "years",
@@ -908,7 +910,7 @@
       "title": "Is he good with people and stakeholders?",
       "category": "faq",
       "url": "https://www.linkedin.com/in/chris-pollard-au",
-      "text": "It's the part of his background he leans on most. A decade of project and product roles — VTAC, La Trobe, RMIT, Monash, Melbourne, Swinburne — was spent facing clients, executives, academics and students, and the current work carries it forward: client discovery, requirements elicitation, and designing systems that keep a human in the decision. He'd rather have the awkward conversation early than discover the misalignment at delivery.",
+      "text": "It's the part of his background he leans on most. His project and product roles at VTAC and RMIT, and the university administration work at Swinburne, Melbourne, Monash and La Trobe before that, were spent facing clients, executives, academics and students, and the current work carries it forward: client discovery, requirements elicitation, and designing systems that keep a human in the decision. He'd rather have the awkward conversation early than discover the misalignment at delivery.",
       "tags": [
         "people",
         "stakeholders",
@@ -1153,6 +1155,23 @@
         "existing codebase",
         "experience",
         "webeoc"
+      ]
+    },
+    {
+      "id": "faq-cv",
+      "title": "Can I get his CV?",
+      "category": "faq",
+      "url": "https://chrispollard.com.au/cv",
+      "text": "Yes. Chris's CV is on this site at chrispollard.com.au/cv, and a two-page PDF of it can be downloaded from the same page. Anything on it can be asked about here, and he can be reached at chris@chrispollard.com.au.",
+      "tags": [
+        "cv",
+        "resume",
+        "résumé",
+        "pdf",
+        "download",
+        "copy",
+        "curriculum vitae",
+        "faq"
       ]
     }
   ]

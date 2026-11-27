@@ -87,13 +87,38 @@ export const ASK_PROMPTS = [
   },
 ] as const;
 
+/**
+ * "Ask about this" links on /cv. Each opens the home page with `?ask=<id>`,
+ * and AskSection sends the matching query once on load.
+ *
+ * An allow-list rather than free text on purpose: a free-text `?q=` would let
+ * anyone craft a link that puts words in the agent's mouth on this site, under
+ * Chris's name. Same rule as ASK_PROMPTS: every query here has a retrieval
+ * eval in scripts/eval.ts.
+ */
+export const CV_ASK_PROMPTS = {
+  "business-mono": "What is business-mono, and how did Chris build it?",
+  bts: "What does Chris do at Bitcoin Treasury Solutions?",
+  juvare: "What did Chris do at Juvare?",
+  "beyond-essential": "What did Chris build at Beyond Essential Systems?",
+  transition: "Why did he move from project management into engineering?",
+  rmit: "What did Chris do at RMIT during the pandemic?",
+  vtac: "What did Chris own at VTAC?",
+} as const;
+
+export type CvAskId = keyof typeof CV_ASK_PROMPTS;
+
+export function isCvAskId(value: string | null): value is CvAskId {
+  return value !== null && Object.hasOwn(CV_ASK_PROMPTS, value);
+}
+
 /** Site metadata. */
 export const SITE = {
   name: "Chris Pollard",
   role: "Technical Product Lead — AI",
   title: "Chris Pollard — Technical Product Lead, AI",
   description:
-    "Melbourne-based engineer who takes LLM agents from demo to production, with a decade of product and delivery behind it. Available from mid-January 2027 for contract or permanent roles. Ask the live agent about his work.",
+    "Melbourne-based engineer who takes LLM agents from demo to production, with six years of product and delivery behind it. Available from mid-January 2027 for contract or permanent roles. Ask the live agent about his work.",
   url: "https://chrispollard.com.au",
   email: "chris@chrispollard.com.au",
   location: "Melbourne, Australia",
