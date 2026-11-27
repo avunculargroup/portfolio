@@ -29,7 +29,7 @@
       "Nov 2026: business-mono build start corrected to late 2025 (the business itself started March 2025). Updated profile-summary, exp-bts, story-news-email, story-coordinator and story-out-of-credit. Run `npm run embed` before merging.",
       "27 Nov 2026: made the late-2025 business-mono start findable: added it to project-overview and scale-ownership (replacing the undated 'sustained development' line) and added start-date / how-long tags to project-overview, exp-bts, profile-summary and scale-ownership. Run `npm run embed` before merging.",
       "27 Nov 2026: edu reworded so PRINCE2's lapsed status comes before anything else said about it (the agent dropped 'now lapsed' when listing qualifications). Run `npm run embed` before merging.",
-      "27 Nov 2026: Chris corrected his delivery experience to six years, not a decade. Updated profile-summary and faq-experience. faq-people's 'decade of project and product roles' (which counts the university admin years) is left for review."
+      "27 Nov 2026: Chris corrected his delivery experience to six years, not a decade. Updated profile-summary and faq-experience. faq-people reworded to name the roles without a year count."
     ],
     "categoryNotes": {
       "story": "Concrete, dated examples for behavioural questions ('tell me about a time'). Deliberately separated from experience so retrieval doesn't surface 2007 anecdotes when someone asks what Chris does now. Always keep the date in the text."
@@ -910,7 +910,7 @@
       "title": "Is he good with people and stakeholders?",
       "category": "faq",
       "url": "https://www.linkedin.com/in/chris-pollard-au",
-      "text": "It's the part of his background he leans on most. A decade of project and product roles — VTAC, La Trobe, RMIT, Monash, Melbourne, Swinburne — was spent facing clients, executives, academics and students, and the current work carries it forward: client discovery, requirements elicitation, and designing systems that keep a human in the decision. He'd rather have the awkward conversation early than discover the misalignment at delivery.",
+      "text": "It's the part of his background he leans on most. His project and product roles at VTAC and RMIT, and the university administration work at Swinburne, Melbourne, Monash and La Trobe before that, were spent facing clients, executives, academics and students, and the current work carries it forward: client discovery, requirements elicitation, and designing systems that keep a human in the decision. He'd rather have the awkward conversation early than discover the misalignment at delivery.",
       "tags": [
         "people",
         "stakeholders",
