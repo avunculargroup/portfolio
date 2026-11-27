@@ -56,7 +56,7 @@ export const CV = {
   ],
 
   profile:
-    "Technical product manager. I spent about a decade in project and product delivery, then five years as a software engineer, and since late 2025 I’ve been building AI agent systems for my own company. Because I’ve done both jobs, I can follow the roadmap and stakeholder conversation and what’s actually being built, and help both sides work towards the same thing. I keep a human in the loop on automated decisions, and I care that what ships is trusted and actually used.",
+    "Technical product manager. I spent six years in project and product delivery, then five years as a software engineer, and since late 2025 I’ve been building AI agent systems for my own company. Because I’ve done both jobs, I can follow the roadmap and stakeholder conversation and what’s actually being built, and help both sides work towards the same thing. I keep a human in the loop on automated decisions, and I care that what ships is trusted and actually used.",
 
   build: {
     eyebrow: "Selected build",

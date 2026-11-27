@@ -118,7 +118,7 @@ export const SITE = {
   role: "Technical Product Lead — AI",
   title: "Chris Pollard — Technical Product Lead, AI",
   description:
-    "Melbourne-based engineer who takes LLM agents from demo to production, with a decade of product and delivery behind it. Available from mid-January 2027 for contract or permanent roles. Ask the live agent about his work.",
+    "Melbourne-based engineer who takes LLM agents from demo to production, with six years of product and delivery behind it. Available from mid-January 2027 for contract or permanent roles. Ask the live agent about his work.",
   url: "https://chrispollard.com.au",
   email: "chris@chrispollard.com.au",
   location: "Melbourne, Australia",
