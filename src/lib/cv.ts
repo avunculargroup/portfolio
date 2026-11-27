@@ -42,7 +42,7 @@ export interface CvFact {
 export const CV = {
   name: SITE.name,
   role: SITE.role,
-  thesis: "I take LLM agents from demo to production you can trust.",
+  thesis: "I work in the gap between the business and the engineers.",
   location: SITE.location,
   email: SITE.email,
   availability: AVAILABILITY.full,
@@ -56,7 +56,7 @@ export const CV = {
   ],
 
   profile:
-    "Engineer and delivery lead. I spent a decade in project and product delivery, then moved into software in 2021. I now build production LLM systems myself, and can own the whole path: discovery, roadmap and stakeholders through to shipped, working software. Most AI hires are strong on the build or on the delivery. I’ve been paid for both.",
+    "Technical product manager. I spent about a decade in project and product delivery, then five years as a software engineer, and since late 2025 I’ve been building AI agent systems for my own company. Because I’ve done both jobs, I can follow the roadmap and stakeholder conversation and what’s actually being built, and help both sides work towards the same thing. I keep a human in the loop on automated decisions, and I care that what ships is trusted and actually used.",
 
   build: {
     eyebrow: "Selected build",
@@ -64,7 +64,7 @@ export const CV = {
     href: "https://github.com/avunculargroup/business-mono",
     hrefLabel: "Public repo",
     summary:
-      "The operations platform behind Bitcoin Treasury Solutions, architected and shipped solo. It monitors news and podcast sources, keeps what matters in a searchable knowledge base, and runs curation workflows on top, including a daily news email. It started as a coordinator agent routing to specialists; most jobs now run as structured workflows, because they proved more reliable.",
+      "The operations platform behind Bitcoin Treasury Solutions, architected and shipped solo since late 2025. It monitors news and podcast sources, keeps what matters in a searchable knowledge base, and runs curation workflows on top, including a daily news email. It started as a coordinator agent routing to specialists; most jobs now run as structured workflows, because they proved more reliable.",
     facts: [
       {
         label: "Hybrid retrieval",
@@ -98,7 +98,7 @@ export const CV = {
       place: "Melbourne",
       current: true,
       summary:
-        "Structured bitcoin training for professionals, SMEs and individuals. I set up Avuncular Group Pty Ltd, the company behind it, run its strategy and administration, and own the technology end to end. It’s pre-revenue, so each build decision is also a business trade-off.",
+        "Structured bitcoin training for professionals, SMEs and individuals. I set up Avuncular Group Pty Ltd, the company behind it, run its strategy and administration, and own the technology end to end. My co-founder, Carolyn Crawford, leads the commercial and training side. It’s pre-revenue, so each build decision is also a business trade-off.",
       ask: "bts",
     },
     {
@@ -192,6 +192,7 @@ export const CV = {
     {
       label: "Education",
       items: [
+        "Victorian Certificate of Education (VCE), Xavier College, 2003",
         "Bachelor of Performing Arts, Monash University, 2004–2007",
         "Graduate Diploma in Education, La Trobe University, 2009–2010",
         "PRINCE2 Practitioner, 2016 (lapsed) · WebEOC Bootcamp · Bitcoin protocol development seminars",
