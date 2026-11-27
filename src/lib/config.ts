@@ -16,6 +16,13 @@ export const MAX_STEPS = 6;
  */
 export const PITCH_MAX_OUTPUT_TOKENS = 900;
 export const PITCH_MAX_ITEMS = 4;
+/**
+ * How many times draft_pitch tries to compose before degrading to a prose
+ * answer. The model occasionally returns truncated or malformed emit_pitch
+ * arguments (~1 in 5 for a poor-fit role, Nov 2026); one retry recovers most
+ * of those for the cost of an occasional extra small call.
+ */
+export const PITCH_COMPOSE_ATTEMPTS = 2;
 
 /** Retrieval defaults. */
 export const RETRIEVAL_TOP_K = 3;

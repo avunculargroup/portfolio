@@ -25,7 +25,9 @@
       "24 Nov 2026: carried over from the unapplied 16 Nov patch: skills-models chunk (model-agnostic; does not claim GPT in production) and 'how do you decide what to build' / 'prioritisation' tags on exp-vtac, wow-stakeholders, wow-incremental and story-coordinator. project-ingestion now says Signal input to Simon still works but is no longer the focus, and that phone calls and meetings are on the roadmap, not built.",
       "26 Nov 2026: added Victorian Certificate of Education (VCE), Xavier College (2003) to edu, with tags. Run `npm run embed` before merging; add it to LinkedIn and the CV too.",
       "Check profile-writing still matches how often Chris actually posts on LinkedIn.",
-      "Nov 2026: business-mono build start corrected to late 2025 (the business itself started March 2025). Updated profile-summary, exp-bts, story-news-email, story-coordinator and story-out-of-credit. Run `npm run embed` before merging."
+      "Nov 2026: business-mono build start corrected to late 2025 (the business itself started March 2025). Updated profile-summary, exp-bts, story-news-email, story-coordinator and story-out-of-credit. Run `npm run embed` before merging.",
+      "27 Nov 2026: made the late-2025 business-mono start findable: added it to project-overview and scale-ownership (replacing the undated 'sustained development' line) and added start-date / how-long tags to project-overview, exp-bts, profile-summary and scale-ownership. Run `npm run embed` before merging.",
+      "27 Nov 2026: edu reworded so PRINCE2's lapsed status comes before anything else said about it (the agent dropped 'now lapsed' when listing qualifications). Run `npm run embed` before merging."
     ],
     "categoryNotes": {
       "story": "Concrete, dated examples for behavioural questions ('tell me about a time'). Deliberately separated from experience so retrieval doesn't surface 2007 anecdotes when someone asks what Chris does now. Always keep the date in the text."
@@ -47,7 +49,11 @@
         "product owner",
         "business and engineering",
         "delivery",
-        "melbourne"
+        "melbourne",
+        "how long",
+        "ai agents",
+        "timeline",
+        "since late 2025"
       ]
     },
     {
@@ -105,7 +111,11 @@
         "company",
         "strategy",
         "commercial",
-        "pre-revenue"
+        "pre-revenue",
+        "start date",
+        "when did he start",
+        "business-mono timeline",
+        "late 2025"
       ]
     },
     {
@@ -293,7 +303,7 @@
       "title": "Education and certifications",
       "category": "education",
       "url": "https://www.linkedin.com/in/chris-pollard-au",
-      "text": "Victorian Certificate of Education (VCE), Xavier College (2003); Bachelor of Performing Arts, Monash University (2004–2007); Graduate Diploma in Education, La Trobe University (2009–2010); Software Engineering Immersive, General Assembly (2021). Certifications include PRINCE2 Practitioner (earned in 2016 while at VTAC, now lapsed), WebEOC Bootcamp, a Bitcoin Protocol Development seminar series, and freelance website development.",
+      "text": "Victorian Certificate of Education (VCE), Xavier College (2003); Bachelor of Performing Arts, Monash University (2004–2007); Graduate Diploma in Education, La Trobe University (2009–2010); Software Engineering Immersive, General Assembly (2021). His PRINCE2 Practitioner certification has lapsed: he earned it in 2016 while at VTAC and it is no longer current. Other certifications include WebEOC Bootcamp, a Bitcoin Protocol Development seminar series, and freelance website development.",
       "tags": [
         "education",
         "degree",
@@ -308,7 +318,8 @@
         "certifications",
         "prince2",
         "project management",
-        "qualifications"
+        "qualifications",
+        "lapsed"
       ]
     },
     {
@@ -316,7 +327,7 @@
       "title": "business-mono — overview",
       "category": "project",
       "url": "https://github.com/avunculargroup/business-mono",
-      "text": "business-mono is a production operations platform Chris built single-handedly as the system behind Bitcoin Treasury Solutions, where he is co-founder and principal engineer. It monitors news and podcast sources, analyses and stores what is useful in a searchable knowledge base, and runs the curation workflows built on top of it, including a daily news email. A Mastra server runs the agents and workflows, all sharing one Supabase database; a Next.js 15 app handles dashboards and human approvals. It began as a hub-and-spoke design around a coordinator agent (Simon), but most of it now runs as structured workflows.",
+      "text": "business-mono is a production operations platform Chris built single-handedly as the system behind Bitcoin Treasury Solutions, where he is co-founder and principal engineer. He began building it in late 2025. It monitors news and podcast sources, analyses and stores what is useful in a searchable knowledge base, and runs the curation workflows built on top of it, including a daily news email. A Mastra server runs the agents and workflows, all sharing one Supabase database; a Next.js 15 app handles dashboards and human approvals. It began as a hub-and-spoke design around a coordinator agent (Simon), but most of it now runs as structured workflows.",
       "tags": [
         "business-mono",
         "project",
@@ -327,7 +338,11 @@
         "bitcoin treasury solutions",
         "news curation",
         "podcasts",
-        "workflows"
+        "workflows",
+        "start date",
+        "when did he start",
+        "timeline",
+        "late 2025"
       ]
     },
     {
@@ -519,7 +534,7 @@
       "title": "Scale and ownership",
       "category": "scale",
       "url": "https://github.com/avunculargroup/business-mono",
-      "text": "business-mono is a genuinely solo build: the coordinator, the specialist agents, the workflows, the ingestion pipelines and the web app were all architected and shipped by one person, across a Turborepo monorepo with CI-gated test suites. It has been under sustained development rather than built in a burst, and it runs every day, though most of its output is used inside the business rather than sent to customers. The repository is public, so the scope can be inspected rather than taken on trust.",
+      "text": "business-mono is a genuinely solo build: the coordinator, the specialist agents, the workflows, the ingestion pipelines and the web app were all architected and shipped by one person, across a Turborepo monorepo with CI-gated test suites. He began building it in late 2025 and has developed it steadily since rather than in a single burst, and it runs every day, though most of its output is used inside the business rather than sent to customers. The repository is public, so the scope can be inspected rather than taken on trust.",
       "tags": [
         "scale",
         "solo",
@@ -529,7 +544,9 @@
         "scope",
         "sustained",
         "public repo",
-        "verifiable"
+        "verifiable",
+        "timeline",
+        "late 2025"
       ]
     },
     {
