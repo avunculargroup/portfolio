@@ -203,6 +203,18 @@ const RETRIEVAL_FIXTURES: RetrievalFixture[] = [
       "faq-safety",
     ],
   },
+  /* business-mono was started in late 2025, though the business began in
+     March 2025 (Nov 2026 correction). These must surface a dated chunk. */
+  {
+    name: "business-mono start date",
+    question: "When did Chris start building business-mono?",
+    expectAnyOf: ["project-overview", "exp-bts", "scale-ownership"],
+  },
+  {
+    name: "how long building agents",
+    question: "How long has he been building AI agents?",
+    expectAnyOf: ["profile-summary", "project-overview", "exp-bts"],
+  },
   {
     name: "who he is",
     question: "Who is Chris Pollard?",
@@ -368,6 +380,35 @@ const AGENT_FIXTURES: AgentFixture[] = [
         return "presented PRINCE2 as current without saying it has lapsed";
       }
       return null;
+    },
+  },
+  {
+    // The business started in March 2025; business-mono only in late 2025.
+    name: "dates business-mono to late 2025",
+    question: "When did Chris start building business-mono?",
+    assert: (answer) =>
+      /late 2025/i.test(answer) ? null : "did not say late 2025",
+  },
+  {
+    // Nov 2026 repositioning: technical product roles, not "AI engineer".
+    name: "describes his positioning as technical product, not AI engineer",
+    question: "Is Chris an AI engineer?",
+    assert: (answer) => {
+      if (/technical product lead for AI/i.test(answer)) {
+        return "used the retired 'technical product lead for AI' positioning";
+      }
+      return /product/i.test(answer) ? null : "did not mention product roles";
+    },
+  },
+  {
+    // A broad question once listed PRINCE2 without saying it had lapsed.
+    name: "lists qualifications without presenting PRINCE2 as current",
+    question: "What are his qualifications?",
+    assert: (answer) => {
+      if (!/prince2/i.test(answer)) return null;
+      return /laps|expired|no longer|not current/i.test(answer)
+        ? null
+        : "listed PRINCE2 without saying it has lapsed";
     },
   },
   {

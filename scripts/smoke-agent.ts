@@ -20,7 +20,7 @@ import {
   ToolLoopAgent,
 } from "ai";
 import { SYSTEM_PROMPT } from "../src/lib/agent";
-import { PITCH_SCHEMA, portfolioTools } from "../src/lib/tools";
+import { normalisePitch, PITCH_SCHEMA, portfolioTools } from "../src/lib/tools";
 import { collectSources, collectTrace } from "../src/lib/trace";
 import { MAX_OUTPUT_TOKENS, MAX_STEPS } from "../src/lib/config";
 
@@ -159,6 +159,40 @@ async function checkPitchSchemaIsPortable() {
   );
 }
 
+/* The two malformed emit_pitch argument shapes captured from Haiku via
+   OpenRouter (Nov 2026). Both used to be discarded, failing the pitch. */
+function checkPitchRecovery() {
+  const stringified = normalisePitch({
+    headline: "A headline.",
+    why_fit: '\n<parameter name="why_fit">\n["First reason.","Second reason."]',
+    relevant_work: ["Some work."],
+    caveats: [],
+  });
+  check(
+    "pitch recovers a list sent as a markup string",
+    stringified?.why_fit.join("|") === "First reason.|Second reason.",
+    JSON.stringify(stringified),
+  );
+
+  const numbered = normalisePitch({
+    headline: "A headline.",
+    why_fit: '\n<parameter name="why_fit_1">First reason.',
+    why_fit_2: "Second reason.",
+    relevant_work: ["Some work."],
+    caveats: [],
+  });
+  check(
+    "pitch recovers items spilled into numbered keys",
+    numbered?.why_fit.join("|") === "First reason.|Second reason.",
+    JSON.stringify(numbered),
+  );
+
+  check(
+    "pitch still rejects output with no reasons",
+    normalisePitch({ headline: "A headline.", why_fit: "", relevant_work: [], caveats: [] }) === null,
+  );
+}
+
 async function main() {
   console.log("Agent streaming contract (mock model)\n");
 
@@ -263,6 +297,7 @@ async function main() {
   );
 
   await checkPitchSchemaIsPortable();
+  checkPitchRecovery();
 
   console.log(
     failures.length === 0

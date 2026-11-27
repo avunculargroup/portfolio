@@ -38,12 +38,12 @@ export const PROJECTS = {
     problem:
       "Bitcoin Treasury Solutions needed its operations — client records, research, content, compliance review and project management — run reliably by a very small team. The problem was not 'add a chatbot' but 'make routine operations dependable enough to trust', with a human at the edge of every automated decision.",
     architecture:
-      "Hub-and-spoke. A coordinator agent (Simon) is the only agent that talks to humans, and routes each request to a specialist — recorder, archivist, project manager, business analyst, content, research, relationship and compliance roles — all sharing one Supabase Postgres database behind a consistent audit trail. A Mastra server runs the agents and workflows; a Next.js 15 app handles dashboards and human approvals. Real-world input arrives through a Signal interface for directors plus telephony and meeting sources, with speech transcription feeding the same knowledge base the agents retrieve from.",
+      "Designed hub-and-spoke: a coordinator agent (Simon) routes requests to specialist agents — recorder, archivist, project manager, business analyst, content, research, relationship and compliance roles — all sharing one Supabase Postgres database behind a consistent audit trail. In practice the coordinator does far less than planned: most of the platform now runs as structured workflows, because for most jobs a workflow proved more reliable and easier to reason about than an agent deciding what to do next. A Mastra server runs the agents and workflows; a Next.js 15 app handles dashboards and human approvals. The platform monitors news and podcast sources, analyses and stores what is useful in the knowledge base, and runs curation workflows on top of it, including a daily news email. Input to Simon over Signal still works but is no longer the main way the system is used; taking in phone calls and meetings is on the roadmap, not built.",
     decisions: [
       {
-        title: "Hub-and-spoke over a flat swarm",
+        title: "Hub-and-spoke over a flat swarm — then workflows over agents",
         detail:
-          "Centralising human contact in one coordinator keeps behaviour predictable and the whole system observable, rather than having many agents independently deciding to contact a human.",
+          "The system was designed around a single coordinator routing to specialists rather than a flat swarm. In practice most jobs moved to structured workflows, because a workflow proved more reliable and easier to reason about than an agent deciding what to do next.",
       },
       {
         title: "Hybrid retrieval, not a single vector lookup",
@@ -82,7 +82,7 @@ export const PROJECTS = {
       "Vitest (CI-gated) · LLM evals on demand",
     ],
     scale:
-      "A genuinely solo build: the coordinator, the specialist agents, the workflows, the ingestion pipelines and the web app were all architected and shipped by one person, across a Turborepo monorepo with CI-gated test suites. It has been under sustained development rather than built in a burst, and it runs a real business daily. The repository is public, so the scope can be inspected rather than taken on trust.",
+      "A genuinely solo build: the coordinator, the specialist agents, the workflows, the ingestion pipelines and the web app were all architected and shipped by one person, across a Turborepo monorepo with CI-gated test suites. It was started in late 2025 and has been developed steadily since rather than in a single burst, and it runs every day, though most of its output is used inside the business. The repository is public, so the scope can be inspected rather than taken on trust.",
   },
 } as const satisfies Record<string, ProjectRecord>;
 
